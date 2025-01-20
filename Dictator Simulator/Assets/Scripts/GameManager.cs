@@ -8,25 +8,18 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager
 {
-	private static GameManager instance;
+	private static GameManager instance = new GameManager();
 
-	private GameManager()
-	{
-		// initialize your game manager here. Do not reference to GameObjects here (i.e. GameObject.Find etc.)
-		// because the game manager will be created before the objects
-	}
-	public static GameManager Instance
-	{
-		get
-		{
-			if (instance == null)
-			{
-				instance = new GameManager();
-			}
+    private GameManager()
+    {
+        // initialize your game manager here. Do not reference to GameObjects here (i.e. GameObject.Find etc.)
+        // because the game manager will be created before the objects
+    }
 
-			return instance;
-		}
-	}
+	public static GameManager Instance 
+    {
+        get { return instance; }
+    }
 
 	//Initialize stuff here
 
