@@ -4,31 +4,33 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// The main class for controlling the different interactions between game mechanics.
+/// The main class for controlling the different interactions between game mechanics. Gamemanager is an instance that doesn't use monobehavior
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GameManager
 {
+	private static GameManager instance = new GameManager();
 
-    public int WeekNum = 0;
-
-
-    // Start is called before the first frame update
-    void Start()
+    private GameManager()
     {
-        
+        // initialize your game manager here. Do not reference to GameObjects here (i.e. GameObject.Find etc.)
+        // because the game manager will be created before the objects
     }
 
-    // Update is called once per frame
-    void Update()
+	public static GameManager Instance 
     {
-        
+        get { return instance; }
     }
 
-    /// <summary>
-    /// Load a new scene using the name. It must match exactly.
-    /// </summary>
-    /// <param name="sceneName"></param>
-    public void LoadScene(string sceneName)
+	//Initialize stuff here
+
+	public int WeekNum = 0;
+
+
+	/// <summary>
+	/// Load a new scene using the name. It must match exactly.
+	/// </summary>
+	/// <param name="sceneName"></param>
+	public void LoadScene(string sceneName)
     {
         if (string.IsNullOrEmpty(sceneName))
         {
