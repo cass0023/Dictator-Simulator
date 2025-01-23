@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -25,9 +24,9 @@ public class StatManager
 	//Instance of the class
     private static StatManager instance = new StatManager();
 	//Dictionary that stores all of the stats and their float values. It is private, so call the public functions that change the stats individually.
-	private Dictionary<Stats, float> StatValues = new Dictionary<Stats, float>();
+	private readonly Dictionary<Stats, float> StatValues = new Dictionary<Stats, float>();
 	//Store each string name of the UI element that the stat corrisponds to.
-	private Dictionary<Stats, string> UIStatName = new Dictionary<Stats, string>();
+	private readonly Dictionary<Stats, string> UIStatName = new Dictionary<Stats, string>();
 
 	private StatManager() 
     {
@@ -50,7 +49,6 @@ public class StatManager
 	/// </summary>
 	/// <param name="stat"></param>
 	/// <param name="amount"></param>
-	
     public void IncreaseStat(Stats stat, float amount)
     {
         if(StatValues.ContainsKey(stat)) 
