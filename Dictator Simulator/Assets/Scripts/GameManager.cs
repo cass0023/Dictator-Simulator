@@ -25,7 +25,6 @@ public class GameManager
 
 	public int WeekNum = 0;
 
-
 	/// <summary>
 	/// Load a new scene using the name. It must match exactly.
 	/// </summary>

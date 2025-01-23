@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -38,7 +39,6 @@ public class StatManager
 		UIStatName.Add(Stats.SANITY, "T_SanityVal");
 		UIStatName.Add(Stats.PERCEPTION, "T_PerceptionVal");
 		UIStatName.Add(Stats.STABILITY, "T_StabilityVal");
-
     }
 	public static StatManager Instance
 	{
@@ -49,19 +49,19 @@ public class StatManager
 	/// </summary>
 	/// <param name="stat"></param>
 	/// <param name="amount"></param>
-    public void IncreaseStat(Stats stat, float amount)
+    public void IncreaseStat(object sender, IncreaseStatEventArgs e)
     {
-        if(StatValues.ContainsKey(stat)) 
+		if (StatValues.ContainsKey(e.StatToIncrease)) 
         {
-            if (StatValues[stat] >= 1.0f) //Make sure not to go above 100% of a stat
+            if (StatValues[e.StatToIncrease] >= 1.0f) //Make sure not to go above 100% of a stat
             {
-				StatValues[stat] = 1.0f;
+				StatValues[e.StatToIncrease] = 1.0f;
 			}
             else
             {
-                 StatValues[stat] += amount;
+                 StatValues[e.StatToIncrease] += e.Amount;
             }
-			UpdateText(stat);
+			UpdateText(e.StatToIncrease);
 		}
     }
 	/// <summary>
@@ -69,19 +69,19 @@ public class StatManager
 	/// </summary>
 	/// <param name="stat"></param>
 	/// <param name="amount"></param>
-	public void DecreaseStat(Stats stat, float amount)
+	public void DecreaseStat(object sender, DecreaseStatEventArgs e)
 	{
-		if (StatValues.ContainsKey(stat))
+		if (StatValues.ContainsKey(e.StatToDecrease))
 		{
-			if (StatValues[stat] <= 0f) //Make sure not to go below 0% of a stat
+			if (StatValues[e.StatToDecrease] <= 0f) //Make sure not to go below 0% of a stat
 			{
-				StatValues[stat] = 0f;
+				StatValues[e.StatToDecrease] = 0f;
 			}
 			else
 			{
-				StatValues[stat] -= amount;
+				StatValues[e.StatToDecrease] -= e.Amount;
 			}
-            UpdateText(stat);
+            UpdateText(e.StatToDecrease);
 		}
 	}
     /// <summary>
