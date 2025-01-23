@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     //Create an EventHandler for each event
 	public event EventHandler<IncreaseStatEventArgs> IncreaseStat;
 	public event EventHandler<DecreaseStatEventArgs> DecreaseStat;
-
+	
 	// Start is called before the first frame update
 	void Start()
     {
@@ -51,6 +51,11 @@ public class UIManager : MonoBehaviour
 		};
 
 		OnDecreaseStat(args);
+	}
+
+	public void OnWeekEndClick()
+	{
+		GameManager.Instance.GoToNextWeek();
 	}
 
 	
