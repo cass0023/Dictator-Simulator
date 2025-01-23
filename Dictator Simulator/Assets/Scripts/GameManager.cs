@@ -47,6 +47,7 @@ public class GameManager
     public void GoToNextWeek()
     {
         WeekNum++;
+        Debug.Log($"Changed Week to week {WeekNum}");
     }
 
 }
