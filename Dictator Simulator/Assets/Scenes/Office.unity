@@ -3381,7 +3381,7 @@ GameObject:
   - component: {fileID: 1148053702}
   - component: {fileID: 1148053701}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: DebugCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4599,7 +4599,7 @@ GameObject:
   - component: {fileID: 1880331723}
   - component: {fileID: 1880331724}
   m_Layer: 0
-  m_Name: Virtual Camera
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
