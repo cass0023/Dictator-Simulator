@@ -6,14 +6,16 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 //List of all the stats that will have a value between 0 and 1. 
 public enum Stats
 { 
     SANITY = 0,
     PERCEPTION = 1,
-    STABILITY = 2
+    TRUST= 2,
+	IMPEACHMENT = 3
 
 
 }
@@ -28,18 +30,28 @@ public class StatManager
 	private readonly Dictionary<Stats, float> StatValues = new Dictionary<Stats, float>();
 	//Store each string name of the UI element that the stat corrisponds to.
 	private readonly Dictionary<Stats, string> UIStatName = new Dictionary<Stats, string>();
+	//Store each slider name
+	private readonly Dictionary<Stats, string> SliderNames = new Dictionary<Stats, string>();
+
 
 	private StatManager() 
     {
 		//Add new key value pairs
 		StatValues.Add(Stats.SANITY, 1.0f);
         StatValues.Add(Stats.PERCEPTION, 1.0f);
-        StatValues.Add(Stats.STABILITY, 1.0f);
+        StatValues.Add(Stats.TRUST, 1.0f);
+		StatValues.Add(Stats.IMPEACHMENT, 1.0f);
 
 		UIStatName.Add(Stats.SANITY, "T_SanityVal");
 		UIStatName.Add(Stats.PERCEPTION, "T_PerceptionVal");
-		UIStatName.Add(Stats.STABILITY, "T_StabilityVal");
-    }
+		UIStatName.Add(Stats.TRUST, "T_TrustVal");
+		UIStatName.Add(Stats.IMPEACHMENT, "T_ImpeachmentVal");
+
+		SliderNames.Add(Stats.SANITY, "SanitySlider");
+		SliderNames.Add(Stats.PERCEPTION, "PerceptionSlider");
+		SliderNames.Add(Stats.TRUST, "TrustSlider");
+		SliderNames.Add(Stats.IMPEACHMENT, "ImpeachmentSlider");
+	}
 	public static StatManager Instance
 	{
 		get { return instance; }
@@ -62,6 +74,8 @@ public class StatManager
                  StatValues[e.StatToIncrease] += e.Amount;
             }
 			UpdateText(e.StatToIncrease);
+			UpdateSliders(e.StatToIncrease);
+
 		}
     }
 	/// <summary>
@@ -82,6 +96,7 @@ public class StatManager
 				StatValues[e.StatToDecrease] -= e.Amount;
 			}
             UpdateText(e.StatToDecrease);
+			UpdateSliders(e.StatToDecrease);
 		}
 	}
     /// <summary>
@@ -93,6 +108,19 @@ public class StatManager
         int convertedStatVal = (int)Mathf.Round(StatValues[stat] * 100); //Make a percentage for displaying it.
 		GameObject.Find(UIStatName[stat]).GetComponent<TextMeshProUGUI>().text = convertedStatVal.ToString() + "%";
     }
+	/// <summary>
+	/// Updates the sliders on the tv screen when a stat changes
+	/// </summary>
+	/// <param name="stat"></param>
+	private void UpdateSliders(Stats stat)
+	{
+		GameObject.Find(SliderNames[stat]).GetComponent<UnityEngine.UI.Slider>().value = StatValues[stat];
+	}
+
+	public float GetStatValue(Stats stat)
+	{
+		return StatValues[stat];
+	}
 
 	
 
