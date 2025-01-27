@@ -27,14 +27,14 @@ public class PlayerController : MonoBehaviour
         //Gets movement input
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
-        CheckMovement();
-        if(canMove){
-            Move();
-        }
         //Gets mouse input
         cameraAxisX = Input.GetAxis("Mouse X") * mouseSensitivity;
         cameraAxisY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-        CameraRotate();
+        CheckMovement();
+        if(canMove){
+            Move();
+            CameraRotate();
+        }
         CheckInput();
     }
 
