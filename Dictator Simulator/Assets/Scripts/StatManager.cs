@@ -15,7 +15,8 @@ public enum Stats
     SANITY = 0,
     PERCEPTION = 1,
     TRUST= 2,
-	IMPEACHMENT = 3
+	IMPEACHMENT = 3,
+	NONE
 
 
 }

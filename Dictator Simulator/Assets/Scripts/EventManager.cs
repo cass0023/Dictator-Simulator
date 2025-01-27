@@ -4,6 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
+public struct EventChoice
+{
+	public int ChoiceIndex;
+
+	public string ChoiceText;
+	public string UIElementName;
+
+	public Dictionary<Stats, float> AmountToChangeEachStat;
+}
+
 public class EventManager
 {
 
@@ -35,4 +46,25 @@ public class DecreaseStatEventArgs : EventArgs
 	public float Amount;
 }
 
+public class StatReachedEventArgs : EventArgs
+{
+	public Stats RequiredStat;
+	public float RequiredAmount;
+	public bool TriggeredPreviously = false;
+
+	public string EventTitle;
+	public string EventDescription;
+
+	public List<EventChoice> EventChoices;
+}
+
+public class WeekReachedEventArgs : EventArgs
+{
+	public bool TriggeredPreviously = false;
+
+	public string EventTitle;
+	public string EventDescription;
+
+	public List<EventChoice> EventChoices;
+}
 
