@@ -65,16 +65,26 @@ public class PlayerController : MonoBehaviour
     
     //Triggers and Interact
     void CheckInput(){
-        if(Input.GetKeyDown(interact) && tvInteract){
-            
+        if(Input.GetKeyDown(interact) && tvInteract)
+        {
+             InteractionManager.Instance.SwitchCamera("StatCamera");
+            canMove = false;
         }
-    }
+		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract)
+		{
+			InteractionManager.Instance.SwitchCamera("PlayerCam");
+            canMove = true;
+		}
+	}
     void OnTriggerEnter(Collider collider){
         if (collider.gameObject.name == "StatScreenZone"){
             tvInteract = true;
         }
     }
     void OnTriggerExit(Collider collider){
-        tvInteract = false;
-    }
+		if (collider.gameObject.name == "StatScreenZone")
+		{
+			tvInteract = false;
+		}
+	}
 }
