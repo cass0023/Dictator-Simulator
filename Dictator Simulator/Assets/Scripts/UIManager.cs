@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     {
 		//Register event listeners
 		IncreaseStat += StatManager.Instance.IncreaseStat;
-		DecreaseStat += StatManager.Instance.DecreaseStat;
+		DecreaseStat += StatManager.Instance.DecreaseStat; 
 	}
 
     // Update is called once per frame
