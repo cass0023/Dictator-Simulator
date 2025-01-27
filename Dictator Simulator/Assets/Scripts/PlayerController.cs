@@ -13,8 +13,14 @@ public class PlayerController : MonoBehaviour
     float VertCameraRotate;
     float cameraAxisX, cameraAxisY;
     public Transform cameraTransform;
+
+    //interact variables
+    public bool tvInteract;
+    [SerializeField]private KeyCode interact;
+    
     void Start(){
         canMove = true;
+        tvInteract = false;
     }
     void Update()
     {
@@ -29,7 +35,10 @@ public class PlayerController : MonoBehaviour
         cameraAxisX = Input.GetAxis("Mouse X") * mouseSensitivity;
         cameraAxisY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         CameraRotate();
+        CheckInput();
     }
+
+    //Movement and Camera
     void CheckMovement(){
         // Checks if player is moving
         if (xAxis != 0 || yAxis != 0)
@@ -52,5 +61,20 @@ public class PlayerController : MonoBehaviour
         cameraTransform.localEulerAngles = Vector3.right * VertCameraRotate;
         //Horizontal rotation
         this.transform.Rotate(Vector3.up * cameraAxisX);
+    }
+    
+    //Triggers and Interact
+    void CheckInput(){
+        if(Input.GetKeyDown(interact) && tvInteract){
+            
+        }
+    }
+    void OnTriggerEnter(Collider collider){
+        if (collider.gameObject.name == "StatScreenZone"){
+            tvInteract = true;
+        }
+    }
+    void OnTriggerExit(Collider collider){
+        tvInteract = false;
     }
 }
