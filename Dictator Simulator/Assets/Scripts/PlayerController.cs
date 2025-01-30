@@ -3,10 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //does not implement the new input system, will be updating later -cc
-    public bool isMoving, canMove;
+    //player move variables
+    public bool isMoving, canMove, isGrounded;
     private float xAxis, yAxis;
-    public float moveSpeed;
+    public float moveSpeed, jumpForce;
+    private Rigidbody rb;
 
     //Camera variables
     public float mouseSensitivity;
@@ -15,12 +16,15 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTransform;
 
     //interact variables
-    public bool tvInteract;
+    public bool tvInteract, computerInteract, doorInteract;
     [SerializeField]private KeyCode interact;
     
     void Start(){
+        rb = GetComponent<Rigidbody>();
         canMove = true;
         tvInteract = false;
+        computerInteract = false;
+        doorInteract = false;
     }
     void Update()
     {
@@ -65,9 +69,13 @@ public class PlayerController : MonoBehaviour
     
     //Triggers and Interact
     void CheckInput(){
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
+            rb.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
         if(Input.GetKeyDown(interact) && tvInteract)
         {
-             InteractionManager.Instance.SwitchCamera("StatCamera");
+            InteractionManager.Instance.SwitchCamera("StatCamera");
             canMove = false;
         }
 		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract)
@@ -75,16 +83,34 @@ public class PlayerController : MonoBehaviour
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
             canMove = true;
 		}
+        if(Input.GetKeyDown(interact) && computerInteract){
+            GameManager.Instance.LoadScene("Computer");
+        }
+        if(Input.GetKeyDown(interact) && doorInteract){
+            Debug.Log("Door interacted");
+            //enable ui that lets the player know they are about to end the week
+        }
 	}
+    void OnCollisionEnter(Collision collision){
+        //checks if player can jump (booo i just dont wanna raycast)
+        if(collision.gameObject.name == "Floor"){
+            isGrounded = true;
+        }
+    }
     void OnTriggerEnter(Collider collider){
         if (collider.gameObject.name == "StatScreenZone"){
             tvInteract = true;
         }
+        if(collider.gameObject.name == "ComputerScreenZone"){
+            computerInteract = true;
+        }
+        if(collider.gameObject.name == "DoorInteractZone"){
+            doorInteract = true;
+        }
     }
     void OnTriggerExit(Collider collider){
-		if (collider.gameObject.name == "StatScreenZone")
-		{
-			tvInteract = false;
-		}
+		tvInteract = false;
+        computerInteract = false;
+        doorInteract = false;
 	}
 }
