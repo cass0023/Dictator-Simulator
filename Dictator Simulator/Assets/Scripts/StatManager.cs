@@ -12,12 +12,11 @@ using UnityEngine.UIElements;
 //List of all the stats that will have a value between 0 and 1. 
 public enum Stats
 { 
-    SANITY = 0,
-    PERCEPTION = 1,
-    TRUST= 2,
-	IMPEACHMENT = 3,
-	NONE
-
+	NONE = 0,
+    SANITY = 1,
+    APPROVAL = 2,
+    TRUST= 3,
+	FEAR = 4
 
 }
 /// <summary>
@@ -39,19 +38,19 @@ public class StatManager
     {
 		//Add new key value pairs
 		StatValues.Add(Stats.SANITY, 1.0f);
-        StatValues.Add(Stats.PERCEPTION, 1.0f);
+        StatValues.Add(Stats.APPROVAL, 1.0f);
         StatValues.Add(Stats.TRUST, 1.0f);
-		StatValues.Add(Stats.IMPEACHMENT, 1.0f);
+		StatValues.Add(Stats.FEAR, 1.0f);
 
 		UIStatName.Add(Stats.SANITY, "T_SanityVal");
-		UIStatName.Add(Stats.PERCEPTION, "T_PerceptionVal");
+		UIStatName.Add(Stats.APPROVAL, "T_ApprovalVal");
 		UIStatName.Add(Stats.TRUST, "T_TrustVal");
-		UIStatName.Add(Stats.IMPEACHMENT, "T_ImpeachmentVal");
+		UIStatName.Add(Stats.FEAR, "T_FearVal");
 
 		SliderNames.Add(Stats.SANITY, "SanitySlider");
-		SliderNames.Add(Stats.PERCEPTION, "PerceptionSlider");
+		SliderNames.Add(Stats.APPROVAL, "ApprovalSlider");
 		SliderNames.Add(Stats.TRUST, "TrustSlider");
-		SliderNames.Add(Stats.IMPEACHMENT, "ImpeachmentSlider");
+		SliderNames.Add(Stats.FEAR, "FearSlider");
 	}
 	public static StatManager Instance
 	{
