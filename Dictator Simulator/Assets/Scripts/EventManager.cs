@@ -15,20 +15,14 @@ public struct EmailEvent
 
 public class EventManager
 {
-	ScriptableEvent[] EmailData;
-	public List<EmailEvent> EmailEvents;
+	public EmailEvent[] EmailEvents;
+	private AllEventsContainer AllEvents;
+	bool Loaded = false;
 
 	private static EventManager instance = new EventManager();
 	private EventManager()
 	{
-		EmailData = GameObject.FindObjectsOfType<ScriptableEvent>();
-		foreach(ScriptableEvent e in EmailData)
-		{
-			EmailEvent emailEvent = new EmailEvent();
-			emailEvent.Data = e;
-			emailEvent.IsUnlocked = CheckUnlock(emailEvent);
-			EmailEvents.Add(emailEvent);
-		}
+
 	}
 
 	public static EventManager Instance
@@ -36,12 +30,42 @@ public class EventManager
 		get { return instance; }
 	}
 
+	private void LoadEvents()
+	{
+		AllEvents = GameObject.Find("AllEventsContainer").GetComponent<AllEventsContainer>();
+		EmailEvents = new EmailEvent[AllEvents.Emails.Length];
+		for (int i = 0; i < AllEvents.Emails.Length; i++)
+		{
+			EmailEvent emailEvent = new EmailEvent();
+			emailEvent.Data = AllEvents.Emails[i];
+			EmailEvents[i] = emailEvent;
+		}
+
+		Loaded = true;
+	}
+
+	/// <summary>
+	/// Call this to update events and check if they should be locked / unlocked.
+	/// </summary>
+	public void UpdateEventState()
+	{
+		if(!Loaded) { LoadEvents(); }
+
+		if (EmailEvents != null)
+		{
+			for (int i = 0; i < EmailEvents.Length; i++) 
+			{
+				EmailEvents[i].IsUnlocked = CheckUnlock(EmailEvents[i]);
+			}
+		}
+	}
+
 	/// <summary>
 	/// Checks if the current event is unlocked or not. Compares the current player stats to the specified value when the event was created.
 	/// </summary>
 	/// <param name="curEvent"></param>
 	/// <returns></returns>
-	public bool CheckUnlock(EmailEvent curEvent)
+	private bool CheckUnlock(EmailEvent curEvent)
 	{
 		bool shouldUnlock = true;
 		if(curEvent.Data.StatLocks.Length > 0)

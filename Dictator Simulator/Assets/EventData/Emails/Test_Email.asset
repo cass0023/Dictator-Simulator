@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
   m_Name: Test_Email
   m_EditorClassIdentifier: 
-  EventName: TestEmail
-  IsCompleted: 0
+  EventName: Test_Email
   StatLocks: []
   WeekLocks: []
   FromLine: Test

@@ -185,6 +185,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 738148501}
+  - {fileID: 542383967}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55108124
@@ -1803,6 +1804,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540080336}
   m_CullTransparentMesh: 1
+--- !u!1 &542383966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 542383967}
+  - component: {fileID: 542383968}
+  m_Layer: 0
+  m_Name: AllEventsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &542383967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542383966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 16638568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &542383968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542383966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74d906851efc6c4fb5601cc3e0a5c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emails:
+  - {fileID: 11400000, guid: ca553f5da5545644f84dc2557eaed487, type: 2}
+  SocialMedia: []
+  Orders: []
 --- !u!1 &602581486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,11 +3740,11 @@ MonoBehaviour:
   canMove: 0
   isGrounded: 0
   moveSpeed: 5
-  jumpForce: 5
+  jumpForce: 0
   mouseSensitivity: 6
   cameraTransform: {fileID: 1880331723}
   tvInteract: 0
-  computerInteract: 1
+  computerInteract: 0
   doorInteract: 0
   interact: 101
 --- !u!54 &1262103003

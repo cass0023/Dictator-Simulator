@@ -55,6 +55,7 @@ public class UIManager : MonoBehaviour
 
 	public void OnWeekEndClick()
 	{
+		
 		GameManager.Instance.GoToNextWeek();
 	}
 

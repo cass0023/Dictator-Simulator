@@ -46,10 +46,8 @@ public class GameManager
     /// </summary>
     public void GoToNextWeek()
     {
+        EventManager.Instance.UpdateEventState();
         WeekNum++;
-
-
-
 
         Debug.Log($"Changed Week to week {WeekNum}");
     }

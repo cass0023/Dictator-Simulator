@@ -52,11 +52,11 @@ public struct StatValPair
 
 
 
-[CreateAssetMenu(fileName = "New_Email", menuName = "ScriptableObjects/Email", order = 1)]
+[CreateAssetMenu(fileName = "New_Email", menuName = "ScriptableObjects/Email", order = 2)]
 public class ScriptableEvent : ScriptableObject
 {
 	[Header("Event Identifier")]
-	[Tooltip("A unique name for the event.")]
+	[Tooltip("A unique name for the event. Must match the file name!!!")]
 	public string EventName;
 	
 	[Header("Event Lock Options")]
@@ -77,4 +77,5 @@ public class ScriptableEvent : ScriptableObject
 	[Header("Responces")]
 	[Tooltip("The responces the player can select in the email.")]
 	public ResponceOption[] ResponceOptions;
+
 }
