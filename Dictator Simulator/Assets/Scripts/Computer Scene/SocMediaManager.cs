@@ -15,9 +15,19 @@ public class SocMediaManager : MonoBehaviour
     //inspector input list for tweet
     public List<SocMediaEvents> SocMediaEvents;
     public GameObject[] buttonOptions;
-    //temp number for testing, checking if first input in events is working
-    private int x = 0;
+    private int numOfOptions;
 
+    //temp number for testing, checking if first input in events is working
+    [SerializeField]private int x;
+    public void InitializeTweet(){
+        tempSelectedOption = null;
+        hasSelected = false;
+        //randomly picks tweet for now
+        x = Random.Range(0,SocMediaEvents.Count);
+        for(int i = 0; i < SocMediaEvents[x].Options.Count + 1; i++){
+            buttonOptions[i].SetActive(true);
+        }
+    }
     void Start(){
         debugApproval = 100;
         debugFear = 100;
@@ -78,7 +88,7 @@ public class SocMediaManager : MonoBehaviour
         DisableOptionButtons();
     }
     private void DisableOptionButtons(){
-        for(int i = 0; i <= buttonOptions.Length; i++){
+        for(int i = 0; i < buttonOptions.Length; i++){
             buttonOptions[i].SetActive(false);
         }
     }

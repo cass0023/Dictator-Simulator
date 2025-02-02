@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ComputerInteract : MonoBehaviour
 {
+    public SocMediaManager socMediaManager;
     //Computer Icon Interacts
     public GameObject[] computerPages;
     public GameObject[] buttons;
@@ -14,6 +15,7 @@ public class ComputerInteract : MonoBehaviour
     }
     public void OnSocMediaClick(){
         computerPages[1].SetActive(true);
+        socMediaManager.InitializeTweet();
         DeactivateButtons();
     }
     public void OnNewsClick(){
