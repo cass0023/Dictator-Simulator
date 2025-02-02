@@ -24,9 +24,11 @@ public class SocMediaManager : MonoBehaviour
         hasSelected = false;
         //randomly picks tweet for now
         x = Random.Range(0,SocMediaEvents.Count);
+        //checks which button to set active based on num of options
         for(int i = 0; i < SocMediaEvents[x].Options.Count + 1; i++){
             buttonOptions[i].SetActive(true);
-            for (int b = 0; b <= SocMediaEvents[x].Options.Count; b++){
+            for (int b = 0; b < SocMediaEvents[x].Options.Count - 1; b++){
+                //changes button text to match options
                 buttonOptions[i + 1].GetComponentInChildren<TextMeshProUGUI>().text = SocMediaEvents[x].Options[i].name;
             }
         }
