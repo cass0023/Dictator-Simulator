@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Test_Email
   m_EditorClassIdentifier: 
   EventName: Test_Email
-  StatLocks: []
+  StatLocks:
+  - lockType: 0
+    StatVal: 0
+    RequiredStatVal: 0
   WeekLocks: []
   FromLine: Test
   ToLine: Test
