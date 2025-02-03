@@ -2355,8 +2355,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e76a56adfc765524ab2103d3d2e1a8fe, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3337,8 +3337,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 45b0dcadd30d5e44f8137cba759852e5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3488,7 +3488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: febb41a486d38f048a6356a3f1639e7b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4033,8 +4033,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 35c11d1df6b6d1046a594762dcea81a5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4511,7 +4511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5271fc9c179304faac47ab9cf66829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  socMediaManager: {fileID: 1814488934}
   computerPages:
   - {fileID: 1999464158}
   - {fileID: 1004991178}
@@ -4625,6 +4624,7 @@ MonoBehaviour:
       approval: 0
       trust: 0
       fear: 0
+  x: 0
   buttonOptions:
   - {fileID: 1719229846}
   - {fileID: 1328081726}
@@ -4633,7 +4633,6 @@ MonoBehaviour:
   - {fileID: 466582653}
   - {fileID: 1034094211}
   - {fileID: 569432906}
-  x: 0
   tweetText: {fileID: 111246676}
 --- !u!1 &1857944488
 GameObject:
@@ -5129,8 +5128,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6a8ac50543a472e45b5c341da2c24c82, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
