@@ -14,11 +14,32 @@ public class SocMediaManager : MonoBehaviour
 
     //inspector input list for tweet
     public List<SocMediaEvents> SocMediaEvents;
-    public GameObject[] buttonOptions;
-    private int numOfOptions;
-
+    
     //temp number for testing, checking if first input in events is working
     [SerializeField]private int x;
+    
+    //checks which button is currently pressed and what to display in tweet
+    public GameObject[] buttonOptions;
+    private bool hasSelected;
+    private int selectedOption;
+    private string tempSelectedOption;
+    public TextMeshProUGUI tweetText;
+
+    void Start(){
+        debugApproval = 100;
+        debugFear = 100;
+        debugSanity = 100;
+        debugTrust = 100;
+    }
+    void Update(){
+        //changes tweet text depending on button pressed
+        if(hasSelected){
+            tweetText.text = SocMediaEvents[x].beforeBlank + " " + tempSelectedOption + " " + SocMediaEvents[x].afterBlank;
+        }
+        else{
+            tweetText.text = SocMediaEvents[x].beforeBlank + " _________ " + SocMediaEvents[x].afterBlank;
+        }
+    }
     public void InitializeTweet(){
         tempSelectedOption = null;
         hasSelected = false;
@@ -31,26 +52,6 @@ public class SocMediaManager : MonoBehaviour
                 //changes button text to match options
                 buttonOptions[i + 1].GetComponentInChildren<TextMeshProUGUI>().text = SocMediaEvents[x].Options[i].name;
             }
-        }
-    }
-    void Start(){
-        debugApproval = 100;
-        debugFear = 100;
-        debugSanity = 100;
-        debugTrust = 100;
-    }
-    //checks which button is currently pressed and what to display in tweet
-    private bool hasSelected;
-    private int selectedOption;
-    private string tempSelectedOption;
-    public TextMeshProUGUI tweetText;
-    void Update(){
-        //changes tweet text depending on button pressed
-        if(hasSelected){
-            tweetText.text = SocMediaEvents[x].beforeBlank + " " + tempSelectedOption + " " + SocMediaEvents[x].afterBlank;
-        }
-        else{
-            tweetText.text = SocMediaEvents[x].beforeBlank + " _________ " + SocMediaEvents[x].afterBlank;
         }
     }
     //changes selected button to string to display in text
@@ -85,12 +86,14 @@ public class SocMediaManager : MonoBehaviour
         hasSelected = true;
     }
     public void OnPostClick(){
-        //update stats based on list
-        debugApproval += SocMediaEvents[x].Options[selectedOption].approval;
-        debugFear += SocMediaEvents[x].Options[selectedOption].fear;
-        debugSanity += SocMediaEvents[x].Options[selectedOption].sanity;
-        debugTrust += SocMediaEvents[x].Options[selectedOption].trust;
-        DisableOptionButtons();
+        if(hasSelected){
+            //update stats based on list
+            debugApproval += SocMediaEvents[x].Options[selectedOption].approval;
+            debugFear += SocMediaEvents[x].Options[selectedOption].fear;
+            debugSanity += SocMediaEvents[x].Options[selectedOption].sanity;
+            debugTrust += SocMediaEvents[x].Options[selectedOption].trust;
+            DisableOptionButtons();
+        }
     }
     private void DisableOptionButtons(){
         for(int i = 0; i < buttonOptions.Length; i++){

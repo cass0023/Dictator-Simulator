@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class ComputerInteract : MonoBehaviour
 {
-    public SocMediaManager socMediaManager;
+    private SocMediaManager socMediaManager;
     //Computer Icon Interacts
     public GameObject[] computerPages;
     public GameObject[] buttons;
+    void Start(){
+        socMediaManager = GetComponent<SocMediaManager>();
+    }
+    //checks which computer icon is pressed with button input
     public void OnEmailClick(){
         computerPages[0].SetActive(true);
         DeactivateButtons();
