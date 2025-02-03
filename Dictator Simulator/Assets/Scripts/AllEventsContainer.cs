@@ -18,6 +18,6 @@ public class AllEventsContainer : MonoBehaviour
 
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
+		DontDestroyOnLoad(gameObject);
 	}
 }
