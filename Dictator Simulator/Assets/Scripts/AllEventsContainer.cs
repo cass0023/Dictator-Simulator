@@ -14,4 +14,10 @@ public class AllEventsContainer : MonoBehaviour
 
 	[Header("Executive Order Event List")]
 	public ScriptableEvent[] Orders;
+
+
+	void Awake()
+	{
+		DontDestroyOnLoad(this);
+	}
 }
