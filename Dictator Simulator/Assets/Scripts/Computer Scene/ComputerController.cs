@@ -8,7 +8,10 @@ public class ComputerController : MonoBehaviour
     public KeyCode exitComputer;
     void Update(){
         if(Input.GetKeyDown(exitComputer)){
-            GameManager.Instance.LoadScene("Office");
+            ExitComputer();
         }
+    }
+    public void ExitComputer(){
+        GameManager.Instance.LoadScene("Office");
     }
 }
