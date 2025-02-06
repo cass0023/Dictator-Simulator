@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Test_Email
   StatLocks:
-  - lockType: 0
-    StatVal: 0
-    RequiredStatVal: 0
+  - lockType: 2
+    StatVal: 0.464
+    RequiredStatVal: 1
   WeekLocks: []
   FromLine: Test
   ToLine: Test
   EmailContents: This is a test
   ResponceOptions:
   - Text: Ok
-    StatsToChange: []
+    StatsToChange:
+    - lockType: 2
+      StatVal: 1
   - Text: Not Ok
     StatsToChange:
     - lockType: 1

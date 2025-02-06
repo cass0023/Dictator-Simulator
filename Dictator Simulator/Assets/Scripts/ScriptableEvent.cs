@@ -51,7 +51,9 @@ public struct StatValPair
 }
 
 
-
+/// <summary>
+/// Event information for an email
+/// </summary>
 [CreateAssetMenu(fileName = "New_Email", menuName = "ScriptableObjects/Email", order = 2)]
 public class ScriptableEvent : ScriptableObject
 {
