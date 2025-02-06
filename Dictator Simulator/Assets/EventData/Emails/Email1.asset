@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email1
+  m_EditorClassIdentifier: 
+  EventName: Email1
+  StatLocks: []
+  WeekLocks: []
+  FromLine: unknown@unknownemail.com
+  ToLine: president@presidentemail.com
+  EmailContents: "To whom it may concern.\n\nDear President,\n\nCongratulations on
+    becoming the President! We have offered to help every past President in their
+    quest to power. Many have ignored our services for far too long, so I strongly
+    advise you to agree to our help.\n\nTo start, we want to make you look better
+    in the public eye. If you allow us to we will alter the media in your favour.\n\n\tIs
+    this something you're interested in?\n\nThis will not be the last time you hear
+    from us. Make sure to delete this email when you've answered. This stays between
+    us!\n\n\n"
+  ResponceOptions:
+  - Text: Yes, please!
+    StatsToChange:
+    - lockType: 1
+      StatVal: -0.05
+    - lockType: 3
+      StatVal: 0.05
+  - Text: No, thanks.
+    StatsToChange:
+    - lockType: 1
+      StatVal: 0.05
+    - lockType: 2
+      StatVal: 0.05
+  - Text: Who is this?
+    StatsToChange: []
+  - Text: Let me think about it.
+    StatsToChange: []
