@@ -16,7 +16,8 @@ public class ComputerInteract : MonoBehaviour
     public void OnEmailClick(){
         computerPages[0].SetActive(true);
         DeactivateButtons();
-    }
+		GameManager.Instance.LoadStaticEvents(); //Setting stuff active / inactive causes problems searching for the UI to change
+	}
     public void OnSocMediaClick(){
         computerPages[1].SetActive(true);
         socMediaManager.InitializeTweet();

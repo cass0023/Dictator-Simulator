@@ -9,8 +9,8 @@ using UnityEngine.EventSystems;
 public struct EmailEvent
 {
 	public ScriptableEvent Data;
-	public bool IsUnlocked;
-	public bool IsCompleted;
+	public bool IsUnlocked { get; set; }
+	public bool IsCompleted { get; set; }
 }
 
 public class EventManager
@@ -114,6 +114,41 @@ public class EventManager
 		else Debug.Log($"{curEvent.Data.name} is [LOCKED]");
 
 		return shouldUnlock;
+	}
+	/// <summary>
+	/// Get the event with a certain name, regardless if it is unlocked or not. If the name does not exits, return null.
+	/// </summary>
+	/// <param name="EventName"></param>
+	/// <returns></returns>
+	public EmailEvent GetEvent(string EventName)
+	{
+		foreach(EmailEvent e in EmailEvents) 
+		{
+			if(e.Data.EventName == EventName)
+			{
+				return e;
+			}
+		}
+
+		Debug.LogError($"{EventName} does not exist in the list of events.");
+		return default;
+	}
+	/// <summary>
+	/// Return a random unlocked email event. No error checking.
+	/// </summary>
+	/// <returns></returns>
+	public EmailEvent? GetRandomEvent()
+	{
+		List<EmailEvent> unlocked_Events = new List<EmailEvent>();
+		for (int i = 0; i < EmailEvents.Length; i++)
+		{
+			if(EmailEvents[i].IsUnlocked)
+			{
+				unlocked_Events.Add(EmailEvents[i]);
+			}
+		}
+	
+		return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
 	}
 }
 

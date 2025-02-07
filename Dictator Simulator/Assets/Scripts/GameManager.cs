@@ -38,7 +38,7 @@ public class GameManager
         else
         {
             SceneManager.LoadScene(sceneName);
-        }
+		}
     }
 
     /// <summary>
@@ -47,9 +47,23 @@ public class GameManager
     public void GoToNextWeek()
     {
         EventManager.Instance.UpdateEventState();
-        WeekNum++;
 
+        for (int i = 1; i <= 4; i++)
+        {
+            StatManager.Instance.UpdateText((Stats)i);
+            StatManager.Instance.UpdateSliders((Stats)i);
+        }
+
+		WeekNum++;
         Debug.Log($"Changed Week to week {WeekNum}");
+    }
+
+    public void LoadStaticEvents()
+    {
+        if(WeekNum == 1)
+        {
+            EmailManager.Instance.InitializeEmail(EventManager.Instance.GetEvent("Test_Email"));
+        }
     }
 
 }
