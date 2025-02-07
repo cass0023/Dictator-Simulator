@@ -62,7 +62,7 @@ public class GameManager
     {
         if(WeekNum == 1)
         {
-            EmailManager.Instance.InitializeEmail(EventManager.Instance.GetEvent("Test_Email"));
+            EmailManager.Instance.InitializeEmail(EventManager.Instance.GetEvent("Email1"));
         }
     }
 

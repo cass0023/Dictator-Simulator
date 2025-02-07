@@ -1927,6 +1927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Emails:
   - {fileID: 11400000, guid: ca553f5da5545644f84dc2557eaed487, type: 2}
+  - {fileID: 11400000, guid: 5e10e3d55d0ab4551b9a17ff7597db5d, type: 2}
   SocialMedia: []
   Orders: []
 --- !u!1 &602581486
