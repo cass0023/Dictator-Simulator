@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTransform;
 
     //interact variables
-    public bool tvInteract, computerInteract, doorInteract;
+    private bool tvInteract, computerInteract, doorInteract;
     [SerializeField]private KeyCode interact;
+    public GameObject newWeekPopUp;
     
     //switch scene after delay so camera switching works.
     bool openCom;
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(interact) && doorInteract){
             Debug.Log("Door interacted");
+            newWeekPopUp.SetActive(true);
             //enable ui that lets the player know they are about to end the week
         }
 	}
