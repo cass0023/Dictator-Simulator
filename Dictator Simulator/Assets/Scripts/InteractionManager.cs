@@ -26,6 +26,7 @@ public class InteractionManager
 	/// <param name="CamName"></param>
 	public void SwitchCamera(string CamName)
 	{
+		AllCameras = GameObject.FindObjectsByType<CinemachineVirtualCamera>(FindObjectsSortMode.None);
 		bool setCam = false;
 		foreach (CinemachineVirtualCamera cam in AllCameras) 
 		{
@@ -35,7 +36,6 @@ public class InteractionManager
 			{
 				cam.Priority = 10;
 				setCam = true;
-
 			}
 		}
 

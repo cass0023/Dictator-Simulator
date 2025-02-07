@@ -15,8 +15,22 @@ public class AllEventsContainer : MonoBehaviour
 	[Header("Executive Order Event List")]
 	public ScriptableEvent[] Orders;
 
+	public static AllEventsContainer instance;
 
-	void Awake()
+	private void Awake()
+	{
+		if(instance == null) 
+		{
+			instance = this; 
+		}
+		else
+		{
+			Destroy(this);
+		}
+		
+	}
+
+	private void Start()
 	{
 		DontDestroyOnLoad(gameObject);
 	}

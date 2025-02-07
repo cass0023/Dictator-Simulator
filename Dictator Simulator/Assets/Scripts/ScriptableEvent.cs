@@ -13,6 +13,18 @@ public enum RequiredStatVal
 	BELOW = 2
 }
 
+public enum EventType
+{ 
+	NONE = 0,
+	EMAIL = 1,
+	TWEET = 2,
+	NEWS = 3,
+	WINDOW = 4
+}
+
+
+
+
 [System.Serializable]
 public struct UnlockEventByStatData
 {
@@ -36,22 +48,37 @@ public struct UnlockEventByWeekData
 public struct ResponceOption
 {
 	[Tooltip("What is displayed to the user.")]
-	public string Text;
+	public string ResponceText;
 	[Tooltip("Which stats to change and by how much?")]
 	public StatValPair[] StatsToChange;
+
+	[Tooltip("List of events to trigger when the user picks this responce.")]
+	public EventTypeNamePair[] TriggerEventsList;
+
 }
 
 [System.Serializable]
 public struct StatValPair
 {
 	[Tooltip("Which stat is affected.")]
-	public Stats lockType;
+	public Stats EffectedStat;
 	[Range(-1, 1), Tooltip("How much is the stat affected. Negitive numbers for a decrease in the stat.")]
 	public float StatVal;
 }
 
+[System.Serializable]
+public struct EventTypeNamePair
+{
+	[Tooltip("The type of event that is triggered by this responce.")]
+	public EventType Type;
+	[Tooltip("The EXACT name of the event you want to trigger.")]
+	public string TriggerEventName;
+}
 
 
+/// <summary>
+/// Event information for an email
+/// </summary>
 [CreateAssetMenu(fileName = "New_Email", menuName = "ScriptableObjects/Email", order = 2)]
 public class ScriptableEvent : ScriptableObject
 {
@@ -71,7 +98,7 @@ public class ScriptableEvent : ScriptableObject
 	public string FromLine;
 	public string ToLine;
 
-	[TextArea]
+	[TextArea(1, 25)]
 	public string EmailContents;
 
 	[Header("Responces")]
