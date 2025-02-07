@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,12 +20,17 @@ public class PlayerController : MonoBehaviour
     public bool tvInteract, computerInteract, doorInteract;
     [SerializeField]private KeyCode interact;
     
+    //switch scene after delay so camera switching works.
+    bool openCom;
+    float temp = 0;
+    float delay = 2;
     void Start(){
         rb = GetComponent<Rigidbody>();
         canMove = true;
         tvInteract = false;
         computerInteract = false;
         doorInteract = false;
+        openCom = false;
     }
     void Update()
     {
@@ -40,6 +46,15 @@ public class PlayerController : MonoBehaviour
             CameraRotate();
         }
         CheckInput();
+        //adds delay to switching scene so camera transition works
+        if(openCom){
+            temp += Time.deltaTime;
+            if(temp > delay){
+                temp = 0;
+                openCom = false;
+                GameManager.Instance.LoadScene("Computer");
+            }
+        }
     }
 
     //Movement and Camera
@@ -84,7 +99,8 @@ public class PlayerController : MonoBehaviour
             canMove = true;
 		}
         if(Input.GetKeyDown(interact) && computerInteract){
-            GameManager.Instance.LoadScene("Computer");
+            InteractionManager.Instance.SwitchCamera("ComCamera");
+            openCom = true;
         }
         if(Input.GetKeyDown(interact) && doorInteract){
             Debug.Log("Door interacted");
