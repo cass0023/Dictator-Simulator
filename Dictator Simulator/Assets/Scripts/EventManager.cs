@@ -9,8 +9,8 @@ using UnityEngine.EventSystems;
 public struct EmailEvent
 {
 	public ScriptableEvent Data;
-	public bool IsUnlocked;
-	public bool IsCompleted;
+	public bool IsUnlocked { get; set; }
+	public bool IsCompleted { get; set; }
 }
 
 public class EventManager
@@ -120,7 +120,7 @@ public class EventManager
 	/// </summary>
 	/// <param name="EventName"></param>
 	/// <returns></returns>
-	public EmailEvent? GetEvent(string EventName)
+	public EmailEvent GetEvent(string EventName)
 	{
 		foreach(EmailEvent e in EmailEvents) 
 		{
@@ -131,7 +131,7 @@ public class EventManager
 		}
 
 		Debug.LogError($"{EventName} does not exist in the list of events.");
-		return null;
+		return default;
 	}
 	/// <summary>
 	/// Return a random unlocked email event. No error checking.

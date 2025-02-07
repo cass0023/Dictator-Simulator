@@ -61,7 +61,7 @@ public struct ResponceOption
 public struct StatValPair
 {
 	[Tooltip("Which stat is affected.")]
-	public Stats lockType;
+	public Stats EffectedStat;
 	[Range(-1, 1), Tooltip("How much is the stat affected. Negitive numbers for a decrease in the stat.")]
 	public float StatVal;
 }

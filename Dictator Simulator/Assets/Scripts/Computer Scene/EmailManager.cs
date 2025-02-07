@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+
 
 public class EmailManager
 {
-	private EmailEvent CurEmailEvent;
-	private List<Button> Buttons = new List<Button>();
+	private GameObject ResponcePanel;
+	
+	private event EventHandler<IncreaseStatEventArgs> IncreaseStat;
+
+	List<GameObject> Buttons = new List<GameObject>();
 
 	private static EmailManager instance = new EmailManager();
+
 	private EmailManager()
 	{
 
+		IncreaseStat += StatManager.Instance.IncreaseStat;
 	}
 
 	public static EmailManager Instance
@@ -20,46 +31,85 @@ public class EmailManager
 		get { return instance; }
 	}
 
-	public void InitializeEmail()
+	/// <summary>
+	/// Initialize a specific email from its file name. Does not check if it is unlocked or not.
+	/// </summary>
+	/// <param name="emailToLoad"></param>
+	public void InitializeEmail(EmailEvent emailToLoad)
 	{
-		if(CurEmailEvent.Data.EventName == null)
+		if(emailToLoad.Data.EventName == null)
 		{
 			Debug.LogError("Invalid event to intialize.");
 			return;
 		}
 
-		GameObject.Find("T_FromLine").GetComponent<TextMeshProUGUI>().text = $"From: {CurEmailEvent.Data.FromLine}";
-		GameObject.Find("T_ToLine").GetComponent<TextMeshProUGUI>().text = $"To: {CurEmailEvent.Data.ToLine}";
-		GameObject.Find("T_EmailBody").GetComponent<TextMeshProUGUI>().text = $"{CurEmailEvent.Data.EmailContents}";
+		GameObject.Find("T_FromLine").GetComponent<TextMeshProUGUI>().text = $"From: {emailToLoad.Data.FromLine}";
+		GameObject.Find("T_ToLine").GetComponent<TextMeshProUGUI>().text = $"To: {emailToLoad.Data.ToLine}";
+		GameObject.Find("T_EmailBody").GetComponent<TextMeshProUGUI>().text = $"{emailToLoad.Data.EmailContents}";
+		ResponcePanel = GameObject.Find("ResponcePanel");
 
-		//CurEmailEvent.Data.
-
-		foreach(ResponceOption responce in CurEmailEvent.Data.ResponceOptions)
+		for (int i = 0; i < Buttons.Count; i++)
 		{
-			
+			Canvas.Destroy(Buttons[i]); //Not working
+		}
+		Buttons.Clear();
+
+		foreach(ResponceOption responce in emailToLoad.Data.ResponceOptions)
+		{
+			CreateButton(responce);
+		}
+
+		foreach(GameObject button in Buttons)
+		{
+			GameObject.Instantiate(button);
 		}
 
 	}
 
-	/// <summary>
-	/// Set the current email to load. No error checking so it must be a valid EmailEvent.
-	/// </summary>
-	/// <param name="ee"></param>
-	public void SetCurEmail(EmailEvent ee)
+	private void CreateButton(ResponceOption responce)
 	{
-		CurEmailEvent = ee;
+		GameObject rButton = new GameObject("Button");
+		Button button = rButton.AddComponent<Button>();
+		rButton.AddComponent<RectTransform>();
+		rButton.AddComponent<CanvasRenderer>();
+		rButton.AddComponent<Image>();
+
+		GameObject tmpGameObject = new GameObject("Text (TMP)");
+		TextMeshProUGUI txt = tmpGameObject.AddComponent<TextMeshProUGUI>();
+		txt.text = responce.ResponceText;
+		txt.color = Color.black;
+		txt.autoSizeTextContainer = true;
+		tmpGameObject.transform.SetParent(rButton.transform, false);
+		UnityAction act = new UnityAction(() => ResponceOnClick(rButton, responce));
+		button.onClick.AddListener(act);
+
+		rButton.transform.SetParent(ResponcePanel.transform, false);
+		
+		Buttons.Add(rButton);
+
 	}
 
-	//public static Button CreateButton(Button buttonPrefab, Canvas canvas)
-	//{
-	//	//var button = Object.Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity) as Button;
-	//	//var rectTransform = button.GetComponent();
-	//	//rectTransform.SetParent(canvas.transform);
-	//	//rectTransform.anchorMax = cornerTopRight;
-	//	//rectTransform.anchorMin = cornerBottomLeft;
-	//	//rectTransform.offsetMax = Vector2.zero;
-	//	//rectTransform.offsetMin = Vector2.zero;
-	//	//return button;
-	//}
+	void ResponceOnClick(GameObject button, ResponceOption responce)
+	{
+		foreach (StatValPair s in responce.StatsToChange)
+		{
+			IncreaseStatEventArgs args = new()
+			{
+				StatToIncrease = s.EffectedStat,
+				Amount = s.StatVal
+			};
+			IncreaseStat.Invoke(button, args);
+		}
+
+		foreach (EventTypeNamePair e  in responce.TriggerEventsList)
+		{
+			if(e.Type == EventType.EMAIL) 
+			{
+				EmailEvent ee = EventManager.Instance.GetEvent(e.TriggerEventName);
+				ee.IsUnlocked = true;
+			}
+		}
+
+	}
 
 }
