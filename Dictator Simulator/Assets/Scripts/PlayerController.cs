@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     
     //switch scene after delay so camera switching works.
     bool openCom;
-    float temp = 0;
+    float temp;
     float delay = 2;
     void Start(){
         rb = GetComponent<Rigidbody>();
