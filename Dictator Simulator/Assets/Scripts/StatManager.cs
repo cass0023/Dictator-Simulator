@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -103,18 +104,26 @@ public class StatManager
     /// Update the UI text to reflect the stat value.
     /// </summary>
     /// <param name="stat"></param>
-    private void UpdateText(Stats stat)
+    public void UpdateText(Stats stat)
     {
-        int convertedStatVal = (int)Mathf.Round(StatValues[stat] * 100); //Make a percentage for displaying it.
-		GameObject.Find(UIStatName[stat]).GetComponent<TextMeshProUGUI>().text = convertedStatVal.ToString() + "%";
+		try
+		{
+			int convertedStatVal = (int)Mathf.Round(StatValues[stat] * 100); //Make a percentage for displaying it.
+			GameObject.Find(UIStatName[stat]).GetComponent<TextMeshProUGUI>().text = convertedStatVal.ToString() + "%";
+		}
+		catch (NullReferenceException) { }
     }
 	/// <summary>
 	/// Updates the sliders on the tv screen when a stat changes
 	/// </summary>
 	/// <param name="stat"></param>
-	private void UpdateSliders(Stats stat)
+	public void UpdateSliders(Stats stat)
 	{
-		GameObject.Find(SliderNames[stat]).GetComponent<UnityEngine.UI.Slider>().value = StatValues[stat];
+		try
+		{
+			GameObject.Find(SliderNames[stat]).GetComponent<UnityEngine.UI.Slider>().value = StatValues[stat];
+		}
+		catch (NullReferenceException) { }
 	}
 
 	public float GetStatValue(Stats stat)

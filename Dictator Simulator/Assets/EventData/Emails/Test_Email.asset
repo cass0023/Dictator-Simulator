@@ -22,17 +22,19 @@ MonoBehaviour:
   ToLine: Test
   EmailContents: This is a test
   ResponceOptions:
-  - Text: Ok
+  - ResponceText: Ok
     StatsToChange:
-    - lockType: 2
+    - EffectedStat: 0
       StatVal: 1
-  - Text: Not Ok
+    TriggerEventsList: []
+  - ResponceText: No
     StatsToChange:
-    - lockType: 1
-      StatVal: -1
-    - lockType: 2
-      StatVal: -1
-    - lockType: 3
-      StatVal: -1
-    - lockType: 4
-      StatVal: -1
+    - EffectedStat: 1
+      StatVal: -0.59
+    - EffectedStat: 2
+      StatVal: 0.6
+    - EffectedStat: 3
+      StatVal: -0.46
+    - EffectedStat: 4
+      StatVal: -0.09
+    TriggerEventsList: []
