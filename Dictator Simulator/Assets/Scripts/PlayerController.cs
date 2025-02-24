@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     //Camera variables
+    private bool canMoveMouse = true;
     public float mouseSensitivity;
     float VertCameraRotate;
     float cameraAxisX, cameraAxisY;
@@ -39,8 +40,10 @@ public class PlayerController : MonoBehaviour
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
         //Gets mouse input
-        cameraAxisX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        cameraAxisY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        if(canMoveMouse){
+            cameraAxisX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            cameraAxisY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        }
         CheckMovement();
         if(canMove){
             Move();
@@ -49,12 +52,9 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         //adds delay to switching scene so camera transition works
         if(openCom){
-            temp += Time.deltaTime;
-            if(temp > delay){
-                temp = 0;
-                openCom = false;
-                GameManager.Instance.LoadScene("Computer");
-            }
+            canMoveMouse = false;
+            openCom = false;
+            
         }
     }
 
@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
             openCom = true;
         }
         if(Input.GetKeyDown(interact) && doorInteract){
+            canMoveMouse = false;
             Debug.Log("Door interacted");
             newWeekPopUp.SetActive(true);
             //enable ui that lets the player know they are about to end the week
@@ -130,5 +131,6 @@ public class PlayerController : MonoBehaviour
 		tvInteract = false;
         computerInteract = false;
         doorInteract = false;
+        canMoveMouse = true;
 	}
 }
