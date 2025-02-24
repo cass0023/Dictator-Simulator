@@ -3428,6 +3428,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ebdb111667649a54ca5e77a63cd3d860, type: 2}
+    - target: {fileID: -1818942815472967785, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.010489
+      objectReference: {fileID: 0}
+    - target: {fileID: -1818942815472967785, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: -1818942815472967785, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.26
+      objectReference: {fileID: 0}
     - target: {fileID: -1512946557386916717, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4904,10 +4916,8 @@ MonoBehaviour:
   jumpForce: 0
   mouseSensitivity: 6
   cameraTransform: {fileID: 1880331723}
-  tvInteract: 0
-  computerInteract: 0
-  doorInteract: 0
   interact: 101
+  newWeekPopUp: {fileID: 0}
 --- !u!54 &1262103003
 Rigidbody:
   m_ObjectHideFlags: 0
