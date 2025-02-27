@@ -1032,6 +1032,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221637051}
   m_CullTransparentMesh: 1
+--- !u!4 &239422822 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2647898422681595148, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+  m_PrefabInstance: {fileID: 1080434604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &284335785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,9 +2463,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5396987426866197877, guid: c5a0e52345c408948a949a336392c1aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2070140869}
-    - targetCorrespondingSourceObject: {fileID: 2647898422681595148, guid: c5a0e52345c408948a949a336392c1aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1452907230}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5a0e52345c408948a949a336392c1aa, type: 3}
 --- !u!4 &411662292 stripped
@@ -2471,11 +2473,6 @@ Transform:
 --- !u!4 &411662293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5396987426866197877, guid: c5a0e52345c408948a949a336392c1aa, type: 3}
-  m_PrefabInstance: {fileID: 411662291}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &458743618 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2647898422681595148, guid: c5a0e52345c408948a949a336392c1aa, type: 3}
   m_PrefabInstance: {fileID: 411662291}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &483474210
@@ -5188,7 +5185,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5214,8 +5211,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00016571936, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 16.559391, y: 3.0750003, z: 3.1100001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13, y: 2.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6162,6 +6159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       insertIndex: 32
       addedObject: {fileID: 1103082296}
+    - targetCorrespondingSourceObject: {fileID: 2647898422681595148, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1452907230}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
 --- !u!4 &1080434605 stripped
@@ -9312,12 +9312,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452907229}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.69732666, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 458743618}
+  m_Father: {fileID: 239422822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1452907231
 SphereCollider:
@@ -10123,7 +10123,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 11
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}

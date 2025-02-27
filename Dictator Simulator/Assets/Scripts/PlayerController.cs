@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
             cameraAxisX = Input.GetAxis("Mouse X") * mouseSensitivity;
             cameraAxisY = Input.GetAxis("Mouse Y") * mouseSensitivity;
         }
+        else if(!canMoveMouse){
+            StopMouseMovement();
+        }
         CheckMovement();
         if(canMove){
             Move();
@@ -94,7 +97,7 @@ public class PlayerController : MonoBehaviour
             InteractionManager.Instance.SwitchCamera("StatCamera");
             canMove = false;
         }
-		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract)
+		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract || Input.GetKeyDown(KeyCode.Escape) && computerInteract)
 		{
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
             canMove = true;
@@ -110,6 +113,11 @@ public class PlayerController : MonoBehaviour
             //enable ui that lets the player know they are about to end the week
         }
 	}
+    void StopMouseMovement(){
+        canMoveMouse = false;
+        cameraAxisX = 0;
+        cameraAxisY = 0;
+    }
     void OnCollisionEnter(Collision collision){
         //checks if player can jump (booo i just dont wanna raycast)
         if(collision.gameObject.name == "Floor"){
