@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email2
+  m_EditorClassIdentifier: 
+  EventName: Email2
+  StatLocks: []
+  WeekLocks: []
+  FromLine: 
+  ToLine: 
+  EmailContents: "Good morning President, \n\nWe have some business to take care
+    of in your country, but\nthere is a law that limits us.\n\n$12,000,000 will be
+    wired to your account if you pass the:\n\nEXTENEDED FOREIGN VISIT EXECUTIVE ORDER\n\nThis
+    will benefit you in the future. We will be waiting for your response.\n\n- Anonymous\r"
+  ResponceOptions: []
