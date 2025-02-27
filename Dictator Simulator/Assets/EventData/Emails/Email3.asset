@@ -10,27 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email2
+  m_Name: Email3
   m_EditorClassIdentifier: 
-  EventName: Email2
+  EventName: Email3
   StatLocks: []
   WeekLocks: []
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "Good morning President, \n\nWe have some business to take care
-    of in your country, but\nthere is a law that limits us.\n\n$12,000,000 will be
-    wired to your account if you pass the:\n\nEXTENEDED FOREIGN VISIT EXECUTIVE ORDER\n\nThis
-    will benefit you in the future. We will be waiting for your response.\n\n- Anonymous\r"
+  EmailContents: "President,\n\nWe were seen conducting our business and local news
+    wasn't \nhappy with what they saw. We need you to release a statement\ninforming
+    the public that what we're doing is benifiting\ntheir country.\n\nA simple soial
+    media post would suffice.\n\nDon't let us down.\n\n- Anonymous\r"
   ResponceOptions:
-  - ResponceText: Yes.
+  - ResponceText: Sure, I can do that.
     StatsToChange: []
     TriggerEventsList: []
-  - ResponceText: No.
+  - ResponceText: No, I'm not going to do that.
     StatsToChange: []
     TriggerEventsList: []
-  - ResponceText: What business do you have in my country?
-    StatsToChange: []
-    TriggerEventsList: []
-  - ResponceText: How will it benefit me in the future?
+  - ResponceText: What business were you conducting?
     StatsToChange: []
     TriggerEventsList: []
