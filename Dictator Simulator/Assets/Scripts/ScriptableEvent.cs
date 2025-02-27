@@ -93,6 +93,8 @@ public class ScriptableEvent : ScriptableObject
 	public UnlockEventByWeekData[] WeekLocks;
 
 	//TODO: Add event unlock
+	[Tooltip("If the event is unlocked by the player's responce to another event.")]
+	public bool UnlockedByOtherEvent = false;
 
 	[Header("Email Contents")]
 	public string FromLine;
