@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
         if(openCom){
             canMoveMouse = false;
             openCom = false;
-            
         }
     }
 
@@ -100,6 +99,7 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract || Input.GetKeyDown(KeyCode.Escape) && computerInteract)
 		{
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
+            AllowMouseMovement();
             canMove = true;
 		}
         if(Input.GetKeyDown(interact) && computerInteract){
@@ -113,6 +113,9 @@ public class PlayerController : MonoBehaviour
             //enable ui that lets the player know they are about to end the week
         }
 	}
+    void AllowMouseMovement(){
+        canMoveMouse = true;
+    }
     void StopMouseMovement(){
         canMoveMouse = false;
         cameraAxisX = 0;
