@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
             //enable ui that lets the player know they are about to end the week
         }
 	}
-    void AllowMouseMovement(){
+    public void AllowMouseMovement(){
         canMoveMouse = true;
     }
     void StopMouseMovement(){
