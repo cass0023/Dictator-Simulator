@@ -26,19 +26,23 @@ MonoBehaviour:
     from us. Make sure to delete this email when you've answered. This stays between
     us!\n\n\n"
   ResponceOptions:
-  - Text: Yes, please!
+  - ResponceText: Yes
     StatsToChange:
-    - lockType: 1
+    - EffectedStat: 0
       StatVal: -0.05
-    - lockType: 3
+    - EffectedStat: 0
       StatVal: 0.05
-  - Text: No, thanks.
+    TriggerEventsList: []
+  - ResponceText: No
     StatsToChange:
-    - lockType: 1
+    - EffectedStat: 1
+      StatVal: 0.17
+    - EffectedStat: 0
       StatVal: 0.05
-    - lockType: 2
-      StatVal: 0.05
-  - Text: Who is this?
+    TriggerEventsList: []
+  - ResponceText: Maybe
     StatsToChange: []
-  - Text: Let me think about it.
+    TriggerEventsList: []
+  - ResponceText: Potato
     StatsToChange: []
+    TriggerEventsList: []

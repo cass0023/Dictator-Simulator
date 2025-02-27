@@ -58,34 +58,39 @@ public class EmailManager
 		{
 			CreateButton(responce);
 		}
-
-		foreach(GameObject button in Buttons)
-		{
-			GameObject.Instantiate(button);
-		}
-
+		Canvas.ForceUpdateCanvases();
 	}
 
 	private void CreateButton(ResponceOption responce)
 	{
-		GameObject rButton = new GameObject("Button");
+		GameObject rButton = new GameObject("Btn_" + responce.ResponceText);
 		Button button = rButton.AddComponent<Button>();
 		rButton.AddComponent<RectTransform>();
 		rButton.AddComponent<CanvasRenderer>();
 		rButton.AddComponent<Image>();
+		button.targetGraphic = rButton.GetComponent<Image>();
+		
 
 		GameObject tmpGameObject = new GameObject("Text (TMP)");
 		TextMeshProUGUI txt = tmpGameObject.AddComponent<TextMeshProUGUI>();
 		txt.text = responce.ResponceText;
 		txt.color = Color.black;
-		txt.autoSizeTextContainer = true;
+		
 		tmpGameObject.transform.SetParent(rButton.transform, false);
+		txt.rectTransform.anchorMin = new Vector2(0.1f, 0.1f);
+		txt.rectTransform.anchorMax = Vector2.one * 0.9f;
+		txt.rectTransform.anchoredPosition = Vector3.zero;
+		txt.horizontalAlignment = HorizontalAlignmentOptions.Center;
+		txt.verticalAlignment = VerticalAlignmentOptions.Middle;
+		txt.autoSizeTextContainer = true;
 		UnityAction act = new UnityAction(() => ResponceOnClick(rButton, responce));
 		button.onClick.AddListener(act);
 
 		rButton.transform.SetParent(ResponcePanel.transform, false);
 		
 		Buttons.Add(rButton);
+
+		
 
 	}
 
@@ -98,17 +103,18 @@ public class EmailManager
 				StatToIncrease = s.EffectedStat,
 				Amount = s.StatVal
 			};
-			IncreaseStat.Invoke(button, args);
+			IncreaseStat?.Invoke(button, args);
 		}
 
-		foreach (EventTypeNamePair e  in responce.TriggerEventsList)
+		foreach (EventTypeNamePair e in responce.TriggerEventsList)
 		{
-			if(e.Type == EventType.EMAIL) 
+			if (e.Type == EventType.EMAIL)
 			{
 				EmailEvent ee = EventManager.Instance.GetEvent(e.TriggerEventName);
 				ee.IsUnlocked = true;
 			}
 		}
+		Debug.Log($"Clicked button {button.name}.");
 
 	}
 
