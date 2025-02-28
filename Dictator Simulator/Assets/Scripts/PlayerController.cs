@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     }
     
     //Triggers and Interact
-    void CheckInput(){
+    public void CheckInput(){
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
             rb.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
