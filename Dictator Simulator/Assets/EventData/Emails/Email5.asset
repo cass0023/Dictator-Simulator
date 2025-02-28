@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email5
+  m_EditorClassIdentifier: 
+  EventName: Email5
+  StatLocks: []
+  WeekLocks:
+  - WeekNum: 5
+    RequiredStatVal: 0
+  LockedByOtherEvent: 1
+  HasBeenUnlockedByEvent: 0
+  FromLine: minsterofimmigration@government.com
+  ToLine: president@presidentemail.com
+  EmailContents: 'Dear President,
+
+
+    Due to a previous order you''ve signed we
+    want to offer you a chance to pass the:
+
+
+    EASY CITIZENSHIP EXECUTIVE ORDER
+
+
+    This
+    will make it easy for people living internationally to gain a ____ citizenship
+    and help us grow our GDP.
+
+
+    Please let us know if this is something you''re
+    interested in signing.
+
+
+    - Minster of Immigration'
+  ResponceOptions:
+  - ResponceText: 'Yes, I''ll sign! '
+    StatsToChange: []
+    TriggerEventsList: []
+  - ResponceText: 'No, thank you. '
+    StatsToChange: []
+    TriggerEventsList: []
