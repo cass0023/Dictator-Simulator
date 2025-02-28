@@ -2096,23 +2096,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413491571}
         m_TargetAssemblyTypeName: ComputerInteract, Assembly-CSharp
-        m_MethodName: ReactivateButtons
-        m_Mode: 1
+        m_MethodName: ClosePage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 665301971}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 665301971}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3038,6 +3026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Emails:
+  - {fileID: 11400000, guid: c665b3b97b334594f8a2a7c49983d4ff, type: 2}
   - {fileID: 11400000, guid: 5e10e3d55d0ab4551b9a17ff7597db5d, type: 2}
   SocialMedia: []
   Orders: []
@@ -6302,7 +6291,7 @@ PrefabInstance:
     - target: {fileID: -7543420549899825423, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 335947ab759845a4db3afea955efbaff, type: 2}
+      objectReference: {fileID: 2100000, guid: 25e04ec5cd4b0664194e8ffac3041428, type: 2}
     - target: {fileID: -7512008039427966870, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6338,7 +6327,7 @@ PrefabInstance:
     - target: {fileID: -5971050530739151148, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 335947ab759845a4db3afea955efbaff, type: 2}
+      objectReference: {fileID: 2100000, guid: 02f941ac4e47d2841b7816d314cfd8d9, type: 2}
     - target: {fileID: -5282881386703120038, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6346,7 +6335,7 @@ PrefabInstance:
     - target: {fileID: -5265558064501858721, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: eff1897425236e341b09aaa98697213b, type: 2}
     - target: {fileID: -4828036624544102812, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6354,7 +6343,7 @@ PrefabInstance:
     - target: {fileID: -3832751957706949365, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: 02a10bba1d9e85547be11c4b87fb6cae, type: 2}
     - target: {fileID: -3830059954053246525, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6392,8 +6381,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: ebdb111667649a54ca5e77a63cd3d860, type: 2}
     - target: {fileID: -1818942815472967785, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01046217
+      objectReference: {fileID: 0}
+    - target: {fileID: -1818942815472967785, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.010489
+      value: 0.011139318
       objectReference: {fileID: 0}
     - target: {fileID: -1818942815472967785, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6418,7 +6411,7 @@ PrefabInstance:
     - target: {fileID: -503718619146171373, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 335947ab759845a4db3afea955efbaff, type: 2}
+      objectReference: {fileID: 2100000, guid: 02f941ac4e47d2841b7816d314cfd8d9, type: 2}
     - target: {fileID: 78026444054102503, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.71454245
@@ -6442,7 +6435,7 @@ PrefabInstance:
     - target: {fileID: 637356599425421236, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: 02a10bba1d9e85547be11c4b87fb6cae, type: 2}
     - target: {fileID: 919132149155446097, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Name
       value: Art_3DOfficeFix
@@ -6458,7 +6451,7 @@ PrefabInstance:
     - target: {fileID: 1772311697641399897, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 335947ab759845a4db3afea955efbaff, type: 2}
+      objectReference: {fileID: 2100000, guid: 25e04ec5cd4b0664194e8ffac3041428, type: 2}
     - target: {fileID: 2044346498528860207, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6470,7 +6463,7 @@ PrefabInstance:
     - target: {fileID: 2502432061147645856, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: eff1897425236e341b09aaa98697213b, type: 2}
     - target: {fileID: 2505312298389004836, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6482,7 +6475,7 @@ PrefabInstance:
     - target: {fileID: 2538057606817204104, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: eff1897425236e341b09aaa98697213b, type: 2}
     - target: {fileID: 2630596814797373727, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6506,7 +6499,7 @@ PrefabInstance:
     - target: {fileID: 3765108852280629433, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 43eee49f30555344dbc6cc1e3849ef01, type: 2}
+      objectReference: {fileID: 2100000, guid: 02f941ac4e47d2841b7816d314cfd8d9, type: 2}
     - target: {fileID: 4449335791113873166, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6514,7 +6507,7 @@ PrefabInstance:
     - target: {fileID: 4947680884522462694, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 335947ab759845a4db3afea955efbaff, type: 2}
+      objectReference: {fileID: 2100000, guid: 02f941ac4e47d2841b7816d314cfd8d9, type: 2}
     - target: {fileID: 5013948458864058692, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6550,11 +6543,11 @@ PrefabInstance:
     - target: {fileID: 6177655569117526910, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: 02a10bba1d9e85547be11c4b87fb6cae, type: 2}
     - target: {fileID: 6841003676236821729, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 730a54010d28adf4f9cd10c465616dff, type: 2}
+      objectReference: {fileID: 2100000, guid: 25e04ec5cd4b0664194e8ffac3041428, type: 2}
     - target: {fileID: 6877476350376008592, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6582,7 +6575,7 @@ PrefabInstance:
     - target: {fileID: 8563229988257885105, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85582db9fd115904aa128f563fa6b64b, type: 2}
+      objectReference: {fileID: 2100000, guid: 02a10bba1d9e85547be11c4b87fb6cae, type: 2}
     - target: {fileID: 9050817489936365762, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7933,23 +7926,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413491571}
         m_TargetAssemblyTypeName: ComputerInteract, Assembly-CSharp
-        m_MethodName: ReactivateButtons
-        m_Mode: 1
+        m_MethodName: ClosePage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 890252838}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 890252838}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8463,23 +8444,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413491571}
         m_TargetAssemblyTypeName: ComputerInteract, Assembly-CSharp
-        m_MethodName: ReactivateButtons
-        m_Mode: 1
+        m_MethodName: ClosePage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 808028675}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 808028675}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12875,23 +12844,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413491571}
         m_TargetAssemblyTypeName: ComputerInteract, Assembly-CSharp
-        m_MethodName: ReactivateButtons
-        m_Mode: 1
+        m_MethodName: ClosePage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1935002107}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1935002107}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

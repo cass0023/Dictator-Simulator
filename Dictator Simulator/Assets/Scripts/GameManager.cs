@@ -61,10 +61,10 @@ public class GameManager
 
     public void LoadStaticEvents()
     {
-        if(WeekNum == 1)
-        {
-            EmailManager.Instance.InitializeEmail(EventManager.Instance.GetEvent("Email1"));
-        }
+		//Get a random email
+		EventManager.Instance.UpdateEventState();
+		EmailManager.Instance.InitializeEmail(EventManager.Instance.GetRandomEvent().GetValueOrDefault());
+        
     }
 
 }

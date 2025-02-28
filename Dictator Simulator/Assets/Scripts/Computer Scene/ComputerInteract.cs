@@ -43,4 +43,10 @@ public class ComputerInteract : MonoBehaviour
             buttons[i].SetActive(true);
         }
     }
+
+    public void ClosePage(GameObject pageToDisable)
+    {
+		pageToDisable.SetActive(false);
+        ReactivateButtons();
+	}
 }
