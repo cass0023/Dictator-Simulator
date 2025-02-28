@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
     
     //switch scene after delay so camera switching works.
     bool openCom;
-    float temp;
-    float delay = 2;
+ 
     void Start(){
         rb = GetComponent<Rigidbody>();
         canMove = true;
@@ -113,7 +112,7 @@ public class PlayerController : MonoBehaviour
             //enable ui that lets the player know they are about to end the week
         }
 	}
-    void AllowMouseMovement(){
+    public void AllowMouseMovement(){
         canMoveMouse = true;
     }
     void StopMouseMovement(){

@@ -91,8 +91,10 @@ public class ScriptableEvent : ScriptableObject
 	public UnlockEventByStatData[] StatLocks;
 	[Tooltip("How the event is unlocked. Leave the array empty if it is always unlocked.")]
 	public UnlockEventByWeekData[] WeekLocks;
-
-	//TODO: Add event unlock
+	[Tooltip("If the event is locked behind the player's responce in another event.")]
+	public bool LockedByOtherEvent = false;
+	[HideInInspector]
+	public bool HasBeenUnlockedByEvent = false;
 
 	[Header("Email Contents")]
 	public string FromLine;

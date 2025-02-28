@@ -42,6 +42,7 @@ public class EventManager
 		}
 
 		Loaded = true;
+		Debug.Log("Loaded all events.");
 	}
 
 	/// <summary>
@@ -53,7 +54,7 @@ public class EventManager
 
 		if (EmailEvents != null)
 		{
-			for (int i = 0; i < EmailEvents.Length; i++) 
+			for (int i = 1; i < EmailEvents.Length; i++) //Start at 1 because of empty email
 			{
 				EmailEvents[i].IsUnlocked = CheckUnlock(EmailEvents[i]);
 			}
@@ -68,6 +69,13 @@ public class EventManager
 	private bool CheckUnlock(EmailEvent curEvent)
 	{
 		bool shouldUnlock = true;
+
+		if(curEvent.Data.LockedByOtherEvent) //If the event is locked by another event
+		{
+			//Check if this event has already been unlocked by the other event
+			shouldUnlock &= curEvent.Data.HasBeenUnlockedByEvent;
+		}
+		
 		if(curEvent.Data.StatLocks.Length > 0)
 		{
 			foreach (UnlockEventByStatData e in curEvent.Data.StatLocks)
@@ -109,9 +117,19 @@ public class EventManager
 						break;
 				}
 			}
+		} 
+		if (curEvent.IsCompleted)
+		{
+			Debug.Log($"{curEvent.Data.name} is [COMPLETED]");
 		}
-		if(shouldUnlock) Debug.Log($"{curEvent.Data.name} is [UNLOCKED]");
-		else Debug.Log($"{curEvent.Data.name} is [LOCKED]");
+		else if (shouldUnlock)
+		{
+			Debug.Log($"{curEvent.Data.name} is [UNLOCKED]");
+		}
+		else
+		{
+			Debug.Log($"{curEvent.Data.name} is [LOCKED]");
+		}
 
 		return shouldUnlock;
 	}
@@ -142,14 +160,34 @@ public class EventManager
 		List<EmailEvent> unlocked_Events = new List<EmailEvent>();
 		for (int i = 0; i < EmailEvents.Length; i++)
 		{
-			if(EmailEvents[i].IsUnlocked)
+			if(EmailEvents[i].IsUnlocked && !EmailEvents[i].IsCompleted)
 			{
 				unlocked_Events.Add(EmailEvents[i]);
 			}
 		}
+
+		if(unlocked_Events.Count < 1)
+		{
+			return EmailEvents[0];
+		}
 	
 		return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
 	}
+
+	public void CompleteEvent(string EventName) 
+	{
+		for (int i = 1; i < EmailEvents.Length; i++)
+		{
+			if (EmailEvents[i].Data.EventName == EventName)
+			{
+				EmailEvents[i].IsCompleted = true;
+				Debug.Log($"Set {EmailEvents[i].Data.EventName} to completed.");
+			}
+		}
+		
+	}
+
+
 }
 
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,6 @@ using UnityEngine.SceneManagement;
 public class GameManager
 {
 	private static GameManager instance = new GameManager();
-
     private GameManager()
     {
         // initialize your game manager here. Do not reference to GameObjects here (i.e. GameObject.Find etc.)
@@ -53,17 +53,18 @@ public class GameManager
             StatManager.Instance.UpdateText((Stats)i);
             StatManager.Instance.UpdateSliders((Stats)i);
         }
-
 		WeekNum++;
+        TextMeshProUGUI calenderText = GameObject.Find("T_WeekNum").GetComponent<TextMeshProUGUI>();
+        calenderText.text = "" + WeekNum;
         Debug.Log($"Changed Week to week {WeekNum}");
     }
 
     public void LoadStaticEvents()
     {
-        if(WeekNum == 1)
-        {
-            EmailManager.Instance.InitializeEmail(EventManager.Instance.GetEvent("Email1"));
-        }
+		//Get a random email
+		EventManager.Instance.UpdateEventState();
+		EmailManager.Instance.InitializeEmail(EventManager.Instance.GetRandomEvent().GetValueOrDefault());
+        
     }
 
 }
