@@ -20,6 +20,8 @@ public class EmailManager
 
 	private static EmailManager instance = new EmailManager();
 
+	EmailEvent CurrentEvent;
+
 	private EmailManager()
 	{
 
@@ -42,6 +44,7 @@ public class EmailManager
 			Debug.LogError("Invalid event to intialize.");
 			return;
 		}
+		CurrentEvent = emailToLoad;
 
 		GameObject.Find("T_FromLine").GetComponent<TextMeshProUGUI>().text = $"From: {emailToLoad.Data.FromLine}";
 		GameObject.Find("T_ToLine").GetComponent<TextMeshProUGUI>().text = $"To: {emailToLoad.Data.ToLine}";
@@ -54,10 +57,11 @@ public class EmailManager
 		}
 		Buttons.Clear();
 
-		foreach(ResponceOption responce in emailToLoad.Data.ResponceOptions)
+		foreach(ResponceOption responce in CurrentEvent.Data.ResponceOptions)
 		{
 			CreateButton(responce);
 		}
+
 		Canvas.ForceUpdateCanvases();
 	}
 
@@ -89,9 +93,6 @@ public class EmailManager
 		rButton.transform.SetParent(ResponcePanel.transform, false);
 		
 		Buttons.Add(rButton);
-
-		
-
 	}
 
 	void ResponceOnClick(GameObject button, ResponceOption responce)
@@ -111,11 +112,15 @@ public class EmailManager
 			if (e.Type == EventType.EMAIL)
 			{
 				EmailEvent ee = EventManager.Instance.GetEvent(e.TriggerEventName);
-				ee.IsUnlocked = true;
+				ee.Data.HasBeenUnlockedByEvent = true;
 			}
 		}
-		Debug.Log($"Clicked button {button.name}.");
 
+
+		EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
+		GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("EmailPopUp"));
+		Debug.Log($"Clicked button {button.name}.");
+		
 	}
 
 }
