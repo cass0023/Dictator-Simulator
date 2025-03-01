@@ -11,27 +11,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     //Camera variables
-    private bool canMoveMouse = true;
+    public bool canMoveMouse = true;
     public float mouseSensitivity;
     float VertCameraRotate;
     float cameraAxisX, cameraAxisY;
     public Transform cameraTransform;
 
-    //interact variables
-    private bool tvInteract, computerInteract, doorInteract;
-    [SerializeField]private KeyCode interact;
-    public GameObject newWeekPopUp;
-    
-    //switch scene after delay so camera switching works.
-    bool openCom;
- 
     void Start(){
         rb = GetComponent<Rigidbody>();
         canMove = true;
-        tvInteract = false;
-        computerInteract = false;
-        doorInteract = false;
-        openCom = false;
     }
     void Update()
     {
@@ -51,12 +39,7 @@ public class PlayerController : MonoBehaviour
             Move();
             CameraRotate();
         }
-        CheckInput();
-        //adds delay to switching scene so camera transition works
-        if(openCom){
-            canMoveMouse = false;
-            openCom = false;
-        }
+        JumpInput();
     }
 
     //Movement and Camera
@@ -82,40 +65,17 @@ public class PlayerController : MonoBehaviour
         cameraTransform.localEulerAngles = Vector3.right * VertCameraRotate;
         //Horizontal rotation
         this.transform.Rotate(Vector3.up * cameraAxisX);
-    }
-    
-    //Triggers and Interact
-    public void CheckInput(){
+    }  
+    public void JumpInput(){
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded){
             rb.AddForce (Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
-        }
-        if(Input.GetKeyDown(interact) && tvInteract)
-        {
-            InteractionManager.Instance.SwitchCamera("StatCamera");
-            canMove = false;
-        }
-		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract || Input.GetKeyDown(KeyCode.Escape) && computerInteract)
-		{
-			InteractionManager.Instance.SwitchCamera("PlayerCam");
-            AllowMouseMovement();
-            canMove = true;
-		}
-        if(Input.GetKeyDown(interact) && computerInteract){
-            InteractionManager.Instance.SwitchCamera("ComCamera");
-            openCom = true;
-        }
-        if(Input.GetKeyDown(interact) && doorInteract){
-            canMoveMouse = false;
-            Debug.Log("Door interacted");
-            newWeekPopUp.SetActive(true);
-            //enable ui that lets the player know they are about to end the week
         }
 	}
     public void AllowMouseMovement(){
         canMoveMouse = true;
     }
-    void StopMouseMovement(){
+    public void StopMouseMovement(){
         canMoveMouse = false;
         cameraAxisX = 0;
         cameraAxisY = 0;
@@ -126,21 +86,4 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
     }
-    void OnTriggerEnter(Collider collider){
-        if (collider.gameObject.name == "StatScreenZone"){
-            tvInteract = true;
-        }
-        if(collider.gameObject.name == "ComputerScreenZone"){
-            computerInteract = true;
-        }
-        if(collider.gameObject.name == "DoorInteractZone"){
-            doorInteract = true;
-        }
-    }
-    void OnTriggerExit(Collider collider){
-		tvInteract = false;
-        computerInteract = false;
-        doorInteract = false;
-        canMoveMouse = true;
-	}
 }

@@ -54,11 +54,17 @@ public class UIManager : MonoBehaviour
 	}
 
 	public void OnWeekEndClick()
-	{
-		
+	{	
 		GameManager.Instance.GoToNextWeek();
+		Invoke("DisableTransition", 4f);
 	}
-
+	private void DisableTransition(){
+		//Disables the week transition after 4s to reactivate everytime the week is changed
+		//hopefully this doesnt mess w anything, if it does i will change later
+		//(functional for now)
+		GameObject weekTransition = GameObject.Find("WeekTransition");
+		weekTransition.SetActive(false);
+	}
 	
 	//Methods for invoking events
 
