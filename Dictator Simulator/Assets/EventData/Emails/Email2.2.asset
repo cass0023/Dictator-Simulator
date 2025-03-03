@@ -10,36 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email1.3
+  m_Name: Email2.2
   m_EditorClassIdentifier: 
-  EventName: Email1.3
+  EventName: Email2.2
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: 'That does not matter right now. Is the promotion something you''re
-    interested in?
+  EmailContents: 'I don''t think your citizens will be too happy about your decision.
+    We are here to help, please understand.
 
 
     - Anonymous'
-  ResponceOptions:
-  - ResponceText: Yes
-    StatsToChange:
-    - EffectedStat: 1
-      StatVal: -0.05
-    - EffectedStat: 2
-      StatVal: 0.05
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email1.1
-  - ResponceText: No
-    StatsToChange:
-    - EffectedStat: 1
-      StatVal: 0.05
-    - EffectedStat: 3
-      StatVal: 0.05
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email1.2
+  ResponceOptions: []

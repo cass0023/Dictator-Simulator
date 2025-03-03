@@ -34,6 +34,8 @@ MonoBehaviour:
       StatVal: 0.05
     TriggerEventsList:
     - Type: 1
+      TriggerEventName: Email2.1
+    - Type: 1
       TriggerEventName: Email5
   - ResponceText: No.
     StatsToChange:
@@ -44,6 +46,8 @@ MonoBehaviour:
     - EffectedStat: 4
       StatVal: 0.07
     TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email2.2
     - Type: 1
       TriggerEventName: Email6
   - ResponceText: What business do you have in my country?

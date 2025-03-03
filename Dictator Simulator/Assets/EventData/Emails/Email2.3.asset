@@ -10,36 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email1.3
+  m_Name: Email2.3
   m_EditorClassIdentifier: 
-  EventName: Email1.3
+  EventName: Email2.3
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: 'That does not matter right now. Is the promotion something you''re
-    interested in?
-
-
-    - Anonymous'
+  EmailContents: "We are completing a merge with the major company \"Daintree\" and
+    need many members from our team in attendance.\n\nIf you pass the:\n\nEXTENDED
+    FOREIGN VISIT EXECUTIVE ORDER\n\nIt will benifit not only us, but one one of
+    the most powerful companies in your country and the world.  \n\nWill you pass
+    it?\n\n- Anonymous"
   ResponceOptions:
-  - ResponceText: Yes
+  - ResponceText: Yes.
     StatsToChange:
     - EffectedStat: 1
       StatVal: -0.05
     - EffectedStat: 2
       StatVal: 0.05
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email1.1
-  - ResponceText: No
-    StatsToChange:
-    - EffectedStat: 1
-      StatVal: 0.05
     - EffectedStat: 3
       StatVal: 0.05
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: Email1.2
+      TriggerEventName: Email2.1
+    - Type: 1
+      TriggerEventName: Email5
+  - ResponceText: No.
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 4
+      StatVal: 0.07
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email2.2
+    - Type: 1
+      TriggerEventName: Email6
