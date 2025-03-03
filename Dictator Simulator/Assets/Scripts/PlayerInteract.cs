@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     private bool tvInteract, computerInteract, doorInteract;
     [SerializeField]private KeyCode interact;
     public GameObject newWeekPopUp;
+    public GameObject debugMenu;
     private PlayerController playerController;
     void Start()
     {
@@ -20,8 +21,13 @@ public class PlayerInteract : MonoBehaviour
     {
         CheckInput();
     }
-        //Triggers and Interact
+    //Triggers and Interact
     public void CheckInput(){
+        //shows debug menu
+        if (Input.GetKeyDown(KeyCode.BackQuote)){
+            debugMenu.SetActive(!debugMenu.activeSelf);
+
+        }
         if(Input.GetKeyDown(interact) && tvInteract)
         {
             InteractionManager.Instance.SwitchCamera("StatCamera");
