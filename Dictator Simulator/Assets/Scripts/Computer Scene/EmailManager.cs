@@ -24,7 +24,6 @@ public class EmailManager
 
 	private EmailManager()
 	{
-
 		IncreaseStat += StatManager.Instance.IncreaseStat;
 	}
 
