@@ -3028,6 +3028,9 @@ MonoBehaviour:
   Emails:
   - {fileID: 11400000, guid: c665b3b97b334594f8a2a7c49983d4ff, type: 2}
   - {fileID: 11400000, guid: 5e10e3d55d0ab4551b9a17ff7597db5d, type: 2}
+  - {fileID: 11400000, guid: 66a917188a725b946a16f8909d831e98, type: 2}
+  - {fileID: 11400000, guid: 2578a68f9ef9de040826b5eb5c18c632, type: 2}
+  - {fileID: 11400000, guid: c7b1aa97b4088e744984701865f50dde, type: 2}
   SocialMedia: []
   Orders: []
 --- !u!1 &556634625
@@ -5547,7 +5550,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5573,8 +5576,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00016571936, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 16.559391, y: 3.0750003, z: 3.1100001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13, y: 2.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

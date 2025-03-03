@@ -20,13 +20,13 @@ MonoBehaviour:
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "To whom it may concern.\n\nDear President,\n\nCongratulations on
-    becoming the President! We have offered to help every past President in their
-    quest to power. Many have ignored our services for far too long, so I strongly
-    advise you to agree to our help.\n\nTo start, we want to make you look better
-    in the public eye. If you allow us to we will alter the media in your favour.\n\n\tIs
-    this something you're interested in?\n\nThis will not be the last time you hear
-    from us. Make sure to delete this email when you've answered. This stays between
-    us!\n\n- Anonymous\n"
+    becoming the President of Caecus! We have offered to help every past President
+    in their quest to power. Many have ignored our services for far too long, so
+    I strongly advise you to agree to our help.\n\nTo start, we want to make you
+    look better in the public eye. If you allow us to we will alter the media in
+    your favour.\n\n\tIs this something you're interested in?\n\nThis will not be
+    the last time you hear from us. Make sure to delete this email when you've answered.
+    This stays between us!\n\n- Anonymous\n"
   ResponceOptions:
   - ResponceText: Yes
     StatsToChange:
