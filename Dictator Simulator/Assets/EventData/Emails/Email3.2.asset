@@ -21,6 +21,6 @@ MonoBehaviour:
   ToLine: president@presidentemail.com
   EmailContents: "We are disapointed.\n\n- Anonymous\r"
   ResponceOptions:
-  - ResponceText: Close
+  - ResponceText: Ok
     StatsToChange: []
     TriggerEventsList: []
