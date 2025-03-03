@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 
 
 [System.Serializable]
-public struct EmailEvent
+public class EmailEvent
 {
 	public ScriptableEvent Data;
+	public bool HasBeenUnlockedByEvent { get; set; }
 	public bool IsUnlocked { get; set; }
 	public bool IsCompleted { get; set; }
 }
@@ -39,6 +40,7 @@ public class EventManager
 			EmailEvent emailEvent = new EmailEvent();
 			emailEvent.Data = AllEvents.Emails[i];
 			EmailEvents[i] = emailEvent;
+			emailEvent.HasBeenUnlockedByEvent = false;
 		}
 
 		Loaded = true;
@@ -63,6 +65,7 @@ public class EventManager
 
 	/// <summary>
 	/// Checks if the current event is unlocked or not. Compares the current player stats to the specified value when the event was created.
+	/// Also checks to see if an event is unlocked by another event.
 	/// </summary>
 	/// <param name="curEvent"></param>
 	/// <returns></returns>
@@ -73,7 +76,7 @@ public class EventManager
 		if(curEvent.Data.LockedByOtherEvent) //If the event is locked by another event
 		{
 			//Check if this event has already been unlocked by the other event
-			shouldUnlock &= curEvent.Data.HasBeenUnlockedByEvent;
+			shouldUnlock &= curEvent.HasBeenUnlockedByEvent;
 		}
 		
 		if(curEvent.Data.StatLocks.Length > 0)
@@ -140,22 +143,23 @@ public class EventManager
 	/// <returns></returns>
 	public EmailEvent GetEvent(string EventName)
 	{
-		foreach(EmailEvent e in EmailEvents) 
+		for(int i = 1; i < EmailEvents.Length; i++) 
 		{
-			if(e.Data.EventName == EventName)
+			if (EmailEvents[i].Data.EventName == EventName)
 			{
-				return e;
+				return EmailEvents[i];
 			}
 		}
 
-		Debug.LogError($"{EventName} does not exist in the list of events.");
-		return default;
+		Debug.LogError($"{EventName} does not exist in the list of events. Returning empty inbox event.");
+		return EmailEvents[0];
 	}
+
 	/// <summary>
 	/// Return a random unlocked email event. No error checking.
 	/// </summary>
 	/// <returns></returns>
-	public EmailEvent? GetRandomEvent()
+	public EmailEvent GetRandomEvent()
 	{
 		List<EmailEvent> unlocked_Events = new List<EmailEvent>();
 		for (int i = 0; i < EmailEvents.Length; i++)

@@ -93,8 +93,8 @@ public class ScriptableEvent : ScriptableObject
 	public UnlockEventByWeekData[] WeekLocks;
 	[Tooltip("If the event is locked behind the player's responce in another event.")]
 	public bool LockedByOtherEvent = false;
-	[HideInInspector]
-	public bool HasBeenUnlockedByEvent = false;
+	//[HideInInspector] //Used for saving between play sessions. Needs to be implemented with a Completion variable
+	//public bool HasBeenUnlockedByEvent = false;
 
 	[Header("Email Contents")]
 	public string FromLine;
