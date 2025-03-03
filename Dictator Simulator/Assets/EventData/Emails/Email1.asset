@@ -26,7 +26,7 @@ MonoBehaviour:
     in the public eye. If you allow us to we will alter the media in your favour.\n\n\tIs
     this something you're interested in?\n\nThis will not be the last time you hear
     from us. Make sure to delete this email when you've answered. This stays between
-    us!\n\n\n"
+    us!\n\n- Anonymous\n"
   ResponceOptions:
   - ResponceText: Yes
     StatsToChange:
@@ -34,14 +34,20 @@ MonoBehaviour:
       StatVal: -0.05
     - EffectedStat: 2
       StatVal: 0.05
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email1.1
   - ResponceText: No
     StatsToChange:
     - EffectedStat: 1
       StatVal: 0.05
     - EffectedStat: 3
       StatVal: 0.05
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email1.2
   - ResponceText: Who is this?
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email1.3
