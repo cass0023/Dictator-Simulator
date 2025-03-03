@@ -30,21 +30,18 @@ MonoBehaviour:
   ResponceOptions:
   - ResponceText: Yes
     StatsToChange:
-    - EffectedStat: 0
+    - EffectedStat: 1
       StatVal: -0.05
-    - EffectedStat: 0
+    - EffectedStat: 2
       StatVal: 0.05
     TriggerEventsList: []
   - ResponceText: No
     StatsToChange:
     - EffectedStat: 1
-      StatVal: 0.17
-    - EffectedStat: 0
+      StatVal: 0.05
+    - EffectedStat: 3
       StatVal: 0.05
     TriggerEventsList: []
-  - ResponceText: Maybe
-    StatsToChange: []
-    TriggerEventsList: []
-  - ResponceText: Potato
+  - ResponceText: Who is this?
     StatsToChange: []
     TriggerEventsList: []

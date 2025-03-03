@@ -25,13 +25,27 @@ MonoBehaviour:
     will benefit you in the future. We will be waiting for your response.\n\n- Anonymous\r"
   ResponceOptions:
   - ResponceText: Yes.
-    StatsToChange: []
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 2
+      StatVal: 0.05
+    - EffectedStat: 3
+      StatVal: 0.05
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email5
   - ResponceText: No.
-    StatsToChange: []
-    TriggerEventsList: []
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 4
+      StatVal: 0.07
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email6
   - ResponceText: What business do you have in my country?
     StatsToChange: []
     TriggerEventsList: []

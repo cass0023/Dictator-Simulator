@@ -15,6 +15,8 @@ MonoBehaviour:
   EventName: Email4
   StatLocks: []
   WeekLocks: []
+  LockedByOtherEvent: 0
+  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "Dear President,\n\nWe have ships stopped by the Marine unit that
@@ -23,10 +25,26 @@ MonoBehaviour:
     you with a favour when you need.\n\nWe don't give favours often.\n\n- Anonymous\r"
   ResponceOptions:
   - ResponceText: 'Sure, I can give them a call. '
-    StatsToChange: []
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.1
+    - EffectedStat: 3
+      StatVal: -0.1
+    - EffectedStat: 2
+      StatVal: -0.1
+    - EffectedStat: 4
+      StatVal: 0.15
     TriggerEventsList: []
   - ResponceText: 'No, I''m not going to call. '
-    StatsToChange: []
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: 0.05
+    - EffectedStat: 3
+      StatVal: 0.05
+    - EffectedStat: 2
+      StatVal: 0.05
+    - EffectedStat: 4
+      StatVal: -0.05
     TriggerEventsList: []
   - ResponceText: 'What''s on the ships? '
     StatsToChange: []
