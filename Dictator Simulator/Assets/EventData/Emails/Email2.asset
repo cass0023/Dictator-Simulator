@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email2
+  m_EditorClassIdentifier: 
+  EventName: Email2
+  StatLocks: []
+  WeekLocks: []
+  LockedByOtherEvent: 0
+  HasBeenUnlockedByEvent: 0
+  FromLine: unknown@unknownemail.com
+  ToLine: president@presidentemail.com
+  EmailContents: "Good morning President, \n\nWe have some business to take care
+    of in your country, but\nthere is a law that limits us.\n\n$12,000,000 will be
+    wired to your account if you pass the:\n\nEXTENEDED FOREIGN VISIT EXECUTIVE ORDER\n\nThis
+    will benefit you in the future. We will be waiting for your response.\n\n- Anonymous\r"
+  ResponceOptions:
+  - ResponceText: Yes.
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 2
+      StatVal: 0.05
+    - EffectedStat: 3
+      StatVal: 0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email2.1
+    - Type: 1
+      TriggerEventName: Email5
+  - ResponceText: No.
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 4
+      StatVal: 0.07
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email2.2
+    - Type: 1
+      TriggerEventName: Email6
+  - ResponceText: What business do you have in my country?
+    StatsToChange: []
+    TriggerEventsList: []
+  - ResponceText: How will it benefit me in the future?
+    StatsToChange: []
+    TriggerEventsList: []

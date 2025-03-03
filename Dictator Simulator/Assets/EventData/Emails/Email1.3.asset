@@ -10,23 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email1
+  m_Name: Email1.3
   m_EditorClassIdentifier: 
-  EventName: Email1
+  EventName: Email1.3
   StatLocks: []
   WeekLocks: []
-  LockedByOtherEvent: 0
+  LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "To whom it may concern.\n\nDear President,\n\nCongratulations on
-    becoming the President! We have offered to help every past President in their
-    quest to power. Many have ignored our services for far too long, so I strongly
-    advise you to agree to our help.\n\nTo start, we want to make you look better
-    in the public eye. If you allow us to we will alter the media in your favour.\n\n\tIs
-    this something you're interested in?\n\nThis will not be the last time you hear
-    from us. Make sure to delete this email when you've answered. This stays between
-    us!\n\n- Anonymous\n"
+  EmailContents: 'That does not matter right now. Is the promotion something you''re
+    interested in?
+
+
+    - Anonymous'
   ResponceOptions:
   - ResponceText: Yes
     StatsToChange:
@@ -46,8 +43,3 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email1.2
-  - ResponceText: Who is this?
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email1.3
