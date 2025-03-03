@@ -19,11 +19,9 @@ public enum EventType
 	EMAIL = 1,
 	TWEET = 2,
 	NEWS = 3,
-	WINDOW = 4
+	WINDOW = 4,
+	EXEC_ORDER = 5
 }
-
-
-
 
 [System.Serializable]
 public struct UnlockEventByStatData
