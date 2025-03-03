@@ -76,11 +76,11 @@ public class StatManager
             }
 			UpdateText(e.StatToIncrease);
 			UpdateSliders(e.StatToIncrease);
-
+			Debug.Log($"Changed {e.StatToIncrease} to {StatValues[e.StatToIncrease]}");
 		}
     }
 	/// <summary>
-	/// Call this method to decrease the amount of a stat. Amount must be between 0 and 1. 
+	/// Call this method to decrease the amount of a stat. Amount must be between 0 and 1. Only for debug since increase handles + and - of respomces.
 	/// </summary>
 	/// <param name="stat"></param>
 	/// <param name="amount"></param>
@@ -98,6 +98,7 @@ public class StatManager
 			}
             UpdateText(e.StatToDecrease);
 			UpdateSliders(e.StatToDecrease);
+			Debug.Log($"Changed {e.StatToDecrease} to {StatValues[e.StatToDecrease]}");
 		}
 	}
     /// <summary>
