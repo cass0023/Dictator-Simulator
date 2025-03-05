@@ -54,8 +54,7 @@ public class GameManager
             StatManager.Instance.UpdateSliders((Stats)i);
         }
 		WeekNum++;
-        TextMeshProUGUI calenderText = GameObject.Find("T_WeekNum").GetComponent<TextMeshProUGUI>();
-        calenderText.text = "" + WeekNum;
+        GameObject.Find("T_WeekNum").GetComponent<TextMeshProUGUI>().text = $"{WeekNum}";
         Debug.Log($"Changed Week to week {WeekNum}");
     }
 
