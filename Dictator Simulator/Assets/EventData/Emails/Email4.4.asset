@@ -10,22 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email4.3
+  m_Name: Email4.4
   m_EditorClassIdentifier: 
-  EventName: Email4.3
+  EventName: Email4.4
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: 'Currently we are bringing in equipment for our Daintree staff:
-    desks, computers, chairs, etc.
-
-
-    As well as our usual imported goods arriving
-    in Caecus.
-
+  EmailContents: '
 
     Will you make the call?
 
