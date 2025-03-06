@@ -15,6 +15,8 @@ public class PlayerInteract : MonoBehaviour
     public GameObject exitText;
     public GameObject newWeekPopUp;
     public GameObject debugMenu;
+    public AudioSource mouseClickDown;
+    public AudioSource mouseClickUp;    
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -81,10 +83,15 @@ public class PlayerInteract : MonoBehaviour
         CinemachineBrain ActiveCamera = GameObject.Find("Main Camera").GetComponent<CinemachineBrain>();
         if(ActiveCamera.ActiveVirtualCamera.Name != "PlayerCam"){
             exitText.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseClickDown.Play();
+            }
         }
         else{
             exitText.SetActive(false);
         }
+        
     }
     void OnTriggerEnter(Collider collider){
         if(canInteract == false){
