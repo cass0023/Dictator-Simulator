@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Email4
   StatLocks: []
-  WeekLocks: []
+  WeekLocks:
+  - WeekNum: 4
+    RequiredStatVal: 0
   LockedByOtherEvent: 0
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
