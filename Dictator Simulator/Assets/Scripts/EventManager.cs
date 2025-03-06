@@ -231,12 +231,15 @@ public class EventManager
 
 		if(unlocked_Events.Count < 1)
 		{
-			return EmailEvents[0];
+            GameObject.Find("NotificationBubble").SetActive(false);
+            return EmailEvents[0];
 		}
-	
-		return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
-=======
->>>>>>> Stashed changes
+		else if (unlocked_Events.Count > 1)
+		{
+            GameObject.Find("NotificationBubble").SetActive(true);
+        }
+
+        return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
 	}
 
 	public void CompleteEvent(string EventName) 
@@ -259,8 +262,6 @@ public class EventManager
 		}
 
 	}
-
-
 }
 
 

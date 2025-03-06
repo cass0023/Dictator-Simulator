@@ -3349,7 +3349,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26f9e13b054391149877657b047b9da2, type: 2}
   SocialMedia:
   - {fileID: 11400000, guid: ece00d036fcb6624398f9de767939233, type: 2}
->>>>>>> Stashed changes
   Orders: []
 --- !u!1 &556634625
 GameObject:
