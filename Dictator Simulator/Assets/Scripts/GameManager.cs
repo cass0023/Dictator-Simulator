@@ -63,7 +63,7 @@ public class GameManager
     {
 		//Get a random email
 		EventManager.Instance.UpdateEventState();
-		EmailManager.Instance.InitializeEmail(EventManager.Instance.GetRandomEvent().GetValueOrDefault());
+		EmailManager.Instance.InitializeEmail(EventManager.Instance.GetRandomEvent());
         
     }
 

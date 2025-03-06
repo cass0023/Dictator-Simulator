@@ -111,7 +111,8 @@ public class EmailManager
 			if (e.Type == EventType.EMAIL)
 			{
 				EmailEvent ee = EventManager.Instance.GetEvent(e.TriggerEventName);
-				ee.Data.HasBeenUnlockedByEvent = true;
+				ee.HasBeenUnlockedByEvent = true;
+				Debug.Log($"{ee.Data.EventName} Has been unlocked by another event");
 			}
 		}
 
