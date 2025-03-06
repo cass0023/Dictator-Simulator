@@ -15066,6 +15066,10 @@ PrefabInstance:
       propertyPath: newWeekPopUp
       value: 
       objectReference: {fileID: 1109196614}
+    - target: {fileID: 6687769124870727879, guid: afdb7edd0ac88ac499ff67db25bccaa7, type: 3}
+      propertyPath: m_Priority
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
