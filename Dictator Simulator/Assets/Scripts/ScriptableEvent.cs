@@ -17,7 +17,7 @@ public enum EventType
 { 
 	NONE = 0,
 	EMAIL = 1,
-	SOCIAL = 2,
+	TWEET = 2,
 	NEWS = 3,
 	WINDOW = 4,
 	EXEC_ORDER = 5
@@ -73,21 +73,12 @@ public struct EventTypeNamePair
 	public string TriggerEventName;
 }
 
-public interface IUnlockable
-{
-	public string EventName { get;}
-	public UnlockEventByStatData[] StatLocks { get; }
-	public UnlockEventByWeekData[] WeekLocks { get;}
-	public bool LockedByOtherEvent { get;}
-
-}
-
 
 /// <summary>
 /// Event information for an email
 /// </summary>
 [CreateAssetMenu(fileName = "New_Email", menuName = "ScriptableObjects/Email", order = 2)]
-public class ScriptableEvent : ScriptableObject, IUnlockable
+public class ScriptableEvent : ScriptableObject
 {
 	[Header("Event Identifier")]
 	[Tooltip("A unique name for the event. Must match the file name!!!")]
@@ -114,8 +105,4 @@ public class ScriptableEvent : ScriptableObject, IUnlockable
 	[Tooltip("The responces the player can select in the email.")]
 	public ResponceOption[] ResponceOptions;
 
-	string IUnlockable.EventName { get => EventName; }
-	UnlockEventByStatData[] IUnlockable.StatLocks { get => StatLocks; }
-	UnlockEventByWeekData[] IUnlockable.WeekLocks { get => WeekLocks;}
-	bool IUnlockable.LockedByOtherEvent { get => LockedByOtherEvent; }
 }
