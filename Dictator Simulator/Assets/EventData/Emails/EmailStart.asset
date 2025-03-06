@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: EmailStart
   StatLocks: []
-  WeekLocks: []
+  WeekLocks:
+  - WeekNum: 0
+    RequiredStatVal: 0
   LockedByOtherEvent: 0
   HasBeenUnlockedByEvent: 0
   FromLine: caecus@yourcountry.com
@@ -32,7 +34,14 @@ MonoBehaviour:
   ResponceOptions:
   - ResponceText: How many times can I complete each task per week?
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: EmailStartQ1
   - ResponceText: What does each stat mean?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: EmailStartQ2
+  - ResponceText: Awesome, thank you!
     StatsToChange: []
     TriggerEventsList: []

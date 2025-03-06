@@ -15,7 +15,7 @@ MonoBehaviour:
   EventName: EmailStartQ1
   StatLocks: []
   WeekLocks: []
-  LockedByOtherEvent: 0
+  LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: caecus@yourcountry.com
   ToLine: president@presidentemail.com
@@ -27,7 +27,9 @@ MonoBehaviour:
   ResponceOptions:
   - ResponceText: What does each stat mean?
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: EmailStartQ2
   - ResponceText: Ok, thank you!
     StatsToChange: []
     TriggerEventsList: []
