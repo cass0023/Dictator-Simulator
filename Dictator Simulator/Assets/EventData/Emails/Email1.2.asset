@@ -16,7 +16,6 @@ MonoBehaviour:
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
-  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: 'That is alright. You will be hearing from us more in the future.
