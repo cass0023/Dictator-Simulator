@@ -10,23 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email3
+  m_Name: Email3.3
   m_EditorClassIdentifier: 
-  EventName: Email3
+  EventName: Email3.3
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 3
-    RequiredStatVal: 0
-  LockedByOtherEvent: 0
+  WeekLocks: []
+  LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "President,\n\nWe were seen conducting our business and local news
-    wasn't \nhappy with what they saw. We need you to release a statement\ninforming
-    the public that what we're doing is benifiting\ntheir country.\n\nA simple soial
-    media post would suffice.\n\nDon't let us down.\n\n- Anonymous\r"
+  EmailContents: "We were moving new equipment in to our Caecus office. The boxes
+    were unmarked, making it look bad on mainstream news.\n\nCan you make the post?\n\n-
+    Anonymous\r"
   ResponceOptions:
-  - ResponceText: Sure, I can do that.
+  - ResponceText: Sure
     StatsToChange:
     - EffectedStat: 1
       StatVal: -0.05
@@ -34,8 +31,8 @@ MonoBehaviour:
       StatVal: -0.05
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: Email3.1
-  - ResponceText: No, I'm not going to do that.
+      TriggerEventName: 3.1
+  - ResponceText: No
     StatsToChange:
     - EffectedStat: 1
       StatVal: 0.05
@@ -45,9 +42,4 @@ MonoBehaviour:
       StatVal: -0.02
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: Email3.2
-  - ResponceText: What business were you conducting?
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: 3.3
+      TriggerEventName: 3.2

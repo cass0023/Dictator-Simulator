@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email4
+  m_Name: Email4.4
   m_EditorClassIdentifier: 
-  EventName: Email4
+  EventName: Email4.4
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 4
-    RequiredStatVal: 0
-  LockedByOtherEvent: 0
+  WeekLocks: []
+  LockedByOtherEvent: 1
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "Dear President,\n\nWe have ships stopped by the Marine unit that
-    needs to get into\nthe country. We have goods to sell that benefit your citizens\nhandsomley.\n\nCall
-    them and tell them to let us in. We will wire you $2,000,000\nand will provide
-    you with a favour when you need.\n\nWe don't give favours often.\n\n- Anonymous\r"
+  EmailContents: '
+
+    Will you make the call?
+
+
+    - Anonymous'
   ResponceOptions:
   - ResponceText: 'Sure, I can give them a call. '
     StatsToChange:
@@ -47,10 +47,4 @@ MonoBehaviour:
       StatVal: 0.05
     - EffectedStat: 4
       StatVal: -0.05
-    TriggerEventsList: []
-  - ResponceText: 'What''s on the ships? '
-    StatsToChange: []
-    TriggerEventsList: []
-  - ResponceText: 'Can the favour be used for anything? '
-    StatsToChange: []
     TriggerEventsList: []

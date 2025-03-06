@@ -10,20 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email1.1
+  m_Name: EmailStartQ1
   m_EditorClassIdentifier: 
-  EventName: Email1.1
+  EventName: EmailStartQ1
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
-  HasBeenUnlockedByEvent: 1
-  FromLine: unknown@unknownemail.com
+  HasBeenUnlockedByEvent: 0
+  FromLine: caecus@yourcountry.com
   ToLine: president@presidentemail.com
-  EmailContents: 'Amazing, we''ll get started right away!
+  EmailContents: 'You are only able to complete each task once per week. Don''t forget
+    to check everything per week!
 
 
-    - Anonymous'
+    - The country of Caecus'
   ResponceOptions:
-  - ResponceText: Ok
+  - ResponceText: What does each stat mean?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: EmailStartQ2
+  - ResponceText: Ok, thank you!
     StatsToChange: []
     TriggerEventsList: []

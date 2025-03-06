@@ -72,6 +72,7 @@ public class EventManager
 			socialEvent.HasBeenUnlockedByEvent = false;
 		}
 
+
 		Loaded = true;
 		Debug.Log("Loaded all events.");
 	}
@@ -228,12 +229,18 @@ public class EventManager
 			}
 		}
 
+
 		if(unlocked_Events.Count < 1)
 		{
-			return EmailEvents[0];
+            GameObject.Find("NotificationBubble").SetActive(false);
+            return EmailEvents[0];
 		}
-	
-		return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
+		else if (unlocked_Events.Count > 1)
+		{
+            GameObject.Find("NotificationBubble").SetActive(true);
+        }
+
+        return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
 	}
 
 	public void CompleteEvent(string EventName) 
