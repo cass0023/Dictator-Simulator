@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Email3
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 3
-    RequiredStatVal: 0
+  WeekLocks: []
   LockedByOtherEvent: 0
   HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
@@ -32,9 +30,7 @@ MonoBehaviour:
       StatVal: -0.05
     - EffectedStat: 2
       StatVal: -0.05
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email3.1
+    TriggerEventsList: []
   - ResponceText: No, I'm not going to do that.
     StatsToChange:
     - EffectedStat: 1
@@ -43,11 +39,7 @@ MonoBehaviour:
       StatVal: 0.05
     - EffectedStat: 4
       StatVal: -0.02
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email3.2
+    TriggerEventsList: []
   - ResponceText: What business were you conducting?
     StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: 3.3
+    TriggerEventsList: []

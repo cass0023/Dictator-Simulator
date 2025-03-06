@@ -16,14 +16,11 @@ MonoBehaviour:
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
-  HasBeenUnlockedByEvent: 1
+  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: 'Amazing, we''ll get started right away!
 
 
     - Anonymous'
-  ResponceOptions:
-  - ResponceText: Ok
-    StatsToChange: []
-    TriggerEventsList: []
+  ResponceOptions: []
