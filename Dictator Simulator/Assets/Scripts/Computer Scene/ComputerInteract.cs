@@ -10,18 +10,18 @@ public class ComputerInteract : MonoBehaviour
     public GameObject[] computerPages;
     public GameObject[] buttons;
     void Start(){
-        socMediaManager = GetComponent<SocMediaManager>();
+        //socMediaManager = GetComponent<SocMediaManager>();
     }
     //checks which computer icon is pressed with button input
     public void OnEmailClick(){
         computerPages[0].SetActive(true);
         DeactivateButtons();
-		GameManager.Instance.LoadStaticEvents(); //Setting stuff active / inactive causes problems searching for the UI to change
+		GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>(); //Setting stuff active / inactive causes problems searching for the UI to change
 	}
     public void OnSocMediaClick(){
         computerPages[1].SetActive(true);
-        socMediaManager.InitializeTweet();
         DeactivateButtons();
+        GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
     }
     public void OnNewsClick(){
         computerPages[2].SetActive(true);

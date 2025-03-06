@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -58,12 +59,18 @@ public class GameManager
         Debug.Log($"Changed Week to week {WeekNum}");
     }
 
-    public void LoadStaticEvents()
+    public void LoadStaticEvents<T,U>() where T : IIsEvent<U>
     {
 		//Get a random email
 		EventManager.Instance.UpdateEventState();
-		EmailManager.Instance.InitializeEmail(EventManager.Instance.GetRandomEvent());
-        
-    }
+        if (typeof(T).Equals(typeof(EmailEvent)))
+        {
+            EmailManager.Instance.InitializeEmail((EmailEvent)EventManager.Instance.GetRandomEvent<T,U>().ConvertTo(typeof(T)));
+        }
+		if (typeof(T).Equals(typeof(SocialEvent)))
+		{
+			SocMediaManager.Instance.InitializeSocial((SocialEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
+		}
+	}
 
 }
