@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email3.3
+  m_EditorClassIdentifier: 
+  EventName: Email3.3
+  StatLocks: []
+  WeekLocks: []
+  LockedByOtherEvent: 1
+  HasBeenUnlockedByEvent: 0
+  FromLine: unknown@unknownemail.com
+  ToLine: president@presidentemail.com
+  EmailContents: "We were moving new equipment in to our Caecus office. The boxes
+    were unmarked, making it look bad on mainstream news.\n\nCan you make the post?\n\n-
+    Anonymous\r"
+  ResponceOptions:
+  - ResponceText: Sure
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 2
+      StatVal: -0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: 3.1
+  - ResponceText: No
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: 0.05
+    - EffectedStat: 3
+      StatVal: 0.05
+    - EffectedStat: 4
+      StatVal: -0.02
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: 3.2

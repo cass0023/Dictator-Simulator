@@ -1,22 +1,41 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 
 [System.Serializable]
-public class EmailEvent
+public class EmailEvent : IIsEvent<ScriptableEvent>
 {
-	public ScriptableEvent Data;
+	public ScriptableEvent Data { get; set; }
 	public bool HasBeenUnlockedByEvent { get; set; }
 	public bool IsUnlocked { get; set; }
 	public bool IsCompleted { get; set; }
 }
 
+public class SocialEvent : IIsEvent<ScriptableSocialMedia>
+{
+	public ScriptableSocialMedia Data { get; set; }
+	public bool HasBeenUnlockedByEvent { get; set; }
+	public bool IsUnlocked { get; set; }
+	public bool IsCompleted { get; set; }
+}
+
+public interface IIsEvent<T>
+{ 
+	T Data { get; set; }
+	public bool HasBeenUnlockedByEvent { get; set; }
+	public bool IsUnlocked { get; set; }
+	public bool IsCompleted { get; set; }
+}
+
+
 public class EventManager
 {
 	public EmailEvent[] EmailEvents;
+	public SocialEvent[] SocialEvents;
 	private AllEventsContainer AllEvents;
 	bool Loaded = false;
 
@@ -35,6 +54,8 @@ public class EventManager
 	{
 		AllEvents = GameObject.Find("AllEventsContainer").GetComponent<AllEventsContainer>();
 		EmailEvents = new EmailEvent[AllEvents.Emails.Length];
+		SocialEvents = new SocialEvent[AllEvents.SocialMedia.Length];
+		//Load Emails
 		for (int i = 0; i < AllEvents.Emails.Length; i++)
 		{
 			EmailEvent emailEvent = new EmailEvent();
@@ -42,6 +63,15 @@ public class EventManager
 			EmailEvents[i] = emailEvent;
 			emailEvent.HasBeenUnlockedByEvent = false;
 		}
+		//Load social media posts
+		for (int i = 0; i < AllEvents.SocialMedia.Length; i++)
+		{
+			SocialEvent socialEvent = new SocialEvent();
+			socialEvent.Data = AllEvents.SocialMedia[i];
+			SocialEvents[i] = socialEvent;
+			socialEvent.HasBeenUnlockedByEvent = false;
+		}
+
 
 		Loaded = true;
 		Debug.Log("Loaded all events.");
@@ -58,9 +88,17 @@ public class EventManager
 		{
 			for (int i = 1; i < EmailEvents.Length; i++) //Start at 1 because of empty email
 			{
-				EmailEvents[i].IsUnlocked = CheckUnlock(EmailEvents[i]);
+				EmailEvents[i].IsUnlocked = CheckUnlock<EmailEvent, ScriptableEvent>(EmailEvents[i]);
 			}
 		}
+
+		//if (SocialEvents != null)
+		//{
+		//	for (int i = 1; i < SocialEvents.Length; i++) //Start at 1 because of empty email
+		//	{
+		//		SocialEvents[i].IsUnlocked = CheckUnlock<SocialEvent, ScriptableSocialMedia>(SocialEvents[i]);
+		//	}
+		//}
 	}
 
 	/// <summary>
@@ -69,13 +107,12 @@ public class EventManager
 	/// </summary>
 	/// <param name="curEvent"></param>
 	/// <returns></returns>
-	private bool CheckUnlock(EmailEvent curEvent)
+	private bool CheckUnlock<T, U>(T curEvent) where T : IIsEvent<U> where U:IUnlockable
 	{
 		bool shouldUnlock = true;
 
-		if(curEvent.Data.LockedByOtherEvent) //If the event is locked by another event
+		if (curEvent.Data.LockedByOtherEvent) //Get the property with the name LockedByOtherEvent in Data class
 		{
-			//Check if this event has already been unlocked by the other event
 			shouldUnlock &= curEvent.HasBeenUnlockedByEvent;
 		}
 		
@@ -123,15 +160,15 @@ public class EventManager
 		} 
 		if (curEvent.IsCompleted)
 		{
-			Debug.Log($"{curEvent.Data.name} is [COMPLETED]");
+			Debug.Log($"{curEvent.Data.EventName} is [COMPLETED]");
 		}
 		else if (shouldUnlock)
 		{
-			Debug.Log($"{curEvent.Data.name} is [UNLOCKED]");
+			Debug.Log($"{curEvent.Data.EventName} is [UNLOCKED]");
 		}
 		else
 		{
-			Debug.Log($"{curEvent.Data.name} is [LOCKED]");
+			Debug.Log($"{curEvent.Data.EventName} is [LOCKED]");
 		}
 
 		return shouldUnlock;
@@ -141,18 +178,40 @@ public class EventManager
 	/// </summary>
 	/// <param name="EventName"></param>
 	/// <returns></returns>
-	public EmailEvent GetEvent(string EventName)
+	public T GetEvent<T, U>(string EventName) where T : IIsEvent<U>
 	{
-		for(int i = 1; i < EmailEvents.Length; i++) 
+		if (typeof(T).Equals(typeof(EmailEvent)))
 		{
-			if (EmailEvents[i].Data.EventName == EventName)
+			for (int i = 1; i < EmailEvents.Length; i++)
 			{
-				return EmailEvents[i];
+				if (EmailEvents[i].Data.EventName == EventName)
+				{
+					return (T)EmailEvents[i].ConvertTo(typeof(T));
+				}
 			}
+
+			Debug.LogError($"{EventName} does not exist in the list of events. Returning empty inbox event.");
+			return (T)EmailEvents[0].ConvertTo(typeof(T));
+		}
+		else if (typeof(T).Equals(typeof(SocialEvent)))
+		{
+			for (int i = 1; i < SocialEvents.Length; i++)
+			{
+				if (SocialEvents[i].Data.EventName == EventName)
+				{
+					return (T)SocialEvents[i].ConvertTo(typeof(T));
+				}
+			}
+
+			Debug.LogError($"{EventName} does not exist in the list of events. Returning empty social post event.");
+			return (T)SocialEvents[0].ConvertTo(typeof(T));
+		}
+		else
+		{
+			Debug.LogError($"Type {typeof(T)} does not exist as a type of event that can be retrieved.");
+			return default;
 		}
 
-		Debug.LogError($"{EventName} does not exist in the list of events. Returning empty inbox event.");
-		return EmailEvents[0];
 	}
 
 	/// <summary>
@@ -170,12 +229,18 @@ public class EventManager
 			}
 		}
 
+
 		if(unlocked_Events.Count < 1)
 		{
-			return EmailEvents[0];
+            GameObject.Find("NotificationBubble").SetActive(false);
+            return EmailEvents[0];
 		}
-	
-		return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
+		else if (unlocked_Events.Count > 1)
+		{
+            GameObject.Find("NotificationBubble").SetActive(true);
+        }
+
+        return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
 	}
 
 	public void CompleteEvent(string EventName) 
@@ -190,8 +255,6 @@ public class EventManager
 		}
 		
 	}
-
-
 }
 
 
