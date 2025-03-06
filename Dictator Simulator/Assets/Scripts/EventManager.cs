@@ -61,6 +61,17 @@ public class EventManager
 				EmailEvents[i].IsUnlocked = CheckUnlock(EmailEvents[i]);
 			}
 		}
+<<<<<<< Updated upstream
+=======
+
+		if (SocialEvents != null)
+		{
+			for (int i = 1; i < SocialEvents.Length; i++) //Start at 1 because of empty email
+			{
+				SocialEvents[i].IsUnlocked = CheckUnlock<SocialEvent, ScriptableSocialMedia>(SocialEvents[i]);
+			}
+		}
+>>>>>>> Stashed changes
 	}
 
 	/// <summary>
@@ -156,19 +167,67 @@ public class EventManager
 	}
 
 	/// <summary>
-	/// Return a random unlocked email event. No error checking.
+	/// Return a random unlocked event of type T. No error checking.
 	/// </summary>
-	/// <returns></returns>
-	public EmailEvent GetRandomEvent()
+	/// <returns>T event</returns>
+	public T GetRandomEvent<T,U>() where T : IIsEvent<U>
 	{
-		List<EmailEvent> unlocked_Events = new List<EmailEvent>();
-		for (int i = 0; i < EmailEvents.Length; i++)
+		if (typeof(T).Equals(typeof(EmailEvent)))
 		{
-			if(EmailEvents[i].IsUnlocked && !EmailEvents[i].IsCompleted)
+			List<EmailEvent> unlocked_Events = new List<EmailEvent>();
+			for (int i = 0; i < EmailEvents.Length; i++)
 			{
-				unlocked_Events.Add(EmailEvents[i]);
+				if (EmailEvents[i].IsUnlocked && !EmailEvents[i].IsCompleted)
+				{
+					unlocked_Events.Add(EmailEvents[i]);
+				}
+			}
+
+
+			if (unlocked_Events.Count < 1)
+			{
+				GameObject.Find("NotificationBubble").SetActive(false);
+				return (T)EmailEvents[0].ConvertTo(typeof(T));
+			}
+			else if (unlocked_Events.Count > 1)
+			{
+				GameObject.Find("NotificationBubble").SetActive(true);
+			}
+
+			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
+		}
+		else if (typeof(T).Equals(typeof(SocialEvent)))
+		{
+			List<SocialEvent> unlocked_Events = new List<SocialEvent>();
+			for (int i = 0; i < SocialEvents.Length; i++)
+			{
+				if (SocialEvents[i].IsUnlocked && !SocialEvents[i].IsCompleted)
+				{
+					unlocked_Events.Add(SocialEvents[i]);
+				}
+			}
+
+
+			if (unlocked_Events.Count < 1)
+			{
+				return (T)SocialEvents[0].ConvertTo(typeof(T));
+			}
+			
+			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
+		}
+		else
+		{
+			Debug.LogError($"Invalid event type {typeof(T)}");
+			if(typeof(T).Equals(typeof(EmailEvent))) 
+			{
+				return (T)EmailEvents[0].ConvertTo(typeof(T));
+			}
+			else
+			{
+				return (T)SocialEvents[0].ConvertTo(typeof(T));
 			}
 		}
+<<<<<<< Updated upstream
 
 		if(unlocked_Events.Count < 1)
 		{
@@ -176,6 +235,8 @@ public class EventManager
 		}
 	
 		return unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)];
+=======
+>>>>>>> Stashed changes
 	}
 
 	public void CompleteEvent(string EventName) 
@@ -188,7 +249,15 @@ public class EventManager
 				Debug.Log($"Set {EmailEvents[i].Data.EventName} to completed.");
 			}
 		}
-		
+		for (int i = 1; i < SocialEvents.Length; i++)
+		{
+			if (SocialEvents[i].Data.EventName == EventName)
+			{
+				SocialEvents[i].IsCompleted = true;
+				Debug.Log($"Set {SocialEvents[i].Data.EventName} to completed.");
+			}
+		}
+
 	}
 
 
