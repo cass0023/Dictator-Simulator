@@ -24,4 +24,7 @@ MonoBehaviour:
 
 
     - Anonymous'
-  ResponceOptions: []
+  ResponceOptions:
+  - ResponceText: Ok
+    StatsToChange: []
+    TriggerEventsList: []

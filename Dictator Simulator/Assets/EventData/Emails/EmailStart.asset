@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: EmailStart
+  m_EditorClassIdentifier: 
+  EventName: EmailStart
+  StatLocks: []
+  WeekLocks:
+  - WeekNum: 0
+    RequiredStatVal: 0
+  LockedByOtherEvent: 0
+  HasBeenUnlockedByEvent: 0
+  FromLine: caecus@yourcountry.com
+  ToLine: president@presidentemail.com
+  EmailContents: "Dear President,\n\nHey I'm ----, congratulations on becoming the
+    President of Caecus! I'm here to give you the run down of the office.\n\nOur
+    office runs on a \"week\" system where you have to complete your weekly list
+    of tasks. Weeks will be manually progressed through by walking up to the office
+    door and clicking \"End Week.\"\n\nTask's to complete each week:\n\n- Answer
+    emails\n- Post on social media\n- Check the news\n- Secure private files (not
+    in Alpha)\n- Check state of your country out the window (not in Alpha) \n\nWe
+    also just installed our brand new montitoring system! If you look above your
+    computer monitor you will see 4 different statistics:\n\nSanity\nApproval\nTrust\nFear\n\nIf
+    you have any questions feel free to email back!\n\n- The country of Caecus"
+  ResponceOptions:
+  - ResponceText: How many times can I complete each task per week?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: EmailStartQ1
+  - ResponceText: What does each stat mean?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: EmailStartQ2
+  - ResponceText: Awesome, thank you!
+    StatsToChange: []
+    TriggerEventsList: []
