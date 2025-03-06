@@ -10,7 +10,7 @@ public class ComputerInteract : MonoBehaviour
     public GameObject[] computerPages;
     public GameObject[] buttons;
     void Start(){
-        //socMediaManager = GetComponent<SocMediaManager>();
+        socMediaManager = GetComponent<SocMediaManager>();
     }
     //checks which computer icon is pressed with button input
     public void OnEmailClick(){
