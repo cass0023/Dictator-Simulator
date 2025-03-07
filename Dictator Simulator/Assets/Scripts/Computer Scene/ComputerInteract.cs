@@ -9,8 +9,15 @@ public class ComputerInteract : MonoBehaviour
     //Computer Icon Interacts
     public GameObject[] computerPages;
     public GameObject[] buttons;
+    private PlayerController playerController;
     void Start(){
         //socMediaManager = GetComponent<SocMediaManager>();
+        playerController = GetComponent<PlayerController>();
+    }
+    public void CloseComputer(){
+        InteractionManager.Instance.SwitchCamera("PlayerCam");
+        playerController.AllowMouseMovement();
+        playerController.canMove = true;
     }
     //checks which computer icon is pressed with button input
     public void OnEmailClick(){
