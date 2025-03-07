@@ -18,7 +18,6 @@ MonoBehaviour:
   - WeekNum: 5
     RequiredStatVal: 0
   LockedByOtherEvent: 1
-  HasBeenUnlockedByEvent: 0
   FromLine: minsterofimmigration@government.com
   ToLine: president@presidentemail.com
   EmailContents: 'Dear President,
@@ -43,8 +42,26 @@ MonoBehaviour:
     - Minster of Immigration'
   ResponceOptions:
   - ResponceText: 'Yes, I''ll sign! '
-    StatsToChange: []
-    TriggerEventsList: []
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: 0.05
+    - EffectedStat: 3
+      StatVal: 0.05
+    - EffectedStat: 2
+      StatVal: 0.1
+    - EffectedStat: 4
+      StatVal: -0.02
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email5.1
   - ResponceText: 'No, thank you. '
-    StatsToChange: []
-    TriggerEventsList: []
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 2
+      StatVal: -0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email5.2

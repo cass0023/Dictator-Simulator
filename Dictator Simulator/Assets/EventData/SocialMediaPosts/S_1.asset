@@ -14,14 +14,90 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: S_1
   StatLocks: []
-  WeekLocks: []
+  WeekLocks:
+  - WeekNum: 1
+    RequiredStatVal: 0
   LockedByOtherEvent: 0
-  BeforeFirstBlank: Hello
+  BeforeFirstBlank: 'I will be meeting with a '
   BlankInserts:
   - Options:
-    - OptionName: Option 1
+    - OptionName: reliable
+      StatsToChange:
+      - EffectedStat: 3
+        StatVal: 0.05
+      - EffectedStat: 1
+        StatVal: 0.05
+    - OptionName: corrupt
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.08
+      - EffectedStat: 3
+        StatVal: -0.1
+      - EffectedStat: 4
+        StatVal: 0.1
+    - OptionName: unique
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 2
+        StatVal: -0.05
+      - EffectedStat: 4
+        StatVal: 0.01
+    - OptionName: commited
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 3
+        StatVal: 0.05
+      - EffectedStat: 4
+        StatVal: -0.03
+    - OptionName: strict
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.05
+      - EffectedStat: 3
+        StatVal: -0.05
+      - EffectedStat: 4
+        StatVal: 0.05
+    TextAfterBlank: 'individual to talk about '
+  - Options:
+    - OptionName: our election
       StatsToChange: []
-    - OptionName: Option 2
+    - OptionName: our oil industry
       StatsToChange: []
-    TextAfterBlank: Text after blankl!!
-  SpecialCombos: []
+    - OptionName: the stock market
+      StatsToChange: []
+    - OptionName: government funding
+      StatsToChange: []
+    TextAfterBlank: .
+  SpecialCombos:
+  - ComboNames:
+    - corrupt
+    - our election
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 4
+      StatVal: 0.1
+  - ComboNames:
+    - corrupt
+    - government funding
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 4
+      StatVal: 0.1
+  - ComboNames:
+    - unique
+    - government funding
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: 0.02
+    - EffectedStat: 3
+      StatVal: -0.02
+    - EffectedStat: 2
+      StatVal: -0.02

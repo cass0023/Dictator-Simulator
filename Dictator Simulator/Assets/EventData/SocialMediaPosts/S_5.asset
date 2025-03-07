@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b82c25c83bd744fbb96862acdc2c9e, type: 3}
+  m_Name: S_5
+  m_EditorClassIdentifier: 
+  EventName: S_5
+  StatLocks: []
+  WeekLocks:
+  - WeekNum: 5
+    RequiredStatVal: 0
+  LockedByOtherEvent: 0
+  BeforeFirstBlank: 'During my presidency, work hours will '
+  BlankInserts:
+  - Options:
+    - OptionName: increase
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 2
+        StatVal: -0.1
+      - EffectedStat: 4
+        StatVal: 0.1
+    - OptionName: decrease
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 2
+        StatVal: 0.1
+      - EffectedStat: 4
+        StatVal: -0.05
+    TextAfterBlank: 'by '
+  - Options:
+    - OptionName: 2
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+    - OptionName: 3
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.05
+    - OptionName: 4
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.1
+    TextAfterBlank: hours for the wealth of Caecus and it's people.
+  SpecialCombos:
+  - ComboNames:
+    - increase
+    - 4
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.1
+    - EffectedStat: 2
+      StatVal: -0.15
+    - EffectedStat: 3
+      StatVal: -0.1
+    - EffectedStat: 4
+      StatVal: 0.15
+  - ComboNames:
+    - decrease
+    - 4
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.1
+    - EffectedStat: 2
+      StatVal: 0.15
+    - EffectedStat: 3
+      StatVal: 0.15
+    - EffectedStat: 4
+      StatVal: -0.2
