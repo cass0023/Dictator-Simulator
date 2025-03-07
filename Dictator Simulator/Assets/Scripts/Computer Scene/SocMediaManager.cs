@@ -34,7 +34,7 @@ public class SocMediaManager
 	}
 
 	//temp number for testing, checking if first input in events is working
-	[SerializeField]private int CurBlank = 0;
+	private int CurBlank = 0;
 
 	/// <summary>
 	/// Initialize a specific email from its file name. Does not check if it is unlocked or not.
@@ -51,32 +51,32 @@ public class SocMediaManager
 		GameObject.Find("ButtonPost").GetComponent<Button>().onClick.AddListener(act);
 
 		CurrentEvent = socialToLoad;
+		CurBlank = 0;
+		SelectedOptions.Clear();
 		string socialText = $"{socialToLoad.Data.BeforeFirstBlank}";
 
-		try
-		{
-			for (int i = 0; i < socialToLoad.Data.BlankInserts.Length; i++)
-			{
-				socialText += $" ______ {socialToLoad.Data.BlankInserts[i].TextAfterBlank}";
 
-			}
-		}
-		catch(IndexOutOfRangeException) 
+		for (int i = 0; i < socialToLoad.Data.BlankInserts.Length; i++)
 		{
-			//Do nothing
-		}
+			socialText += $" ______ {socialToLoad.Data.BlankInserts[i].TextAfterBlank}";
 
+		}
+		
 		SocialTextObject = GameObject.Find("T_SocialPost");
 		SocialTextObject.GetComponent<TextMeshProUGUI>().text = socialText;
 
 		ButtonsPanel = GameObject.Find("ButtonOptions");
 
+		LoadNextButtons();
+	}
+
+	private void LoadNextButtons()
+	{
 		for (int i = 0; i < Buttons.Count; i++)
 		{
-			Canvas.Destroy(Buttons[i]); //Not working
+			Canvas.Destroy(Buttons[i]);
 		}
 		Buttons.Clear();
-
 		try
 		{
 			if (CurrentEvent.Data.BlankInserts[CurBlank].Options.Length > 0)
@@ -85,7 +85,6 @@ public class SocMediaManager
 				{
 					CreateButton(option);
 				}
-
 			}
 		}
 		catch(IndexOutOfRangeException) { }
@@ -115,7 +114,7 @@ public class SocMediaManager
 		txt.horizontalAlignment = HorizontalAlignmentOptions.Center;
 		txt.verticalAlignment = VerticalAlignmentOptions.Middle;
 		txt.autoSizeTextContainer = true;
-		UnityAction act = new UnityAction(() => ResponceOnClick(oButton, option));
+		UnityAction act = new UnityAction(() => OptionOnClick(option));
 		button.onClick.AddListener(act);
 
 		oButton.transform.SetParent(ButtonsPanel.transform, false);
@@ -123,14 +122,17 @@ public class SocMediaManager
 		Buttons.Add(oButton);
 	}
 
-	void ResponceOnClick(GameObject button, BlankOption option)
+	void OptionOnClick(BlankOption option)
 	{
 		if(SelectedOptions.Count < CurrentEvent.Data.BlankInserts.Length)
 		{
 			SelectedOptions.Add(option);
-			UpdateSocialText();
-			button.SetActive(false);
+			CurBlank++;
+			LoadNextButtons();
 		}
+
+		UpdateSocialText();
+
 	}
 
 	/// <summary>
@@ -189,7 +191,14 @@ public class SocMediaManager
 
 			EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 			Debug.Log($"Posted social media post: {SocialTextObject.GetComponent<TextMeshProUGUI>().text}");
-			GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("SocMediaPopUp"));
+			try
+			{
+				GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("SocMediaPopUp"));
+			}
+			catch(Exception) 
+			{
+				
+			}
 			
 		}
 
@@ -201,7 +210,15 @@ public class SocMediaManager
 
 		for (int i = 0; i < CurrentEvent.Data.BlankInserts.Length; i++)
 		{
-			currentText += $" {SelectedOptions[i].OptionName} {CurrentEvent.Data.BlankInserts[i].TextAfterBlank}";
+			if(i < SelectedOptions.Count)
+			{
+				currentText += $" {SelectedOptions[i].OptionName} {CurrentEvent.Data.BlankInserts[i].TextAfterBlank}";
+			}
+			else
+			{
+				currentText += $" ______ {CurrentEvent.Data.BlankInserts[i].TextAfterBlank}";
+			}
+			
 		}
 
 		SocialTextObject.GetComponent<TextMeshProUGUI>().text = currentText;
