@@ -3344,41 +3344,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Emails:
   - {fileID: 11400000, guid: c665b3b97b334594f8a2a7c49983d4ff, type: 2}
-  - {fileID: 11400000, guid: 273050e8ae6094c4782dfcb76048fa84, type: 2}
-  - {fileID: 11400000, guid: 32d9e5cdfb6205447afa4b80f3e03ccb, type: 2}
-  - {fileID: 11400000, guid: cc3df1f337a894f49866d7be2f5f50eb, type: 2}
   - {fileID: 11400000, guid: 5e10e3d55d0ab4551b9a17ff7597db5d, type: 2}
   - {fileID: 11400000, guid: 66a917188a725b946a16f8909d831e98, type: 2}
   - {fileID: 11400000, guid: 2578a68f9ef9de040826b5eb5c18c632, type: 2}
   - {fileID: 11400000, guid: c7b1aa97b4088e744984701865f50dde, type: 2}
   - {fileID: 11400000, guid: 564a2fc2d282529438fa692a50540772, type: 2}
-  - {fileID: 11400000, guid: 43695480b08c8e243a1532a3c9b9c572, type: 2}
-  - {fileID: 11400000, guid: df5906fd11c976a4cad460378dae8c5f, type: 2}
-  - {fileID: 11400000, guid: 80b06c4b3b468d241a880a46897b65f9, type: 2}
-  - {fileID: 11400000, guid: ee8803bd32055c642a27acc203165709, type: 2}
-  - {fileID: 11400000, guid: 91602a904071fcf42bbd18b6c81b8b98, type: 2}
-  - {fileID: 11400000, guid: ceaff70d76d898a48b80dba42fe20385, type: 2}
-  - {fileID: 11400000, guid: e6bf59ca094a31e4aaec2391e4c8dfef, type: 2}
-  - {fileID: 11400000, guid: 332706ee22f056247b55ac053b7a9421, type: 2}
-  - {fileID: 11400000, guid: 82611036b28dadb40870d7d543267bf6, type: 2}
-  - {fileID: 11400000, guid: c457a45e49639404f9572f5143374afb, type: 2}
-  - {fileID: 11400000, guid: b74637c4c2915ce41bb4a47049b2aec7, type: 2}
-  - {fileID: 11400000, guid: 97bb636d766f4644e91d95e06cbd01f7, type: 2}
-  - {fileID: 11400000, guid: 26f9e13b054391149877657b047b9da2, type: 2}
-  - {fileID: 11400000, guid: fdb549dab3e5f414e80eb651322f97b0, type: 2}
-  - {fileID: 11400000, guid: 5603e826215a0d44f828356881f3f3a2, type: 2}
-  - {fileID: 11400000, guid: 0f8da6c5d30e32549a72a0be2c388b9d, type: 2}
-  - {fileID: 11400000, guid: ca95729d0789b2a4d9e00adc178795cf, type: 2}
-  - {fileID: 11400000, guid: 80af33c3c0f0cac449a8eedfdf928e16, type: 2}
-  - {fileID: 11400000, guid: 7bf1a740159e8b34fb038b4320f898ca, type: 2}
   SocialMedia:
-  - {fileID: 11400000, guid: 87a32d8ec1af11c4bb3fa2f3966201fb, type: 2}
   - {fileID: 11400000, guid: ece00d036fcb6624398f9de767939233, type: 2}
-  - {fileID: 11400000, guid: 3b6c7698fb8bf514c97344c43976a9c2, type: 2}
-  - {fileID: 11400000, guid: d48004999ffcf3c4c9f7d084eeda62c2, type: 2}
-  - {fileID: 11400000, guid: 57beadcd4aed76a4eb179370478bd3b0, type: 2}
-  - {fileID: 11400000, guid: 5a27f663eb9e06944a7ac7bbddecf189, type: 2}
-  - {fileID: 11400000, guid: 8031512f02158ec47afcbc99f9727da4, type: 2}
   Orders: []
 --- !u!1 &556634625
 GameObject:
@@ -5306,6 +5278,7 @@ RectTransform:
   m_Children:
   - {fileID: 1187566255}
   - {fileID: 200909618}
+  - {fileID: 1599886529}
   - {fileID: 1268792382}
   m_Father: {fileID: 692802374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8967,6 +8940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268792382}
+  - component: {fileID: 1268792383}
   m_Layer: 5
   m_Name: ButtonOptions
   m_TagString: Untagged
@@ -8985,8 +8959,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1599886529}
+  m_Children: []
   m_Father: {fileID: 890252839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8994,6 +8967,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1268792383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268792381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 10
+    m_Right: 10
+    m_Top: 10
+    m_Bottom: 10
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 350, y: 100}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!1 &1282761365
 GameObject:
   m_ObjectHideFlags: 0
@@ -10501,7 +10498,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1165975192}
-  m_Father: {fileID: 1268792382}
+  m_Father: {fileID: 890252839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10551,19 +10548,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1599886531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SocMediaManager, Assembly-CSharp
-        m_MethodName: OnPostClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1599886531
 MonoBehaviour:
   m_ObjectHideFlags: 0

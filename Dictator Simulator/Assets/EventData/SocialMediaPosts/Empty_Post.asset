@@ -16,6 +16,6 @@ MonoBehaviour:
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 0
-  BeforeFirstBlank: 
+  BeforeFirstBlank: Nothing to post right now.
   BlankInserts: []
   SpecialCombos: []
