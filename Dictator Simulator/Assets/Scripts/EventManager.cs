@@ -232,12 +232,12 @@ public class EventManager
 
 			if (unlocked_Events.Count < 1)
 			{
-				GameObject.Find("NotificationBubble").SetActive(false);
+				//GameObject.Find("NotificationBubble").SetActive(false);
 				return (T)EmailEvents[0].ConvertTo(typeof(T));
 			}
 			else if (unlocked_Events.Count > 1)
 			{
-				GameObject.Find("NotificationBubble").SetActive(true);
+				//GameObject.Find("NotificationBubble").SetActive(true);
 			}
 
 			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
