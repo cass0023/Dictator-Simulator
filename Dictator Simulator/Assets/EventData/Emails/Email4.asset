@@ -18,7 +18,6 @@ MonoBehaviour:
   - WeekNum: 4
     RequiredStatVal: 0
   LockedByOtherEvent: 0
-  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "Dear President,\n\nWe have ships stopped by the Marine unit that
@@ -36,7 +35,9 @@ MonoBehaviour:
       StatVal: -0.1
     - EffectedStat: 4
       StatVal: 0.15
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email4.1
   - ResponceText: 'No, I''m not going to call. '
     StatsToChange:
     - EffectedStat: 1
@@ -47,10 +48,16 @@ MonoBehaviour:
       StatVal: 0.05
     - EffectedStat: 4
       StatVal: -0.05
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email4.2
   - ResponceText: 'What''s on the ships? '
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email4.3
   - ResponceText: 'Can the favour be used for anything? '
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email4.4
