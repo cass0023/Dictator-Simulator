@@ -70,6 +70,7 @@ public class EmailManager
 		rButton.AddComponent<RectTransform>();
 		rButton.AddComponent<CanvasRenderer>();
 		rButton.AddComponent<Image>();
+		rButton.AddComponent<HorizontalLayoutGroup>();
 		button.targetGraphic = rButton.GetComponent<Image>();
 		
 
