@@ -10,64 +10,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24b82c25c83bd744fbb96862acdc2c9e, type: 3}
-  m_Name: S_2
+  m_Name: S_3.1
   m_EditorClassIdentifier: 
-  EventName: S_2
+  EventName: S_3.1
   StatLocks: []
   WeekLocks:
-  - WeekNum: 2
+  - WeekNum: 3
     RequiredStatVal: 0
-  LockedByOtherEvent: 0
-  BeforeFirstBlank: 'Now that I''m President, I plan on give free access to '
+  LockedByOtherEvent: 1
+  BeforeFirstBlank: 'We appreciate all the hard working citizens in Caecus making
+    us a '
   BlankInserts:
   - Options:
-    - OptionName: guns
+    - OptionName: free
       StatsToChange:
       - EffectedStat: 1
-        StatVal: -0.05
-      - EffectedStat: 2
+        StatVal: 0.05
+      - EffectedStat: 3
+        StatVal: 0.05
+    - OptionName: dominating
+      StatsToChange:
+      - EffectedStat: 1
         StatVal: -0.1
       - EffectedStat: 4
         StatVal: 0.1
-    - OptionName: liquor
+    - OptionName: relentless
       StatsToChange:
       - EffectedStat: 1
         StatVal: -0.05
-      - EffectedStat: 2
-        StatVal: -0.1
       - EffectedStat: 3
         StatVal: -0.05
       - EffectedStat: 4
         StatVal: 0.1
-    - OptionName: healthcare
+    - OptionName: resourceful
       StatsToChange:
       - EffectedStat: 1
-        StatVal: 0.1
-      - EffectedStat: 2
-        StatVal: 0.1
-      - EffectedStat: 3
         StatVal: 0.05
-      - EffectedStat: 4
-        StatVal: -0.15
-    - OptionName: gambling
-      StatsToChange:
-      - EffectedStat: 1
-        StatVal: -0.05
-      - EffectedStat: 2
-        StatVal: -0.05
-      - EffectedStat: 3
-        StatVal: -0.05
-      - EffectedStat: 4
-        StatVal: 0.1
-    - OptionName: education
-      StatsToChange:
-      - EffectedStat: 1
-        StatVal: 0.1
       - EffectedStat: 2
         StatVal: 0.05
       - EffectedStat: 3
-        StatVal: 0.1
+        StatVal: 0.05
       - EffectedStat: 4
         StatVal: -0.05
-    TextAfterBlank: to ALL Caecus citizens, no matter your age!
+    - OptionName: rich
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 3
+        StatVal: 0.05
+      - EffectedStat: 2
+        StatVal: -0.05
+      - EffectedStat: 4
+        StatVal: -0.01
+    TextAfterBlank: nation.
   SpecialCombos: []

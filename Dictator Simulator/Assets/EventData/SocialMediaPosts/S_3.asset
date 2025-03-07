@@ -10,64 +10,62 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24b82c25c83bd744fbb96862acdc2c9e, type: 3}
-  m_Name: S_2
+  m_Name: S_3
   m_EditorClassIdentifier: 
-  EventName: S_2
+  EventName: S_3
   StatLocks: []
   WeekLocks:
-  - WeekNum: 2
+  - WeekNum: 3
     RequiredStatVal: 0
-  LockedByOtherEvent: 0
-  BeforeFirstBlank: 'Now that I''m President, I plan on give free access to '
+  LockedByOtherEvent: 1
+  BeforeFirstBlank: 'The story of the anonymos shipment into Caecus is '
   BlankInserts:
   - Options:
-    - OptionName: guns
+    - OptionName: 'nothing '
       StatsToChange:
       - EffectedStat: 1
         StatVal: -0.05
+      - EffectedStat: 3
+        StatVal: 0.1
+      - EffectedStat: 4
+        StatVal: -0.05
+    - OptionName: something
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 3
+        StatVal: -0.1
+      - EffectedStat: 2
+        StatVal: 0.05
+      - EffectedStat: 4
+        StatVal: 0.1
+    TextAfterBlank: 'to worry about. It was just Daintree moving '
+  - Options:
+    - OptionName: sketchy
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: 0.05
+      - EffectedStat: 3
+        StatVal: -0.05
+      - EffectedStat: 4
+        StatVal: 0.05
+    - OptionName: unmarked
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.05
+      - EffectedStat: 3
+        StatVal: -0.05
+      - EffectedStat: 4
+        StatVal: 0.05
+    - OptionName: empty
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.1
+      - EffectedStat: 3
+        StatVal: -0.1
       - EffectedStat: 2
         StatVal: -0.1
       - EffectedStat: 4
-        StatVal: 0.1
-    - OptionName: liquor
-      StatsToChange:
-      - EffectedStat: 1
         StatVal: -0.05
-      - EffectedStat: 2
-        StatVal: -0.1
-      - EffectedStat: 3
-        StatVal: -0.05
-      - EffectedStat: 4
-        StatVal: 0.1
-    - OptionName: healthcare
-      StatsToChange:
-      - EffectedStat: 1
-        StatVal: 0.1
-      - EffectedStat: 2
-        StatVal: 0.1
-      - EffectedStat: 3
-        StatVal: 0.05
-      - EffectedStat: 4
-        StatVal: -0.15
-    - OptionName: gambling
-      StatsToChange:
-      - EffectedStat: 1
-        StatVal: -0.05
-      - EffectedStat: 2
-        StatVal: -0.05
-      - EffectedStat: 3
-        StatVal: -0.05
-      - EffectedStat: 4
-        StatVal: 0.1
-    - OptionName: education
-      StatsToChange:
-      - EffectedStat: 1
-        StatVal: 0.1
-      - EffectedStat: 2
-        StatVal: 0.05
-      - EffectedStat: 3
-        StatVal: 0.1
-      - EffectedStat: 4
-        StatVal: -0.05
-    TextAfterBlank: to ALL Caecus citizens, no matter your age!
+    TextAfterBlank: boxes into their new Caecus office.
   SpecialCombos: []
