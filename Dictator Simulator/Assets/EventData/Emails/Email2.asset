@@ -18,7 +18,6 @@ MonoBehaviour:
   - WeekNum: 2
     RequiredStatVal: 0
   LockedByOtherEvent: 0
-  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "Good morning President, \n\nWe have some business to take care
@@ -54,7 +53,11 @@ MonoBehaviour:
       TriggerEventName: Email6
   - ResponceText: What business do you have in my country?
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email2.3
   - ResponceText: How will it benefit me in the future?
     StatsToChange: []
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email2.4

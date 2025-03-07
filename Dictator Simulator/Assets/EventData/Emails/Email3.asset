@@ -53,4 +53,4 @@ MonoBehaviour:
     StatsToChange: []
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: 3.3
+      TriggerEventName: Email3.3
