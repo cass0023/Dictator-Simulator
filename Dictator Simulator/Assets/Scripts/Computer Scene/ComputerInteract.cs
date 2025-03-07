@@ -16,9 +16,12 @@ public class ComputerInteract : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
     public void CloseComputer(){
-        InteractionManager.Instance.SwitchCamera("PlayerCam");
-        GetComponent<PlayerController>().AllowMouseMovement();
-        GetComponent<PlayerController>().canMove = true;
+        try{
+            InteractionManager.Instance.SwitchCamera("PlayerCam");
+            GetComponent<PlayerController>().AllowMouseMovement();
+            GetComponent<PlayerController>().canMove = true;
+        }
+        catch { }
     }
     //checks which computer icon is pressed with button input
     public void OnEmailClick(){
