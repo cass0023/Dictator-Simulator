@@ -18,7 +18,7 @@ MonoBehaviour:
   - WeekNum: 2
     RequiredStatVal: 0
   LockedByOtherEvent: 0
-  BeforeFirstBlank: 'Now that I''m President, I plan on give free access to '
+  BeforeFirstBlank: 'Now that I''m President, I plan on giving free access to '
   BlankInserts:
   - Options:
     - OptionName: guns
