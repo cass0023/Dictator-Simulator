@@ -10790,7 +10790,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1413491569}
   - component: {fileID: 1413491571}
-  - component: {fileID: 1413491570}
   m_Layer: 0
   m_Name: ComputerManager
   m_TagString: Untagged
@@ -10813,40 +10812,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 16638568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1413491570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413491568}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d5bcab3d5338645ad80b77e64d1786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugSanity: 0
-  debugApproval: 0
-  debugTrust: 0
-  debugFear: 0
-  SocMediaEvents:
-  - postName: a
-    beforeBlank: aa
-    afterBlank: bb
-    Options:
-    - name: 1
-      sanity: 0
-      approval: 0
-      trust: 0
-      fear: 0
-    - name: 2
-      sanity: 0
-      approval: 0
-      trust: 0
-      fear: 0
-  x: 0
-  buttonOptions: []
-  tweetText: {fileID: 0}
 --- !u!114 &1413491571
 MonoBehaviour:
   m_ObjectHideFlags: 0
