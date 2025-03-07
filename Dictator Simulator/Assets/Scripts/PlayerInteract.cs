@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerInteract : MonoBehaviour
 {
     //interact variables
     private bool tvInteract, computerInteract, doorInteract;
     [SerializeField]private KeyCode interact;
+    private PlayerController playerController;
+    //UI
+    private bool canInteract;
+    public GameObject interactText;
+    public GameObject exitText;
     public GameObject newWeekPopUp;
     public GameObject debugMenu;
-    private PlayerController playerController;
+    public AudioSource mouseClickDown;
+    public AudioSource mouseClickUp; 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -20,6 +27,7 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         CheckInput();
+        InteractUI();
     }
     //Triggers and Interact
     public void CheckInput(){
@@ -50,7 +58,35 @@ public class PlayerInteract : MonoBehaviour
             newWeekPopUp.SetActive(true);
         }
 	}
+    void InteractUI(){
+        //interact ui
+        //changes based on if player enters trigger or presses interact
+        if(canInteract){
+            interactText.SetActive(true);
+        }
+        if(canInteract = false || Input.GetKeyDown(interact) && interactText.activeSelf){
+            canInteract = false;
+            interactText.SetActive(false);
+        }
+        //exit ui
+        //turns off and on based on what camera is active
+        CinemachineBrain ActiveCamera = GameObject.Find("Main Camera").GetComponent<CinemachineBrain>();
+        if(ActiveCamera.ActiveVirtualCamera.Name != "PlayerCam"){
+            exitText.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseClickDown.Play();
+            }
+        }
+        else{
+            exitText.SetActive(false);
+        }
+        
+    }
         void OnTriggerEnter(Collider collider){
+        if(canInteract == false){
+            canInteract = true;
+        }
         if (collider.gameObject.name == "StatScreenZone"){
             tvInteract = true;
         }
@@ -62,6 +98,8 @@ public class PlayerInteract : MonoBehaviour
         }
     }
     void OnTriggerExit(Collider collider){
+        interactText.SetActive(false);
+        canInteract = false;
 		tvInteract = false;
         computerInteract = false;
         doorInteract = false;
