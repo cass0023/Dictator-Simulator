@@ -3799,6 +3799,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606961731}
   m_CullTransparentMesh: 1
+--- !u!114 &626279804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8484764228882257500, guid: afdb7edd0ac88ac499ff67db25bccaa7, type: 3}
+  m_PrefabInstance: {fileID: 2716123110770044507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc61233edc3b814298d99f05fe95e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &651661606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5655,8 +5666,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60.000004
+  far clip plane: 5000
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5682,8 +5693,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00016571936, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 16.559391, y: 3.13, z: 3.1100001}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 16.65, y: 3.67, z: 4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6275,6 +6286,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f8399b109821e7c43a5e88aee5bfb134, type: 2}
+    - target: {fileID: -7468622475901677518, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.8024445
+      objectReference: {fileID: 0}
+    - target: {fileID: -7233630427155803586, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.971
+      objectReference: {fileID: 0}
     - target: {fileID: -7090172708948836902, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6407,6 +6426,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 88.789
       objectReference: {fileID: 0}
+    - target: {fileID: 132372253720954067, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.8024445
+      objectReference: {fileID: 0}
     - target: {fileID: 317933351618970279, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6479,6 +6502,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 02f941ac4e47d2841b7816d314cfd8d9, type: 2}
+    - target: {fileID: 4416035361080874714, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.971
+      objectReference: {fileID: 0}
     - target: {fileID: 4449335791113873166, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9024,9 +9051,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 626279804}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: AllowMouseMovement
+        m_MethodName: TurnPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

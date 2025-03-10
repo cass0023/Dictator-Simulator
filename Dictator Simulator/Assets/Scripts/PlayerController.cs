@@ -80,6 +80,9 @@ public class PlayerController : MonoBehaviour
         cameraAxisX = 0;
         cameraAxisY = 0;
     }
+    public void TurnPlayer(){
+        AllowMouseMovement();
+    }
     void OnCollisionEnter(Collision collision){
         //checks if player can jump (booo i just dont wanna raycast)
         if(collision.gameObject.name == "Floor"){
