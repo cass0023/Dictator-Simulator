@@ -22,6 +22,7 @@ public class SocMediaManager
 	SocialEvent CurrentEvent;
 
 	List<BlankOption> SelectedOptions = new List<BlankOption>();
+	bool PressedPost = false;
 
 	private SocMediaManager()
 	{
@@ -52,6 +53,7 @@ public class SocMediaManager
 
 		CurrentEvent = socialToLoad;
 		CurBlank = 0;
+		PressedPost = false;
 		SelectedOptions.Clear();
 		string socialText = $"{socialToLoad.Data.BeforeFirstBlank}";
 
@@ -140,7 +142,7 @@ public class SocMediaManager
 	/// </summary>
 	public void PostOnClick()
 	{
-		if(CurrentEvent.Data.EventName == "Empty_Post")
+		if(CurrentEvent.Data.EventName == "Empty_Post" || PressedPost)
 		{
 			return;
 		}
@@ -191,14 +193,10 @@ public class SocMediaManager
 
 			EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 			Debug.Log($"Posted social media post: {SocialTextObject.GetComponent<TextMeshProUGUI>().text}");
-			try
-			{
-				GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("SocMediaPopUp"));
-			}
-			catch(Exception) 
-			{
-				
-			}
+			
+			GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("SocMediaPopUp"));
+
+			PressedPost = true;
 			
 		}
 
