@@ -114,6 +114,12 @@ public class EmailManager
 				ee.HasBeenUnlockedByEvent = true;
 				Debug.Log($"{ee.Data.EventName} Has been unlocked by another event");
 			}
+			else if (e.Type == EventType.SOCIAL) 
+			{
+				SocialEvent ee = EventManager.Instance.GetEvent<SocialEvent, ScriptableSocialMedia>(e.TriggerEventName);
+				ee.HasBeenUnlockedByEvent = true;
+				Debug.Log($"{ee.Data.EventName} Has been unlocked by another event");
+			}
 		}
 
 

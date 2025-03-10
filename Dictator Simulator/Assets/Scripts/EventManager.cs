@@ -297,6 +297,7 @@ public class EventManager
 				Debug.Log($"Set {SocialEvents[i].Data.EventName} to completed.");
 			}
 		}
+		UpdateEventState();
 
 	}
 }
