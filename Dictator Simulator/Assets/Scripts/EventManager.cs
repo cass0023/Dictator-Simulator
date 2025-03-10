@@ -238,7 +238,7 @@ public class EventManager
 				notificationBubble.SetActive(false);
 				return (T)EmailEvents[0].ConvertTo(typeof(T));
 			}
-			else if (unlocked_Events.Count > 1)
+			else if (unlocked_Events.Count >= 1)
 			{
 				notificationBubble.SetActive(true);
 			}
