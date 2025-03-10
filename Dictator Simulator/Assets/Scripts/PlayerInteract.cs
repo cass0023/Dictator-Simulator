@@ -80,6 +80,7 @@ public class PlayerInteract : MonoBehaviour
         CinemachineBrain ActiveCamera = GameObject.Find("Main Camera").GetComponent<CinemachineBrain>();
         if(ActiveCamera.ActiveVirtualCamera.Name != "PlayerCam"){
             exitText.SetActive(true);
+            interactText.SetActive(false);
             if (Input.GetMouseButtonDown(0))
             {
                 mouseClickDown.Play();
