@@ -20,6 +20,7 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        interactText.SetActive(false);
         tvInteract = false;
         computerInteract = false;
         doorInteract = false;
