@@ -3425,6 +3425,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57beadcd4aed76a4eb179370478bd3b0, type: 2}
   - {fileID: 11400000, guid: 5a27f663eb9e06944a7ac7bbddecf189, type: 2}
   - {fileID: 11400000, guid: 8031512f02158ec47afcbc99f9727da4, type: 2}
+  News:
+  - {fileID: 11400000, guid: a4f6cdca09d3e964fa9ae8e7645fa2a3, type: 2}
   Orders: []
 --- !u!1001 &548515819
 PrefabInstance:
@@ -10034,7 +10036,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1413491569}
   - component: {fileID: 1413491571}
-  - component: {fileID: 1413491572}
   m_Layer: 0
   m_Name: ComputerManager
   m_TagString: Untagged
@@ -10079,23 +10080,6 @@ MonoBehaviour:
   - {fileID: 296774847}
   - {fileID: 2005410501}
   - {fileID: 1508743337}
---- !u!114 &1413491572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413491568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af8789ba8671284bb3426d888306d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newsHeadline:
-  - Newly Elected President Takes Office
-  - New President Seems Promising
-  - President Speaks Out on Ex
-  - AAAAA
 --- !u!1 &1425505197
 GameObject:
   m_ObjectHideFlags: 3

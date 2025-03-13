@@ -37,7 +37,8 @@ public class ComputerInteract : MonoBehaviour
     public void OnNewsClick(){
         computerPages[2].SetActive(true);
         DeactivateButtons();
-    }
+		GameManager.Instance.LoadStaticEvents<NewsEvent, ScriptableNews>();
+	}
     public void OnPrivateClick(){
         computerPages[3].SetActive(true);
         DeactivateButtons();

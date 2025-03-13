@@ -22,6 +22,13 @@ public class SocialEvent : IIsEvent<ScriptableSocialMedia>
 	public bool IsUnlocked { get; set; }
 	public bool IsCompleted { get; set; }
 }
+public class NewsEvent : IIsEvent<ScriptableNews>
+{
+	public ScriptableNews Data { get; set; }
+	public bool HasBeenUnlockedByEvent { get; set; }
+	public bool IsUnlocked { get; set; }
+	public bool IsCompleted { get; set; }
+}
 
 public interface IIsEvent<T>
 { 
@@ -36,6 +43,7 @@ public class EventManager
 {
 	public EmailEvent[] EmailEvents;
 	public SocialEvent[] SocialEvents;
+	public NewsEvent[] NewsEvents;
 	private AllEventsContainer AllEvents;
 	bool Loaded = false;
 
@@ -57,6 +65,8 @@ public class EventManager
 		AllEvents = GameObject.Find("AllEventsContainer").GetComponent<AllEventsContainer>();
 		EmailEvents = new EmailEvent[AllEvents.Emails.Length];
 		SocialEvents = new SocialEvent[AllEvents.SocialMedia.Length];
+		NewsEvents = new NewsEvent[AllEvents.News.Length];
+		
 		//Load Emails
 		for (int i = 0; i < AllEvents.Emails.Length; i++)
 		{
@@ -72,6 +82,15 @@ public class EventManager
 			socialEvent.Data = AllEvents.SocialMedia[i];
 			SocialEvents[i] = socialEvent;
 			socialEvent.HasBeenUnlockedByEvent = false;
+		}
+
+		//Load News
+		for (int i = 0; i < AllEvents.News.Length; i++)
+		{
+			NewsEvent newsEvent = new NewsEvent();
+			newsEvent.Data = AllEvents.News[i];
+			NewsEvents[i] = newsEvent;
+			newsEvent.HasBeenUnlockedByEvent = false;
 		}
 
 		notificationBubble = GameObject.Find("NotificationBubble");
@@ -96,9 +115,16 @@ public class EventManager
 		}
 		if (SocialEvents != null)
 		{
-			for (int i = 1; i < SocialEvents.Length; i++) //Start at 1 because of empty email
+			for (int i = 1; i < SocialEvents.Length; i++) //Start at 1 because of empty Social post
 			{
 				SocialEvents[i].IsUnlocked = CheckUnlock<SocialEvent, ScriptableSocialMedia>(SocialEvents[i]);
+			}
+		}
+		if (NewsEvents != null)
+		{
+			for (int i = 1; i < NewsEvents.Length; i++) //Start at 1 because of empty News
+			{
+				NewsEvents[i].IsUnlocked = CheckUnlock<NewsEvent, ScriptableNews>(NewsEvents[i]);
 			}
 		}
 	}
@@ -208,6 +234,19 @@ public class EventManager
 			Debug.LogError($"{EventName} does not exist in the list of events. Returning empty social post event.");
 			return (T)SocialEvents[0].ConvertTo(typeof(T));
 		}
+		else if (typeof(T).Equals(typeof(NewsEvent)))
+		{
+			for (int i = 1; i < NewsEvents.Length; i++)
+			{
+				if (NewsEvents[i].Data.EventName == EventName)
+				{
+					return (T)NewsEvents[i].ConvertTo(typeof(T));
+				}
+			}
+
+			Debug.LogError($"{EventName} does not exist in the list of events. Returning empty social post event.");
+			return (T)NewsEvents[0].ConvertTo(typeof(T));
+		}
 		else
 		{
 			Debug.LogError($"Type {typeof(T)} does not exist as a type of event that can be retrieved.");
@@ -265,6 +304,25 @@ public class EventManager
 
 			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
 		}
+		else if (typeof(T).Equals(typeof(NewsEvent)))
+		{
+			List<NewsEvent> unlocked_Events = new List<NewsEvent>();
+			for (int i = 0; i < NewsEvents.Length; i++)
+			{
+				if (NewsEvents[i].IsUnlocked && !NewsEvents[i].IsCompleted)
+				{
+					unlocked_Events.Add(NewsEvents[i]);
+				}
+			}
+
+
+			if (unlocked_Events.Count < 1)
+			{
+				return (T)NewsEvents[0].ConvertTo(typeof(T));
+			}
+
+			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
+		}
 		else
 		{
 			Debug.LogError($"Invalid event type {typeof(T)}");
@@ -272,9 +330,13 @@ public class EventManager
 			{
 				return (T)EmailEvents[0].ConvertTo(typeof(T));
 			}
-			else
+			else if(typeof(T).Equals(typeof(SocialEvent)))
 			{
 				return (T)SocialEvents[0].ConvertTo(typeof(T));
+			}
+			else
+			{
+				return (T)NewsEvents[0].ConvertTo(typeof(T));
 			}
 		}
 	}
@@ -295,6 +357,14 @@ public class EventManager
 			{
 				SocialEvents[i].IsCompleted = true;
 				Debug.Log($"Set {SocialEvents[i].Data.EventName} to completed.");
+			}
+		}
+		for (int i = 1; i < NewsEvents.Length; i++)
+		{
+			if (NewsEvents[i].Data.EventName == EventName)
+			{
+				NewsEvents[i].IsCompleted = true;
+				Debug.Log($"Set {NewsEvents[i].Data.EventName} to completed.");
 			}
 		}
 		UpdateEventState();

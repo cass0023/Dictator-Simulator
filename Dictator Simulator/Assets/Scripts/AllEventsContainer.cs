@@ -12,6 +12,9 @@ public class AllEventsContainer : MonoBehaviour
 	[Header("Social Media Event List")]
 	public ScriptableSocialMedia[] SocialMedia;
 
+	[Header("News Event List")]
+	public ScriptableNews[] News;
+
 	[Header("Executive Order Event List")]
 	public ScriptableEvent[] Orders;
 

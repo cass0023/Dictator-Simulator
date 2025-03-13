@@ -72,6 +72,10 @@ public class GameManager
 		{
 			SocMediaManager.Instance.InitializeSocial((SocialEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
 		}
+		if (typeof(T).Equals(typeof(NewsEvent)))
+		{
+			NewsManager.Instance.InitializeNews((NewsEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
+		}
 	}
 
 }
