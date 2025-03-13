@@ -16,7 +16,7 @@ public class AllEventsContainer : MonoBehaviour
 	public ScriptableNews[] News;
 
 	[Header("Executive Order Event List")]
-	public ScriptableEvent[] Orders;
+	public ScriptableOrder[] Orders;
 
 	public static AllEventsContainer instance;
 

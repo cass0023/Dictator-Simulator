@@ -3427,7 +3427,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8031512f02158ec47afcbc99f9727da4, type: 2}
   News:
   - {fileID: 11400000, guid: a4f6cdca09d3e964fa9ae8e7645fa2a3, type: 2}
-  Orders: []
+  Orders:
+  - {fileID: 11400000, guid: c26385a6cb1785f44ab6a8a7702c79f7, type: 2}
 --- !u!1001 &548515819
 PrefabInstance:
   m_ObjectHideFlags: 0
