@@ -45,7 +45,11 @@ public class PlayerInteract : MonoBehaviour
             InteractionManager.Instance.SwitchCamera("ComCamera");
             //playerController.canMove = false;
             playerController.StopMouseMovement();
-        }
+			GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>();
+			GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
+			GameManager.Instance.LoadStaticEvents<NewsEvent, ScriptableNews>();
+
+		}
         if(Input.GetKeyDown(interact) && doorInteract){
             playerController.canMoveMouse = false;
             Debug.Log("Door interacted");
@@ -54,7 +58,7 @@ public class PlayerInteract : MonoBehaviour
         if(Input.GetKeyDown(interact) && execOrderInteract){
             InteractionManager.Instance.SwitchCamera("ExecOrderCamera");
             playerController.canMove = false;
-        }
+		}
         if(Input.GetKeyDown(interact) && calendarInteract){
             InteractionManager.Instance.SwitchCamera("CalendarCamera");
         }
@@ -63,6 +67,7 @@ public class PlayerInteract : MonoBehaviour
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
             playerController.AllowMouseMovement();
             playerController.canMove = true;
+			GameManager.Instance.LoadStaticEvents<OrderEvent, ScriptableOrder>();
 		}
 	}
     void InteractUI(){
