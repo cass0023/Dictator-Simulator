@@ -24,6 +24,13 @@ public class ScriptableOrder : ScriptableObject, IUnlockable
 	[TextArea(1, 10), Tooltip("Any details about what the order does.")]
 	public string OrderDetails;
 
+	[Tooltip("The stats that change if the player signs the executive order.")]
+	public StatValPair[] StatChangeOnSign;
+
+	[Tooltip("The stats that change if the player does not sign the executive order.")]
+	public StatValPair[] StatChangeOnDecline;
+
+
 	string IUnlockable.EventName { get => EventName; }
 	UnlockEventByStatData[] IUnlockable.StatLocks { get => StatLocks; }
 	UnlockEventByWeekData[] IUnlockable.WeekLocks { get => WeekLocks; }

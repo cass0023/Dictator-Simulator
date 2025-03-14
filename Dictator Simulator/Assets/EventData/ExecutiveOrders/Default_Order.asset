@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Default_Order
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 2
-    RequiredStatVal: 2
+  WeekLocks: []
   LockedByOtherEvent: 0
-  OrderTitle: Test order
-  OrderDetails: This is a test order
+  OrderTitle: No new orders
+  OrderDetails: 
+  StatChangeOnSign: []
+  StatChangeOnDecline: []
