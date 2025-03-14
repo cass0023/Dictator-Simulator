@@ -7720,6 +7720,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5e0d7af230c1d574fa334e96aaf41709, type: 2}
+    - target: {fileID: -3674641050883158523, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
+      propertyPath: m_Name
+      value: BethColliders
+      objectReference: {fileID: 0}
     - target: {fileID: -3313041626991966318, guid: ef8ba34bf8b0e1d4a883fe2b9da016e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
