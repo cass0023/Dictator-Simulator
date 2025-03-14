@@ -25,15 +25,16 @@ public class OrderManager
 		get { return instance; }
 	}
 
-	public void InitializeNews(OrderEvent newsToLoad)
+	public void InitializeOrder(OrderEvent orderToLoad)
 	{
-		if (newsToLoad.Data.EventName == null)
+		//was originally newsToLoad, changed for bug fixing
+		if (orderToLoad.Data.EventName == null)
 		{
 			Debug.LogError("Invalid event to intialize.");
 			return;
 		}
 
-		CurrentEvent = newsToLoad;
+		CurrentEvent = orderToLoad;
 
 		OrderTitleObject = GameObject.Find("T_OrderTitle");
 		OrderTitleObject.GetComponent<TextMeshProUGUI>().text = CurrentEvent.Data.OrderTitle;

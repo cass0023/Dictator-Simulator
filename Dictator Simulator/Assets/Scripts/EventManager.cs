@@ -392,6 +392,11 @@ public class EventManager
 			{
 				return (T)SocialEvents[0].ConvertTo(typeof(T));
 			}
+			//c&p and changed var to match orders
+			else if(typeof(T).Equals(typeof(OrderEvent)))
+			{
+				return (T)OrderEvents[0].ConvertTo(typeof(T));
+			}
 			else
 			{
 				return (T)NewsEvents[0].ConvertTo(typeof(T));

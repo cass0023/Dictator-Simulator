@@ -76,6 +76,11 @@ public class GameManager
 		{
 			NewsManager.Instance.InitializeNews((NewsEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
 		}
+        //copy and pasted the other if statement and changed it to order var
+        if (typeof(T).Equals(typeof(OrderEvent)))
+		{
+			OrderManager.Instance.InitializeOrder((OrderEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
+		}
 	}
 
 }
