@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class ComputerInteract : MonoBehaviour
 {
-    private SocMediaManager socMediaManager;
     //Computer Icon Interacts
     public GameObject[] computerPages;
     public GameObject[] buttons;
-    private PlayerController playerController;
+    private ScrollRect resetScroll;
     void Start(){
-        //socMediaManager = GetComponent<SocMediaManager>();
-        playerController = GetComponent<PlayerController>();
+
     }
     public void CloseComputer(){
         try{
@@ -28,7 +27,8 @@ public class ComputerInteract : MonoBehaviour
         computerPages[0].SetActive(true);
         DeactivateButtons();
 		GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>(); //Setting stuff active / inactive causes problems searching for the UI to change
-	}
+        resetScroll = GameObject.Find("EmailScrollView").GetComponent<ScrollRect>();
+    }
     public void OnSocMediaClick(){
         computerPages[1].SetActive(true);
         DeactivateButtons();
@@ -58,6 +58,9 @@ public class ComputerInteract : MonoBehaviour
 
     public void ClosePage(GameObject pageToDisable)
     {
+        if(pageToDisable.name == "EmailPopUp"){
+            resetScroll.verticalNormalizedPosition = 1f;
+        }
 		pageToDisable.SetActive(false);
         ReactivateButtons();
 	}

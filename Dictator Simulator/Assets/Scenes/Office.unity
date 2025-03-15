@@ -6302,7 +6302,7 @@ GameObject:
   - component: {fileID: 873063831}
   - component: {fileID: 873063830}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: EmailScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
