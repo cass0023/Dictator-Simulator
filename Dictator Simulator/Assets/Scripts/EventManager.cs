@@ -57,7 +57,8 @@ public class EventManager
 	private AllEventsContainer AllEvents;
 	bool Loaded = false;
 
-	private GameObject notificationBubble;
+	private GameObject emailNotif;
+	private GameObject socMediaNotif;
 
 	private static EventManager instance = new EventManager();
 	private EventManager()
@@ -112,7 +113,8 @@ public class EventManager
 			orderEvent.HasBeenUnlockedByEvent = false;
 		}
 
-		notificationBubble = GameObject.Find("NotificationBubble");
+		emailNotif = GameObject.Find("EmailNotif");
+		socMediaNotif = GameObject.Find("SocMediaNotif");
 
 		Loaded = true;
 		Debug.Log("Loaded all events.");
@@ -313,12 +315,12 @@ public class EventManager
 
 			if (unlocked_Events.Count < 1)
 			{
-				notificationBubble.SetActive(false);
+				emailNotif.SetActive(false);
 				return (T)EmailEvents[0].ConvertTo(typeof(T));
 			}
 			else if (unlocked_Events.Count >= 1)
 			{
-				notificationBubble.SetActive(true);
+				emailNotif.SetActive(true);
 			}
 
 			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
@@ -338,8 +340,14 @@ public class EventManager
 
 			if (unlocked_Events.Count < 1)
 			{
+				//socMediaNotif.SetActive(false);
 				return (T)SocialEvents[0].ConvertTo(typeof(T));
 			}
+			//doesnt work yet, is loading after the tab is window is open
+			//else if (unlocked_Events.Count >= 1)
+			//{
+				//socMediaNotif.SetActive(true);
+			//}
 
 			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
 		}
