@@ -39,25 +39,21 @@ public class PlayerInteract : MonoBehaviour
         if(Input.GetKeyDown(interact) && tvInteract)
         {
             InteractionManager.Instance.SwitchCamera("StatCamera");
-            playerController.canMove = false;
         }
         if(Input.GetKeyDown(interact) && computerInteract){
             InteractionManager.Instance.SwitchCamera("ComCamera");
-            //playerController.canMove = false;
-            playerController.StopMouseMovement();
+
 			GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>();
 			GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
 			GameManager.Instance.LoadStaticEvents<NewsEvent, ScriptableNews>();
 
 		}
         if(Input.GetKeyDown(interact) && doorInteract){
-            playerController.canMoveMouse = false;
             Debug.Log("Door interacted");
             newWeekPopUp.SetActive(true);
         }
         if(Input.GetKeyDown(interact) && execOrderInteract){
             InteractionManager.Instance.SwitchCamera("ExecOrderCamera");
-            playerController.canMove = false;
 		}
         if(Input.GetKeyDown(interact) && calendarInteract){
             InteractionManager.Instance.SwitchCamera("CalendarCamera");
@@ -65,8 +61,6 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
-            playerController.AllowMouseMovement();
-            playerController.canMove = true;
 			GameManager.Instance.LoadStaticEvents<OrderEvent, ScriptableOrder>();
 		}
 	}
@@ -84,17 +78,27 @@ public class PlayerInteract : MonoBehaviour
         //turns off and on based on what camera is active
         CinemachineBrain ActiveCamera = GameObject.Find("Main Camera").GetComponent<CinemachineBrain>();
         if(ActiveCamera.ActiveVirtualCamera.Name != "PlayerCam"){
+            playerController.StopMouseMovement();
+            playerController.canMove = false;
+            
             exitText.SetActive(true);
             interactText.SetActive(false);
+            
             if (Input.GetMouseButtonDown(0))
             {
                 mouseClickDown.Play();
             }
         }
         else{
+            Invoke("AllowCameraTransition", 2f);
             exitText.SetActive(false);
         }
         
+    }
+    public void AllowCameraTransition(){
+        //invokes so player cant move mouse until camera is fully transitioned
+        playerController.AllowMouseMovement();
+        playerController.canMove = true;
     }
         void OnTriggerEnter(Collider collider){
         if(canInteract == false){
