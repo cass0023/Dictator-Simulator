@@ -36,6 +36,8 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.BackQuote)){
             debugMenu.SetActive(!debugMenu.activeSelf);
         }
+
+        //checks trigger zones and if player is pressing interact
         if(Input.GetKeyDown(interact) && tvInteract)
         {
             InteractionManager.Instance.SwitchCamera("StatCamera");
@@ -49,7 +51,6 @@ public class PlayerInteract : MonoBehaviour
 
 		}
         if(Input.GetKeyDown(interact) && doorInteract){
-            Debug.Log("Door interacted");
             newWeekPopUp.SetActive(true);
         }
         if(Input.GetKeyDown(interact) && execOrderInteract){
@@ -58,6 +59,7 @@ public class PlayerInteract : MonoBehaviour
         if(Input.GetKeyDown(interact) && calendarInteract){
             InteractionManager.Instance.SwitchCamera("CalendarCamera");
         }
+        
         if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
@@ -78,29 +80,40 @@ public class PlayerInteract : MonoBehaviour
         //turns off and on based on what camera is active
         CinemachineBrain ActiveCamera = GameObject.Find("Main Camera").GetComponent<CinemachineBrain>();
         if(ActiveCamera.ActiveVirtualCamera.Name != "PlayerCam"){
+            
+            //disables player movement while at stations
             playerController.StopMouseMovement();
             playerController.canMove = false;
             
+            //exit ui
             exitText.SetActive(true);
             interactText.SetActive(false);
             
+            //computer audio clip
             if (Input.GetMouseButtonDown(0))
             {
                 mouseClickDown.Play();
             }
         }
-        else{
+        //functional for now but mouse can move during new week transition
+        //checks if door popup is active to stop movement
+        else if (newWeekPopUp.activeSelf){
+            playerController.StopMouseMovement();
+            playerController.canMove = false;
+        }
+        //disables mouse movement for 2s while cameras transition
+        else if(!newWeekPopUp.activeSelf){
             Invoke("AllowCameraTransition", 2f);
             exitText.SetActive(false);
         }
-        
     }
     public void AllowCameraTransition(){
         //invokes so player cant move mouse until camera is fully transitioned
         playerController.AllowMouseMovement();
         playerController.canMove = true;
     }
-        void OnTriggerEnter(Collider collider){
+    //checks what interact zone the player is triggering
+    void OnTriggerEnter(Collider collider){
         if(canInteract == false){
             canInteract = true;
         }
@@ -120,6 +133,7 @@ public class PlayerInteract : MonoBehaviour
             calendarInteract = true;
         }
     }
+    //resets all trigger interact zones after exit
     void OnTriggerExit(Collider collider){
         interactText.SetActive(false);
         canInteract = false;
