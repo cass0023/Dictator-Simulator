@@ -19,6 +19,7 @@ public class ComputerInteract : MonoBehaviour
             InteractionManager.Instance.SwitchCamera("PlayerCam");
             GetComponent<PlayerController>().AllowMouseMovement();
             GetComponent<PlayerController>().canMove = true;
+            OrderManager.Instance.DisplayOrder();
         }
         catch { }
     }
@@ -26,18 +27,18 @@ public class ComputerInteract : MonoBehaviour
     public void OnEmailClick(){
         computerPages[0].SetActive(true);
         DeactivateButtons();
-		GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>(); //Setting stuff active / inactive causes problems searching for the UI to change
+        EmailManager.Instance.DisplayEmail();
         resetScroll = GameObject.Find("EmailScrollView").GetComponent<ScrollRect>();
     }
     public void OnSocMediaClick(){
         computerPages[1].SetActive(true);
-        DeactivateButtons();
-        GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
+		SocMediaManager.Instance.DisplaySocial();
+		DeactivateButtons();
     }
     public void OnNewsClick(){
         computerPages[2].SetActive(true);
+        NewsManager.Instance.DisplayNews();
         DeactivateButtons();
-		GameManager.Instance.LoadStaticEvents<NewsEvent, ScriptableNews>();
 	}
     public void OnPrivateClick(){
         computerPages[3].SetActive(true);
@@ -63,5 +64,6 @@ public class ComputerInteract : MonoBehaviour
         }
 		pageToDisable.SetActive(false);
         ReactivateButtons();
+		GameManager.Instance.LoadEvents();
 	}
 }

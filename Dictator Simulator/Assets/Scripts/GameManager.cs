@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 /// <summary>
 /// The main class for controlling the different interactions between game mechanics. Gamemanager is an instance that doesn't use monobehavior
 /// </summary>
@@ -42,45 +43,70 @@ public class GameManager
 		}
     }
 
+    public void LoadEvents()
+    {
+		EventManager.Instance.UpdateEventState(); //Check if any events need to be unlocked.
+		LoadStaticEvents<EmailEvent, ScriptableEvent>();
+		LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
+		LoadStaticEvents<NewsEvent, ScriptableNews>();
+		LoadStaticEvents<OrderEvent, ScriptableOrder>();
+		
+	}
+
     /// <summary>
     /// Handle moving to the next week. Change stats as necissary.
     /// </summary>
     public void GoToNextWeek()
     {
-        EventManager.Instance.UpdateEventState();
-
-        for (int i = 1; i <= 4; i++)
+		for (int i = 1; i <= 4; i++)
         {
             StatManager.Instance.UpdateText((Stats)i);
             StatManager.Instance.UpdateSliders((Stats)i);
         }
-		LoadStaticEvents<OrderEvent, ScriptableOrder>();
+        //Update each event type
 		WeekNum++;
         TextMeshProUGUI calenderText = GameObject.Find("T_WeekNum").GetComponent<TextMeshProUGUI>();
         calenderText.text = "" + WeekNum;
         Debug.Log($"Changed Week to week {WeekNum}");
+		
+		LoadEvents();
     }
 
-    public void LoadStaticEvents<T,U>() where T : IIsEvent<U>
-    {
-		//Get a random email
-		EventManager.Instance.UpdateEventState();
-        if (typeof(T).Equals(typeof(EmailEvent)))
-        {
-            EmailManager.Instance.InitializeEmail((EmailEvent)EventManager.Instance.GetRandomEvent<T,U>().ConvertTo(typeof(T)));
-        }
-		if (typeof(T).Equals(typeof(SocialEvent)))
+	/// <summary>
+	/// Load the first event for whatever type T is that is not the default, is unlocked, and is not completed.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="U"></typeparam>
+    public void LoadStaticEvents<T,U>() where T : class, IIsEvent<U> where U : IUnlockable
+	{
+		T nextEvent = EventManager.Instance.GetNextEvent<T, U>();
+
+		if (nextEvent == null)
 		{
-			SocMediaManager.Instance.InitializeSocial((SocialEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
+			Debug.LogWarning($"No available event found for type {typeof(T).Name}");
+			return;
 		}
-		if (typeof(T).Equals(typeof(NewsEvent)))
+
+		if (typeof(T) == typeof(EmailEvent))
 		{
-			NewsManager.Instance.InitializeNews((NewsEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
+			EmailManager.Instance.InitializeEmail(nextEvent as EmailEvent);
+		}
+		else if (typeof(T) == typeof(SocialEvent))
+		{
+			SocMediaManager.Instance.InitializeSocial(nextEvent as SocialEvent);
+		}
+		else if (typeof(T) == typeof(NewsEvent))
+		{
+			NewsManager.Instance.InitializeNews(nextEvent as NewsEvent);
 		}
         //copy and pasted the other if statement and changed it to order var
-        if (typeof(T).Equals(typeof(OrderEvent)))
+        else if (typeof(T) ==typeof(OrderEvent))
 		{
-			OrderManager.Instance.InitializeOrder((OrderEvent)EventManager.Instance.GetRandomEvent<T, U>().ConvertTo(typeof(T)));
+			OrderManager.Instance.InitializeOrder(nextEvent as OrderEvent);
+		}
+		else
+		{
+			Debug.LogWarning($"Unhandled event type: {typeof(T).Name}");
 		}
 	}
 

@@ -36,13 +36,15 @@ public class NewsManager
 		}	
 		
 		CurrentEvent = newsToLoad;
+	}
 
+	public void DisplayNews()
+	{
 		HeadlineTextObject = GameObject.Find("T_NewsHeadline");
 		HeadlineTextObject.GetComponent<TextMeshProUGUI>().text = CurrentEvent.Data.NewsHeadline;
 		BodyTextObject = GameObject.Find("T_NewsText");
 		BodyTextObject.GetComponent<TextMeshProUGUI>().text = CurrentEvent.Data.NewsBody;
 		ImageTextObject = GameObject.Find("I_NewsImage").GetComponent<Image>();
 		ImageTextObject.sprite = CurrentEvent.Data.NewsImage;
-
 	}
 }

@@ -43,25 +43,43 @@ public class EmailManager
 			return;
 		}
 		CurrentEvent = emailToLoad;
-
-		GameObject.Find("T_FromLine").GetComponent<TextMeshProUGUI>().text = $"From: {emailToLoad.Data.FromLine}";
-		GameObject.Find("T_ToLine").GetComponent<TextMeshProUGUI>().text = $"To: {emailToLoad.Data.ToLine}";
-		GameObject.Find("T_EmailBody").GetComponent<TextMeshProUGUI>().text = $"{emailToLoad.Data.EmailContents}";
-		ResponcePanel = GameObject.Find("ResponcePanel");
-
-		for (int i = 0; i < Buttons.Count; i++)
-		{
-			Canvas.Destroy(Buttons[i]); //Not working
-		}
-		Buttons.Clear();
-
-		foreach(ResponceOption responce in CurrentEvent.Data.ResponceOptions)
-		{
-			CreateButton(responce);
-		}
-
-		Canvas.ForceUpdateCanvases();
 	}
+
+	/// <summary>
+	/// Display the current email on the email canvas page.
+	/// </summary>
+	public void DisplayEmail()
+	{
+		if (CurrentEvent == null)
+		{
+			Debug.LogWarning("Current event is Null. Cannot display Email.");
+			return;
+		}
+		try
+		{
+			GameObject.Find("T_FromLine").GetComponent<TextMeshProUGUI>().text = $"From: {CurrentEvent.Data.FromLine}";
+			GameObject.Find("T_ToLine").GetComponent<TextMeshProUGUI>().text = $"To: {CurrentEvent.Data.ToLine}";
+			GameObject.Find("T_EmailBody").GetComponent<TextMeshProUGUI>().text = $"{CurrentEvent.Data.EmailContents}";
+			ResponcePanel = GameObject.Find("ResponcePanel");
+			for (int i = 0; i < Buttons.Count; i++)
+			{
+				Canvas.Destroy(Buttons[i]); //Not working
+			}
+			Buttons.Clear();
+
+			foreach (ResponceOption responce in CurrentEvent.Data.ResponceOptions)
+			{
+				CreateButton(responce);
+			}
+
+			Canvas.ForceUpdateCanvases();
+		}
+		catch (NullReferenceException)
+		{
+			Debug.LogError("Cannot find email panel to set the TMP. Make sure the email panel is open before calling DisplayEmail().");
+		}
+	}
+
 
 	private void CreateButton(ResponceOption responce)
 	{
@@ -108,25 +126,13 @@ public class EmailManager
 
 		foreach (EventTypeNamePair e in responce.TriggerEventsList)
 		{
-			if (e.Type == EventType.EMAIL)
-			{
-				EmailEvent ee = EventManager.Instance.GetEvent<EmailEvent, ScriptableEvent>(e.TriggerEventName);
-				ee.HasBeenUnlockedByEvent = true;
-				Debug.Log($"{ee.Data.EventName} Has been unlocked by another event");
-			}
-			else if (e.Type == EventType.SOCIAL) 
-			{
-				SocialEvent ee = EventManager.Instance.GetEvent<SocialEvent, ScriptableSocialMedia>(e.TriggerEventName);
-				ee.HasBeenUnlockedByEvent = true;
-				Debug.Log($"{ee.Data.EventName} Has been unlocked by another event");
-			}
+			EventManager.Instance.UnlockEvent(e.TriggerEventName);
 		}
 
-
 		EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
+
 		GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("EmailPopUp"));
 		Debug.Log($"Clicked button {button.name}.");
-		
 	}
 
 }
