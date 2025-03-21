@@ -56,8 +56,7 @@ public class EventManager
 {
 
 	private AllEventsContainer AllEvents;
-	bool Loaded = false;
-
+	
 	private GameObject emailNotif;
 	private GameObject socMediaNotif;
 
@@ -133,7 +132,6 @@ public class EventManager
 		emailNotif = GameObject.Find("EmailNotif");
 		socMediaNotif = GameObject.Find("SocMediaNotif");
 
-		Loaded = true;
 		Debug.Log("Loaded all events.");
 	}
 
@@ -167,8 +165,8 @@ public class EventManager
 	/// <returns></returns>
 	private bool CheckUnlock(IIsEvent curEvent)
 	{
-		if (curEvent.IsCompleted) return false;
-		if (curEvent.IsUnlocked) return true;
+		if (curEvent.IsCompleted) return false; //Once an event has been completed, it becomes locked again.
+		if (curEvent.IsUnlocked) return true; //Once an event has been unlocked, it can never be locked again.
 
 
 		bool shouldUnlock = true;
@@ -283,24 +281,25 @@ public class EventManager
 
 	}
 
+	/// <summary>
+	/// Mark an event as completed if it is not the first one of its type in the list. (If it is not the default one).
+	/// </summary>
+	/// <param name="eventName"></param>
 	public void CompleteEvent(string eventName)
 	{
-		IIsEvent firstOfType = null;
-		foreach (var eventItem in EventList)
-		{
-			if (firstOfType == null || eventItem.GetType() == firstOfType.GetType())
-			{
-				firstOfType ??= eventItem; // Assign first occurrence of this type
-				if (eventItem.Data.EventName == eventName && eventItem != firstOfType && !eventItem.IsCompleted)
-				{
-					eventItem.IsCompleted = true;
-					Debug.Log($"Set {eventItem.Data.EventName} to completed.");
-					return; // Stop after completing the first match
-				}
-			}
-		}
+		var eventToComplete = EventList.FirstOrDefault(e => eventName == null || e.Data.EventName == eventName);
 
-		Debug.LogWarning($"Event with name '{eventName}' not found or cannot be completed.");
+		var firstEventOfType = EventList.FirstOrDefault(e => e.GetType() == eventToComplete.GetType());
+
+		if(eventToComplete != firstEventOfType)
+		{
+			eventToComplete.IsCompleted = true;
+			Debug.Log($"Set {eventToComplete.Data.EventName} to completed.");
+		}
+		else
+		{
+			Debug.LogWarning($"Event with name '{eventName}' not found or cannot be completed.");
+		}
 	}
 	public void UnlockEvent(string eventName = null)
 	{

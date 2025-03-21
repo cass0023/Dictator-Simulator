@@ -63,7 +63,8 @@ public class ComputerInteract : MonoBehaviour
             resetScroll.verticalNormalizedPosition = 1f;
         }
 		pageToDisable.SetActive(false);
+        GameManager.Instance.LoadEvents();
         ReactivateButtons();
-		GameManager.Instance.LoadEvents();
+		
 	}
 }

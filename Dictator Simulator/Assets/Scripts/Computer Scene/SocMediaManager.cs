@@ -195,12 +195,13 @@ public class SocMediaManager
 				
 			}
 
+			PressedPost = true;
 			EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 			Debug.Log($"Posted social media post: {SocialTextObject.GetComponent<TextMeshProUGUI>().text}");
 			
 			GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("SocMediaPopUp"));
 
-			PressedPost = true;
+			
 			
 		}
 
