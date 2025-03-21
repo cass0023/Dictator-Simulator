@@ -24,6 +24,7 @@ public class PlayerInteract : MonoBehaviour
         tvInteract = false;
         computerInteract = false;
         doorInteract = false;
+       
     }
     void Update()
     {
@@ -45,9 +46,9 @@ public class PlayerInteract : MonoBehaviour
         if(Input.GetKeyDown(interact) && computerInteract){
             InteractionManager.Instance.SwitchCamera("ComCamera");
 
-			GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>();
-			GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
-			GameManager.Instance.LoadStaticEvents<NewsEvent, ScriptableNews>();
+			//GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>();
+			//GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
+			//GameManager.Instance.LoadStaticEvents<NewsEvent, ScriptableNews>();
 
 		}
         if(Input.GetKeyDown(interact) && doorInteract){
@@ -63,7 +64,6 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
-			GameManager.Instance.LoadStaticEvents<OrderEvent, ScriptableOrder>();
 		}
 	}
     void InteractUI(){

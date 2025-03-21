@@ -37,18 +37,23 @@ public class OrderManager
 		}
 
 		CurrentEvent = orderToLoad;
+	}
 
+	public void DisplayOrder()
+	{
 		OrderTitleObject = GameObject.Find("T_OrderTitle");
 		OrderTitleObject.GetComponent<TextMeshProUGUI>().text = CurrentEvent.Data.OrderTitle;
 		OrderDetailsObject = GameObject.Find("T_OrderDetails");
 		OrderDetailsObject.GetComponent<TextMeshProUGUI>().text = CurrentEvent.Data.OrderDetails;
 
-		UnityAction act = new UnityAction(() => YesOnClick());
-		GameObject.Find("Btn_YesEO").GetComponent<Button>().onClick.AddListener(act);
+		if (CurrentEvent.Data.EventName != "Default_Order")
+		{
+			UnityAction act = new UnityAction(() => YesOnClick());
+			GameObject.Find("Btn_YesEO").GetComponent<Button>().onClick.AddListener(act);
 
-		UnityAction act2 = new UnityAction(() => NoOnClick());
-		GameObject.Find("Btn_NoEO").GetComponent<Button>().onClick.AddListener(act2);
-
+			UnityAction act2 = new UnityAction(() => NoOnClick());
+			GameObject.Find("Btn_NoEO").GetComponent<Button>().onClick.AddListener(act2);
+		}
 	}
 
 	private void YesOnClick()

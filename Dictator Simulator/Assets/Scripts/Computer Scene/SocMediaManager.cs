@@ -48,22 +48,27 @@ public class SocMediaManager
 			Debug.LogError("Invalid event to intialize.");
 			return;
 		}
+		CurrentEvent = socialToLoad;
+	}
+
+	public void DisplaySocial()
+	{
 		UnityAction act = new UnityAction(() => PostOnClick());
 		GameObject.Find("ButtonPost").GetComponent<Button>().onClick.AddListener(act);
 
-		CurrentEvent = socialToLoad;
+		
 		CurBlank = 0;
 		PressedPost = false;
 		SelectedOptions.Clear();
-		string socialText = $"{socialToLoad.Data.BeforeFirstBlank}";
+		string socialText = $"{CurrentEvent.Data.BeforeFirstBlank}";
 
 
-		for (int i = 0; i < socialToLoad.Data.BlankInserts.Length; i++)
+		for (int i = 0; i < CurrentEvent.Data.BlankInserts.Length; i++)
 		{
-			socialText += $" ______ {socialToLoad.Data.BlankInserts[i].TextAfterBlank}";
+			socialText += $" ______ {CurrentEvent.Data.BlankInserts[i].TextAfterBlank}";
 
 		}
-		
+
 		SocialTextObject = GameObject.Find("T_SocialPost");
 		SocialTextObject.GetComponent<TextMeshProUGUI>().text = socialText;
 
@@ -71,7 +76,6 @@ public class SocMediaManager
 
 		LoadNextButtons();
 	}
-
 	private void LoadNextButtons()
 	{
 		for (int i = 0; i < Buttons.Count; i++)

@@ -30,11 +30,16 @@ public class AllEventsContainer : MonoBehaviour
 		{
 			Destroy(this);
 		}
+
+		EventManager.Instance.LoadInitialEvents();
+		
 		
 	}
 
 	private void Start()
 	{
 		DontDestroyOnLoad(gameObject);
+		GameManager.Instance.LoadEvents();
+		
 	}
 }
