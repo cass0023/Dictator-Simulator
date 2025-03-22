@@ -18,7 +18,6 @@ MonoBehaviour:
   - WeekNum: 3
     RequiredStatVal: 0
   LockedByOtherEvent: 0
-  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "President,\n\nWe were seen conducting our business and local news
@@ -35,6 +34,8 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email3.1
+    - Type: 2
+      TriggerEventName: S_3
   - ResponceText: No, I'm not going to do that.
     StatsToChange:
     - EffectedStat: 1
@@ -46,8 +47,10 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email3.2
+    - Type: 2
+      TriggerEventName: S_3.1
   - ResponceText: What business were you conducting?
     StatsToChange: []
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: 3.3
+      TriggerEventName: Email3.3

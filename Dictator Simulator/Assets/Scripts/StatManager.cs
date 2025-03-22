@@ -38,10 +38,10 @@ public class StatManager
 	private StatManager() 
     {
 		//Add new key value pairs
-		StatValues.Add(Stats.SANITY, 1.0f);
-        StatValues.Add(Stats.APPROVAL, 1.0f);
-        StatValues.Add(Stats.TRUST, 1.0f);
-		StatValues.Add(Stats.FEAR, 1.0f);
+		StatValues.Add(Stats.SANITY, 0.5f);
+        StatValues.Add(Stats.APPROVAL, 0.5f);
+        StatValues.Add(Stats.TRUST, 0.5f);
+		StatValues.Add(Stats.FEAR, 0.0f);
 
 		UIStatName.Add(Stats.SANITY, "T_SanityVal");
 		UIStatName.Add(Stats.APPROVAL, "T_ApprovalVal");

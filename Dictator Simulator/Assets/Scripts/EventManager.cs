@@ -39,6 +39,8 @@ public class EventManager
 	private AllEventsContainer AllEvents;
 	bool Loaded = false;
 
+	private GameObject notificationBubble;
+
 	private static EventManager instance = new EventManager();
 	private EventManager()
 	{
@@ -72,6 +74,7 @@ public class EventManager
 			socialEvent.HasBeenUnlockedByEvent = false;
 		}
 
+		notificationBubble = GameObject.Find("NotificationBubble");
 
 		Loaded = true;
 		Debug.Log("Loaded all events.");
@@ -232,12 +235,12 @@ public class EventManager
 
 			if (unlocked_Events.Count < 1)
 			{
-				//GameObject.Find("NotificationBubble").SetActive(false);
+				notificationBubble.SetActive(false);
 				return (T)EmailEvents[0].ConvertTo(typeof(T));
 			}
 			else if (unlocked_Events.Count > 1)
 			{
-				//GameObject.Find("NotificationBubble").SetActive(true);
+				notificationBubble.SetActive(true);
 			}
 
 			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));

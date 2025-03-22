@@ -16,15 +16,16 @@ MonoBehaviour:
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
-  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: '
+  EmailContents: 'Anything you can think of.
+
 
     Will you make the call?
 
 
-    - Anonymous'
+    -
+    Anonymous'
   ResponceOptions:
   - ResponceText: 'Sure, I can give them a call. '
     StatsToChange:
@@ -36,7 +37,9 @@ MonoBehaviour:
       StatVal: -0.1
     - EffectedStat: 4
       StatVal: 0.15
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email4.1
   - ResponceText: 'No, I''m not going to call. '
     StatsToChange:
     - EffectedStat: 1
@@ -47,4 +50,6 @@ MonoBehaviour:
       StatVal: 0.05
     - EffectedStat: 4
       StatVal: -0.05
-    TriggerEventsList: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email4.2

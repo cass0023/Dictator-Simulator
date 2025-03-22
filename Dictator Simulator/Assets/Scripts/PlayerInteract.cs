@@ -6,7 +6,7 @@ using Cinemachine;
 public class PlayerInteract : MonoBehaviour
 {
     //interact variables
-    private bool tvInteract, computerInteract, doorInteract;
+    private bool tvInteract, computerInteract, doorInteract, execOrderInteract, calendarInteract;
     [SerializeField]private KeyCode interact;
     private PlayerController playerController;
     //UI
@@ -34,19 +34,12 @@ public class PlayerInteract : MonoBehaviour
         //shows debug menu
         if (Input.GetKeyDown(KeyCode.BackQuote)){
             debugMenu.SetActive(!debugMenu.activeSelf);
-
         }
         if(Input.GetKeyDown(interact) && tvInteract)
         {
             InteractionManager.Instance.SwitchCamera("StatCamera");
             playerController.canMove = false;
         }
-		if (Input.GetKeyDown(KeyCode.Escape) && tvInteract || Input.GetKeyDown(KeyCode.Escape) && computerInteract)
-		{
-			InteractionManager.Instance.SwitchCamera("PlayerCam");
-            playerController.AllowMouseMovement();
-            playerController.canMove = true;
-		}
         if(Input.GetKeyDown(interact) && computerInteract){
             InteractionManager.Instance.SwitchCamera("ComCamera");
             //playerController.canMove = false;
@@ -57,6 +50,19 @@ public class PlayerInteract : MonoBehaviour
             Debug.Log("Door interacted");
             newWeekPopUp.SetActive(true);
         }
+        if(Input.GetKeyDown(interact) && execOrderInteract){
+            InteractionManager.Instance.SwitchCamera("ExecOrderCamera");
+            playerController.canMove = false;
+        }
+        if(Input.GetKeyDown(interact) && calendarInteract){
+            InteractionManager.Instance.SwitchCamera("CalendarCamera");
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			InteractionManager.Instance.SwitchCamera("PlayerCam");
+            playerController.AllowMouseMovement();
+            playerController.canMove = true;
+		}
 	}
     void InteractUI(){
         //interact ui
@@ -96,6 +102,12 @@ public class PlayerInteract : MonoBehaviour
         if(collider.gameObject.name == "DoorInteractZone"){
             doorInteract = true;
         }
+        if(collider.gameObject.name == "EOInteractZone"){
+            execOrderInteract = true;
+        }
+        if(collider.gameObject.name == "CalendarInteractZone"){
+            calendarInteract = true;
+        }
     }
     void OnTriggerExit(Collider collider){
         interactText.SetActive(false);
@@ -103,6 +115,8 @@ public class PlayerInteract : MonoBehaviour
 		tvInteract = false;
         computerInteract = false;
         doorInteract = false;
+        calendarInteract = false;
+        execOrderInteract = false;
         playerController.canMoveMouse = true;
 	}
 }

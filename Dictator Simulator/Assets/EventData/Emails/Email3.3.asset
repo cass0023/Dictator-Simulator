@@ -16,7 +16,6 @@ MonoBehaviour:
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 1
-  HasBeenUnlockedByEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "We were moving new equipment in to our Caecus office. The boxes
@@ -31,7 +30,7 @@ MonoBehaviour:
       StatVal: -0.05
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: 3.1
+      TriggerEventName: Email3.1
   - ResponceText: No
     StatsToChange:
     - EffectedStat: 1
@@ -42,4 +41,4 @@ MonoBehaviour:
       StatVal: -0.02
     TriggerEventsList:
     - Type: 1
-      TriggerEventName: 3.2
+      TriggerEventName: Email3.2

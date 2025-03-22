@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,8 +10,8 @@ using UnityEngine.UI;
 
 public class SocMediaManager
 {
-	//temp player stats for debugging
 	private GameObject ButtonsPanel;
+	private GameObject SocialTextObject;
 
 	private event EventHandler<IncreaseStatEventArgs> IncreaseStat;
 
@@ -19,6 +20,8 @@ public class SocMediaManager
 	private static SocMediaManager instance = new SocMediaManager();
 
 	SocialEvent CurrentEvent;
+
+	List<BlankOption> SelectedOptions = new List<BlankOption>();
 
 	private SocMediaManager()
 	{
@@ -31,7 +34,7 @@ public class SocMediaManager
 	}
 
 	//temp number for testing, checking if first input in events is working
-	[SerializeField]private int CurBlank = 0;
+	private int CurBlank = 0;
 
 	/// <summary>
 	/// Initialize a specific email from its file name. Does not check if it is unlocked or not.
@@ -44,38 +47,47 @@ public class SocMediaManager
 			Debug.LogError("Invalid event to intialize.");
 			return;
 		}
+		UnityAction act = new UnityAction(() => PostOnClick());
+		GameObject.Find("ButtonPost").GetComponent<Button>().onClick.AddListener(act);
+
 		CurrentEvent = socialToLoad;
+		CurBlank = 0;
+		SelectedOptions.Clear();
 		string socialText = $"{socialToLoad.Data.BeforeFirstBlank}";
-		
-		for (int i = 0; i < socialToLoad.Data.BlankInserts.Length; i++) 
+
+
+		for (int i = 0; i < socialToLoad.Data.BlankInserts.Length; i++)
 		{
 			socialText += $" ______ {socialToLoad.Data.BlankInserts[i].TextAfterBlank}";
-			
+
 		}
 		
-		GameObject.Find("T_SocialPost").GetComponent<TextMeshProUGUI>().text = socialText;
+		SocialTextObject = GameObject.Find("T_SocialPost");
+		SocialTextObject.GetComponent<TextMeshProUGUI>().text = socialText;
 
-
-
-
-		//GameObject.Find("T_ToLine").GetComponent<TextMeshProUGUI>().text = $"To: {emailToLoad.Data.ToLine}";
-		//GameObject.Find("T_EmailBody").GetComponent<TextMeshProUGUI>().text = $"{emailToLoad.Data.EmailContents}";
 		ButtonsPanel = GameObject.Find("ButtonOptions");
 
+		LoadNextButtons();
+	}
+
+	private void LoadNextButtons()
+	{
 		for (int i = 0; i < Buttons.Count; i++)
 		{
-			Canvas.Destroy(Buttons[i]); //Not working
+			Canvas.Destroy(Buttons[i]);
 		}
 		Buttons.Clear();
-
-		if (CurrentEvent.Data.BlankInserts[CurBlank].Options.Length > 0)
+		try
 		{
-			foreach (BlankOption option in CurrentEvent.Data.BlankInserts[CurBlank].Options)
+			if (CurrentEvent.Data.BlankInserts[CurBlank].Options.Length > 0)
 			{
-				CreateButton(option);
+				foreach (BlankOption option in CurrentEvent.Data.BlankInserts[CurBlank].Options)
+				{
+					CreateButton(option);
+				}
 			}
-
 		}
+		catch(IndexOutOfRangeException) { }
 		
 		Canvas.ForceUpdateCanvases();
 	}
@@ -102,7 +114,7 @@ public class SocMediaManager
 		txt.horizontalAlignment = HorizontalAlignmentOptions.Center;
 		txt.verticalAlignment = VerticalAlignmentOptions.Middle;
 		txt.autoSizeTextContainer = true;
-		UnityAction act = new UnityAction(() => ResponceOnClick(oButton, option));
+		UnityAction act = new UnityAction(() => OptionOnClick(option));
 		button.onClick.AddListener(act);
 
 		oButton.transform.SetParent(ButtonsPanel.transform, false);
@@ -110,33 +122,106 @@ public class SocMediaManager
 		Buttons.Add(oButton);
 	}
 
-	void ResponceOnClick(GameObject button, BlankOption option)
+	void OptionOnClick(BlankOption option)
 	{
-		//foreach (StatValPair s in responce.StatsToChange)
-		//{
-		//	IncreaseStatEventArgs args = new()
-		//	{
-		//		StatToIncrease = s.EffectedStat,
-		//		Amount = s.StatVal
-		//	};
-		//	IncreaseStat?.Invoke(button, args);
-		//}
+		if(SelectedOptions.Count < CurrentEvent.Data.BlankInserts.Length)
+		{
+			SelectedOptions.Add(option);
+			CurBlank++;
+			LoadNextButtons();
+		}
 
-		//foreach (EventTypeNamePair e in responce.TriggerEventsList)
-		//{
-		//	if (e.Type == EventType.EMAIL)
-		//	{
-		//		EmailEvent ee = EventManager.Instance.GetEvent(e.TriggerEventName);
-		//		ee.HasBeenUnlockedByEvent = true;
-		//		Debug.Log($"{ee.Data.EventName} Has been unlocked by another event");
-		//	}
-		//}
+		UpdateSocialText();
+
+	}
+
+	/// <summary>
+	/// When the post button is clicked
+	/// </summary>
+	public void PostOnClick()
+	{
+		if(CurrentEvent.Data.EventName == "Empty_Post")
+		{
+			return;
+		}
 
 
-		//EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
-		//GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("EmailPopUp"));
-		//Debug.Log($"Clicked button {button.name}.");
+		//Only do stuff if the blanks have been filled.
+		if(SelectedOptions.Count == CurrentEvent.Data.BlankInserts.Length) 
+		{
+			foreach (BlankOption option in SelectedOptions)
+			{
+				foreach (StatValPair s in option.StatsToChange)
+				{
+					IncreaseStatEventArgs args = new()
+					{
+						StatToIncrease = s.EffectedStat,
+						Amount = s.StatVal
+					};
+					IncreaseStat?.Invoke(option, args);
+				}
+			}
 
+			
+			foreach(SpecialCombo combo in CurrentEvent.Data.SpecialCombos)
+			{	
+				int comboPieces = 0;
+				for(int i = 0; i < SelectedOptions.Count; i++) 
+				{
+					if (combo.ComboNames.Contains(SelectedOptions[i].OptionName))
+					{
+						comboPieces++;
+					}
+				}
+
+				if(comboPieces >= combo.ComboNames.Length)
+				{
+					foreach(StatValPair s in combo.StatsToChange)
+					{
+						IncreaseStatEventArgs args = new()
+						{
+							StatToIncrease = s.EffectedStat,
+							Amount = s.StatVal
+						};
+						IncreaseStat?.Invoke(combo, args);
+					}
+				}
+				
+			}
+
+			EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
+			Debug.Log($"Posted social media post: {SocialTextObject.GetComponent<TextMeshProUGUI>().text}");
+			try
+			{
+				GameObject.Find("ComputerManager").GetComponent<ComputerInteract>().ClosePage(GameObject.Find("SocMediaPopUp"));
+			}
+			catch(Exception) 
+			{
+				
+			}
+			
+		}
+
+	}
+
+	void UpdateSocialText()
+	{
+		string currentText = CurrentEvent.Data.BeforeFirstBlank;
+
+		for (int i = 0; i < CurrentEvent.Data.BlankInserts.Length; i++)
+		{
+			if(i < SelectedOptions.Count)
+			{
+				currentText += $" {SelectedOptions[i].OptionName} {CurrentEvent.Data.BlankInserts[i].TextAfterBlank}";
+			}
+			else
+			{
+				currentText += $" ______ {CurrentEvent.Data.BlankInserts[i].TextAfterBlank}";
+			}
+			
+		}
+
+		SocialTextObject.GetComponent<TextMeshProUGUI>().text = currentText;
 	}
 	
 }

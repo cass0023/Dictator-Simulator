@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using Cinemachine;
 
 public class ComputerInteract : MonoBehaviour
 {
@@ -9,8 +10,18 @@ public class ComputerInteract : MonoBehaviour
     //Computer Icon Interacts
     public GameObject[] computerPages;
     public GameObject[] buttons;
+    private PlayerController playerController;
     void Start(){
         //socMediaManager = GetComponent<SocMediaManager>();
+        playerController = GetComponent<PlayerController>();
+    }
+    public void CloseComputer(){
+        try{
+            InteractionManager.Instance.SwitchCamera("PlayerCam");
+            GetComponent<PlayerController>().AllowMouseMovement();
+            GetComponent<PlayerController>().canMove = true;
+        }
+        catch { }
     }
     //checks which computer icon is pressed with button input
     public void OnEmailClick(){
