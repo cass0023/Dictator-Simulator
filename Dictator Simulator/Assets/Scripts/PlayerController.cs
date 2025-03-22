@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     float VertCameraRotate;
     float cameraAxisX, cameraAxisY;
     public Transform cameraTransform;
+    public AudioSource presidentWalk;
 
     void Start(){
         rb = GetComponent<Rigidbody>();
@@ -85,5 +86,17 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.name == "Floor"){
             isGrounded = true;
         }
+    }
+    public void PlayerMovingSounds()
+    {
+        if (isMoving == true) //&& !presidentWalk.isPlaying) 
+        { 
+            presidentWalk.Play();
+        }
+        //else if (isMoving == false && presidentWalk.isPlaying)
+        //{
+        //    presidentWalk.Stop();
+        //}
+
     }
 }
