@@ -30,6 +30,11 @@ public class ScriptableOrder : ScriptableObject, IUnlockable
 	[Tooltip("The stats that change if the player does not sign the executive order.")]
 	public StatValPair[] StatChangeOnDecline;
 
+	[Tooltip("Which event you want to trigger when the executive order is signed.")]
+	public EventTypeNamePair[] EventsToTriggerOnSign;
+
+	[Tooltip("Which event you want to trigger when the executive order is declined.")]
+	public EventTypeNamePair[] EventsToTriggerOnDecline;
 
 	string IUnlockable.EventName { get => EventName; }
 	UnlockEventByStatData[] IUnlockable.StatLocks { get => StatLocks; }

@@ -67,6 +67,12 @@ public class OrderManager
 			};
 			IncreaseStat?.Invoke(CurrentEvent, args);
 		}
+
+		foreach (EventTypeNamePair e in CurrentEvent.Data.EventsToTriggerOnSign)
+		{
+			EventManager.Instance.UnlockEvent(e.TriggerEventName);
+		}
+
 		EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 		Debug.Log($"Signed Exec Order {CurrentEvent.Data.EventName}");
 	}
@@ -80,6 +86,11 @@ public class OrderManager
 				Amount = s.StatVal
 			};
 			IncreaseStat?.Invoke(CurrentEvent, args);
+		}
+
+		foreach (EventTypeNamePair e in CurrentEvent.Data.EventsToTriggerOnDecline)
+		{
+			EventManager.Instance.UnlockEvent(e.TriggerEventName);
 		}
 		EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 		Debug.Log($"Declined Exec Order {CurrentEvent.Data.EventName}");
