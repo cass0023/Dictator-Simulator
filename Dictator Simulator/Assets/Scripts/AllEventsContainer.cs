@@ -40,6 +40,6 @@ public class AllEventsContainer : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 		GameManager.Instance.LoadEvents();
-		
+		BackgroundManager.Instance.CheckSwitchBackground(0);
 	}
 }

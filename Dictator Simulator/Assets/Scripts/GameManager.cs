@@ -50,7 +50,8 @@ public class GameManager
 		LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
 		LoadStaticEvents<NewsEvent, ScriptableNews>();
 		LoadStaticEvents<OrderEvent, ScriptableOrder>();
-		
+
+		BackgroundManager.Instance.CheckSwitchBackground(0);
 	}
 
     /// <summary>
@@ -70,6 +71,7 @@ public class GameManager
         Debug.Log($"Changed Week to week {WeekNum}");
 		
 		LoadEvents();
+		BackgroundManager.Instance.CheckSwitchBackground(StatManager.Instance.GetStatValue(Stats.FEAR));
     }
 
 	/// <summary>
