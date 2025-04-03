@@ -4313,6 +4313,7 @@ MonoBehaviour:
   News:
   - {fileID: 11400000, guid: a4f6cdca09d3e964fa9ae8e7645fa2a3, type: 2}
   - {fileID: 11400000, guid: 0ceabdf0c6ba7a24eabd7df33a2aabb6, type: 2}
+  - {fileID: 11400000, guid: a8020207266040d4c9391a4546f15c46, type: 2}
   Orders:
   - {fileID: 11400000, guid: c26385a6cb1785f44ab6a8a7702c79f7, type: 2}
 --- !u!1001 &548515819
