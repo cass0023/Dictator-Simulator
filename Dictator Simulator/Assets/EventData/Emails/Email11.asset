@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email11
+  m_EditorClassIdentifier: 
+  EventName: Email11
+  StatLocks: []
+  WeekLocks:
+  - WeekNum: 10
+    RequiredStatVal: 0
+  LockedByOtherEvent: 1
+  FromLine: unknown@unknownemail.com
+  ToLine: president@presidentemail.com
+  EmailContents: "President,\n\nWe were talking to our leaders and have come to realize
+    you\nneed to reinstate the Death Penalty. It is too easy for criminals \nin Caecus
+    to commit crimes, and by reinstating that punishment \nit will help your country
+    as much as its helped ours.\n\nThis will not only improve crime rates, but also
+    the economy in \nCaecus.\n\nWill you sign the order?\n\n- Anonymous"
+  ResponceOptions: []
