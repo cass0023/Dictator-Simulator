@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd461ecd5245604e95319855984e2d9, type: 3}
   m_Name: Election_Results
   m_EditorClassIdentifier: 
-  EventName: 
-  StatLocks: []
-  WeekLocks: []
+  EventName: Election_Results
+  StatLocks:
+  - lockType: 4
+    StatVal: 0.2
+    RequiredStatVal: 2
+  WeekLocks:
+  - WeekNum: 0
+    RequiredStatVal: 1
   LockedByOtherEvent: 0
-  NewsHeadline: 
-  NewsBody: 
-  NewsImage: {fileID: 0}
+  NewsHeadline: New President Seems Promising
+  NewsBody: The new President promised economic and social reform on the campaign
+    trail, but has not provided a clear plan for how they will implement their ideas.
+    The opposition has critisized them by saying, "They will just say whatever it
+    takes to get elected." We will have to wait and see just how effective the new
+    President actually is at making these changes.
+  NewsImage: {fileID: 21300000, guid: a4eb019ece9b72f47bdadb664fc7865e, type: 3}

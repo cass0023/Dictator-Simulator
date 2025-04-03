@@ -16,6 +16,6 @@ MonoBehaviour:
   StatLocks: []
   WeekLocks: []
   LockedByOtherEvent: 0
-  NewsHeadline: Definetly a news headline
-  NewsBody: Definetly the entire body of text. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  NewsHeadline: No new relevent news articles
+  NewsBody: 
   NewsImage: {fileID: 21300000, guid: f1cf0d184d3824ea282fcc932806c6e4, type: 3}

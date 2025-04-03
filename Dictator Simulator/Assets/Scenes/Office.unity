@@ -816,14 +816,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.6
+  m_fontSize: 51
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4311,6 +4311,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8031512f02158ec47afcbc99f9727da4, type: 2}
   News:
   - {fileID: 11400000, guid: a4f6cdca09d3e964fa9ae8e7645fa2a3, type: 2}
+  - {fileID: 11400000, guid: 0ceabdf0c6ba7a24eabd7df33a2aabb6, type: 2}
   Orders:
   - {fileID: 11400000, guid: c26385a6cb1785f44ab6a8a7702c79f7, type: 2}
 --- !u!1001 &548515819
