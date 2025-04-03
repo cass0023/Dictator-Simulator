@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email9
+  m_Name: Email9.3
   m_EditorClassIdentifier: 
-  EventName: Email9
+  EventName: Email9.3
   StatLocks: []
   WeekLocks:
   - WeekNum: 8
@@ -20,11 +20,8 @@ MonoBehaviour:
   LockedByOtherEvent: 1
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: "Pres!\n\nIt's me again! I was just chillin and thinking about how
-    you can\nkinda do what ever you want! You could even change the spelling of a
-    word if you want!\n\nWhy don't you send out a post that really tests what you
-    can get\naway with. It will show you how stupid some of your citizens are.\n\n        
-    P.S - Those are the people you want to cater to ;)\n\n- Hugo Saville"
+  EmailContents: "I don't even know maybe one people use a lot like, because or again.
+    \nWhatever it is I'm sure it'll be hilarious!\n\n- Hugo"
   ResponceOptions:
   - ResponceText: Ok, I'll try it.
     StatsToChange:
@@ -46,8 +43,3 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email9.2
-  - ResponceText: What word do you think I should change?
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email9.3
