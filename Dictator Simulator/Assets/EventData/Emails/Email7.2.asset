@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
+  m_Name: Email7.2
+  m_EditorClassIdentifier: 
+  EventName: Email7.2
+  StatLocks: []
+  WeekLocks:
+  - WeekNum: 6
+    RequiredStatVal: 0
+  LockedByOtherEvent: 1
+  FromLine: iambetterthanyou@billionaire.com
+  ToLine: president@presidentemail.com
+  EmailContents: "What are you talking about, I've worked for all my wealth! This
+    is not a\nbridge you want to burn.\n\nI just want to be your friend. I feel like
+    we'll get along really well so\nI'll message back\nsoon :)\n\n- Hugo\r"
+  ResponceOptions:
+  - ResponceText: Ok
+    StatsToChange: []
+    TriggerEventsList: []

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email8
+  m_Name: Email8.3
   m_EditorClassIdentifier: 
-  EventName: Email8
+  EventName: Email8.3
   StatLocks: []
   WeekLocks:
   - WeekNum: 7
@@ -20,15 +20,17 @@ MonoBehaviour:
   LockedByOtherEvent: 1
   FromLine: ministerofeducation@caecus.gov
   ToLine: president@presidentemail.com
-  EmailContents: "Dear President,\n\nWe have some very angry parents on the phone
-    talking about\nbooks they deemed \"inappropriate,\" and shouldn't be in schools.
-    I went through the list and some feel like they shoudn't be banned but it's your
-    call.\n\nHere are some examples:\n               - 1984 by George Orwell\n              
-    - Animal Farm by George Orwell\n               - Fahrenheit 451 by Ray Bradbury\n              
-    - The Handmaids Tale by Margret Atwood\n               - The Hunger Games by
-    Suzanne Collins\n               - The Perks of being a Wallflower by Stephen
-    Chbosky\n\nPick up the phone and let them know your decision.\n\n- Minister of
-    Education"
+  EmailContents: 'We can try but I''m not sure if they''ll go for it. You can jot
+    down a few ideas
+
+    you have if you would like, and I can see what I can do.
+
+
+    For
+    now, did you want to pick up the phone?
+
+
+    - Minister of Education'
   ResponceOptions:
   - ResponceText: Alright, I'll pick up.
     StatsToChange:
@@ -54,13 +56,3 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email8.2
-  - ResponceText: Can we replace them with other books?
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email8.3
-  - ResponceText: What will happen to the students caught with them?
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email8.4
