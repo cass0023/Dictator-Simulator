@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd461ecd5245604e95319855984e2d9, type: 3}
+  m_Name: Default_News
+  m_EditorClassIdentifier: 
+  EventName: Default_News
+  StatLocks: []
+  WeekLocks: []
+  LockedByOtherEvent: 0
+  NewsHeadline: Definetly a news headline
+  NewsBody: Definetly the entire body of text. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  NewsImage: {fileID: 21300000, guid: f1cf0d184d3824ea282fcc932806c6e4, type: 3}

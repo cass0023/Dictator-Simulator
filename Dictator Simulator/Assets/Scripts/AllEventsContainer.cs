@@ -12,8 +12,11 @@ public class AllEventsContainer : MonoBehaviour
 	[Header("Social Media Event List")]
 	public ScriptableSocialMedia[] SocialMedia;
 
+	[Header("News Event List")]
+	public ScriptableNews[] News;
+
 	[Header("Executive Order Event List")]
-	public ScriptableEvent[] Orders;
+	public ScriptableOrder[] Orders;
 
 	public static AllEventsContainer instance;
 
@@ -27,11 +30,16 @@ public class AllEventsContainer : MonoBehaviour
 		{
 			Destroy(this);
 		}
+
+		EventManager.Instance.LoadInitialEvents();
+		
 		
 	}
 
 	private void Start()
 	{
 		DontDestroyOnLoad(gameObject);
+		GameManager.Instance.LoadEvents();
+		BackgroundManager.Instance.CheckSwitchBackground(0);
 	}
 }

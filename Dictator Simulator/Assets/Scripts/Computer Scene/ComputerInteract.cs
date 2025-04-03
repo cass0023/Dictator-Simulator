@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class ComputerInteract : MonoBehaviour
 {
-    private SocMediaManager socMediaManager;
     //Computer Icon Interacts
     public GameObject[] computerPages;
     public GameObject[] buttons;
-    private PlayerController playerController;
+    private ScrollRect resetScroll;
     void Start(){
-        //socMediaManager = GetComponent<SocMediaManager>();
-        playerController = GetComponent<PlayerController>();
+
     }
     public void CloseComputer(){
         try{
             InteractionManager.Instance.SwitchCamera("PlayerCam");
             GetComponent<PlayerController>().AllowMouseMovement();
             GetComponent<PlayerController>().canMove = true;
+            OrderManager.Instance.DisplayOrder();
         }
         catch { }
     }
@@ -27,17 +27,19 @@ public class ComputerInteract : MonoBehaviour
     public void OnEmailClick(){
         computerPages[0].SetActive(true);
         DeactivateButtons();
-		GameManager.Instance.LoadStaticEvents<EmailEvent, ScriptableEvent>(); //Setting stuff active / inactive causes problems searching for the UI to change
-	}
+        EmailManager.Instance.DisplayEmail();
+        resetScroll = GameObject.Find("EmailScrollView").GetComponent<ScrollRect>();
+    }
     public void OnSocMediaClick(){
         computerPages[1].SetActive(true);
-        DeactivateButtons();
-        GameManager.Instance.LoadStaticEvents<SocialEvent, ScriptableSocialMedia>();
+		SocMediaManager.Instance.DisplaySocial();
+		DeactivateButtons();
     }
     public void OnNewsClick(){
         computerPages[2].SetActive(true);
+        NewsManager.Instance.DisplayNews();
         DeactivateButtons();
-    }
+	}
     public void OnPrivateClick(){
         computerPages[3].SetActive(true);
         DeactivateButtons();
@@ -57,7 +59,12 @@ public class ComputerInteract : MonoBehaviour
 
     public void ClosePage(GameObject pageToDisable)
     {
+        if(pageToDisable.name == "EmailPopUp"){
+            resetScroll.verticalNormalizedPosition = 1f;
+        }
 		pageToDisable.SetActive(false);
+        GameManager.Instance.LoadEvents();
         ReactivateButtons();
+		
 	}
 }

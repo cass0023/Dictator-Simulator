@@ -1,47 +1,69 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 
-[System.Serializable]
+public interface IIsEvent
+{
+	bool HasBeenUnlockedByEvent { get; set; }
+	bool IsUnlocked { get; set; }
+	bool IsCompleted { get; set; }
+	IUnlockable Data { get; }
+}
+
+public interface IIsEvent<T> : IIsEvent where T : IUnlockable
+{
+	new T Data { get; set; }
+}
+
 public class EmailEvent : IIsEvent<ScriptableEvent>
 {
 	public ScriptableEvent Data { get; set; }
+	IUnlockable IIsEvent.Data => Data; // Explicit implementation for IIsEvent
 	public bool HasBeenUnlockedByEvent { get; set; }
 	public bool IsUnlocked { get; set; }
 	public bool IsCompleted { get; set; }
 }
-
 public class SocialEvent : IIsEvent<ScriptableSocialMedia>
 {
 	public ScriptableSocialMedia Data { get; set; }
+	IUnlockable IIsEvent.Data => Data; // Explicit implementation for IIsEvent
 	public bool HasBeenUnlockedByEvent { get; set; }
 	public bool IsUnlocked { get; set; }
 	public bool IsCompleted { get; set; }
 }
-
-public interface IIsEvent<T>
-{ 
-	T Data { get; set; }
+public class NewsEvent : IIsEvent<ScriptableNews>
+{
+	public ScriptableNews Data { get; set; }
+	IUnlockable IIsEvent.Data => Data; // Explicit implementation for IIsEvent
 	public bool HasBeenUnlockedByEvent { get; set; }
 	public bool IsUnlocked { get; set; }
 	public bool IsCompleted { get; set; }
 }
-
+public class OrderEvent : IIsEvent<ScriptableOrder>
+{
+	public ScriptableOrder Data { get; set; }
+	IUnlockable IIsEvent.Data => Data; // Explicit implementation for IIsEvent
+	public bool HasBeenUnlockedByEvent { get; set; }
+	public bool IsUnlocked { get; set; }
+	public bool IsCompleted { get; set; }
+}
 
 public class EventManager
 {
-	public EmailEvent[] EmailEvents;
-	public SocialEvent[] SocialEvents;
-	private AllEventsContainer AllEvents;
-	bool Loaded = false;
 
-	private GameObject notificationBubble;
+	private AllEventsContainer AllEvents;
+	
+	private GameObject emailNotif;
+	private GameObject socMediaNotif;
 
 	private static EventManager instance = new EventManager();
+
+	List<IIsEvent> EventList;
+
 	private EventManager()
 	{
 
@@ -52,31 +74,64 @@ public class EventManager
 		get { return instance; }
 	}
 
-	private void LoadEvents()
+	public void LoadInitialEvents()
 	{
+		EventList = new List<IIsEvent>();
 		AllEvents = GameObject.Find("AllEventsContainer").GetComponent<AllEventsContainer>();
-		EmailEvents = new EmailEvent[AllEvents.Emails.Length];
-		SocialEvents = new SocialEvent[AllEvents.SocialMedia.Length];
+
 		//Load Emails
 		for (int i = 0; i < AllEvents.Emails.Length; i++)
 		{
-			EmailEvent emailEvent = new EmailEvent();
-			emailEvent.Data = AllEvents.Emails[i];
-			EmailEvents[i] = emailEvent;
-			emailEvent.HasBeenUnlockedByEvent = false;
+			EmailEvent emailEvent = new() 
+			{ 
+				Data = AllEvents.Emails[i],
+				HasBeenUnlockedByEvent = false,
+				IsUnlocked = false,
+				IsCompleted = false
+			};
+			EventList.Add(emailEvent);
 		}
 		//Load social media posts
 		for (int i = 0; i < AllEvents.SocialMedia.Length; i++)
 		{
-			SocialEvent socialEvent = new SocialEvent();
-			socialEvent.Data = AllEvents.SocialMedia[i];
-			SocialEvents[i] = socialEvent;
-			socialEvent.HasBeenUnlockedByEvent = false;
+			SocialEvent socialEvent = new()
+			{
+				Data = AllEvents.SocialMedia[i],
+				HasBeenUnlockedByEvent = false,
+				IsUnlocked = false,
+				IsCompleted = false
+			};
+			EventList.Add(socialEvent);
 		}
 
-		notificationBubble = GameObject.Find("NotificationBubble");
+		//Load News
+		for (int i = 0; i < AllEvents.News.Length; i++)
+		{
+			NewsEvent newsEvent = new()
+			{
+				Data = AllEvents.News[i],
+				HasBeenUnlockedByEvent = false,
+				IsUnlocked = false,
+				IsCompleted = false
+			};
+			EventList.Add(newsEvent);
+		}
 
-		Loaded = true;
+		for (int i = 0; i < AllEvents.Orders.Length; i++)
+		{
+			OrderEvent orderEvent = new()
+			{
+				Data = AllEvents.Orders[i],
+				HasBeenUnlockedByEvent = false,
+				IsUnlocked = false,
+				IsCompleted = false
+			};
+			EventList.Add(orderEvent);
+		}
+
+		emailNotif = GameObject.Find("EmailNotif");
+		socMediaNotif = GameObject.Find("SocMediaNotif");
+
 		Debug.Log("Loaded all events.");
 	}
 
@@ -85,21 +140,20 @@ public class EventManager
 	/// </summary>
 	public void UpdateEventState()
 	{
-		if(!Loaded) { LoadEvents(); }
-
-		if (EmailEvents != null)
+		if (EventList.Count == 0)
 		{
-			for (int i = 1; i < EmailEvents.Length; i++) //Start at 1 because of empty email
-			{
-				EmailEvents[i].IsUnlocked = CheckUnlock<EmailEvent, ScriptableEvent>(EmailEvents[i]);
-			}
+			Debug.LogWarning("EventList is empty. No events to update.");
+			return;
 		}
-		if (SocialEvents != null)
+		foreach (var eventItem in EventList)
 		{
-			for (int i = 1; i < SocialEvents.Length; i++) //Start at 1 because of empty email
+			if (eventItem == null)
 			{
-				SocialEvents[i].IsUnlocked = CheckUnlock<SocialEvent, ScriptableSocialMedia>(SocialEvents[i]);
+				Debug.LogError("Null event found in EventList. Skipping...");
+				continue;
 			}
+
+			eventItem.IsUnlocked = CheckUnlock(eventItem);
 		}
 	}
 
@@ -109,16 +163,20 @@ public class EventManager
 	/// </summary>
 	/// <param name="curEvent"></param>
 	/// <returns></returns>
-	private bool CheckUnlock<T, U>(T curEvent) where T : IIsEvent<U> where U:IUnlockable
+	private bool CheckUnlock(IIsEvent curEvent)
 	{
+		if (curEvent.IsCompleted) return false; //Once an event has been completed, it becomes locked again.
+		if (curEvent.IsUnlocked) return true; //Once an event has been unlocked, it can never be locked again.
+
+
 		bool shouldUnlock = true;
 
 		if (curEvent.Data.LockedByOtherEvent) //Get the property with the name LockedByOtherEvent in Data class
 		{
 			shouldUnlock &= curEvent.HasBeenUnlockedByEvent;
 		}
-		
-		if(curEvent.Data.StatLocks.Length > 0)
+
+		if (curEvent.Data.StatLocks.Length > 0)
 		{
 			foreach (UnlockEventByStatData e in curEvent.Data.StatLocks)
 			{
@@ -159,151 +217,125 @@ public class EventManager
 						break;
 				}
 			}
-		} 
-		if (curEvent.IsCompleted)
-		{
-			Debug.Log($"{curEvent.Data.EventName} is [COMPLETED]");
 		}
-		else if (shouldUnlock)
+
+		if (shouldUnlock)
 		{
 			Debug.Log($"{curEvent.Data.EventName} is [UNLOCKED]");
 		}
-		else
-		{
-			Debug.Log($"{curEvent.Data.EventName} is [LOCKED]");
-		}
-
+		
 		return shouldUnlock;
 	}
 	/// <summary>
-	/// Get the event with a certain name, regardless if it is unlocked or not. If the name does not exits, return null.
+	/// Get the event with a certain name, regardless if it is unlocked or not. If the name does not exits, return null. Does not care about the type of event.
 	/// </summary>
 	/// <param name="EventName"></param>
 	/// <returns></returns>
-	public T GetEvent<T, U>(string EventName) where T : IIsEvent<U>
+	public IIsEvent GetEvent(string eventName)
 	{
-		if (typeof(T).Equals(typeof(EmailEvent)))
+		if (EventList == null || EventList.Count == 0)
 		{
-			for (int i = 1; i < EmailEvents.Length; i++)
+			Debug.LogError("EventList is empty! Cannot find event.");
+			return null;
+		}
+
+		var foundEvent = EventList.FirstOrDefault(e => e.Data.EventName == eventName);
+
+		if (foundEvent == null)
+		{
+			Debug.LogError($"No event with name '{eventName}' exists in the list.");
+			return null;
+		}
+
+		return foundEvent;
+	}
+
+	/// <summary>
+	/// Return next unlocked event of type T.
+	/// </summary>
+	/// <returns></returns>
+	public T GetNextEvent<T, U>() where T : class, IIsEvent<U> where U : IUnlockable
+	{
+		T firstMatch = null;
+		
+		foreach (var eventItem in EventList) 
+		{
+			if (eventItem is T typedEvent)
 			{
-				if (EmailEvents[i].Data.EventName == EventName)
+				if (typedEvent.IsUnlocked && !typedEvent.IsCompleted)
 				{
-					return (T)EmailEvents[i].ConvertTo(typeof(T));
+					if(firstMatch != null) return typedEvent; // Return the first unlocked, not completed, event of type T after the first occurrence.
+
+					firstMatch = typedEvent; // Store the first occurrence for fallback.
+
 				}
 			}
-
-			Debug.LogError($"{EventName} does not exist in the list of events. Returning empty inbox event.");
-			return (T)EmailEvents[0].ConvertTo(typeof(T));
 		}
-		else if (typeof(T).Equals(typeof(SocialEvent)))
+		if (firstMatch != null)
 		{
-			for (int i = 1; i < SocialEvents.Length; i++)
-			{
-				if (SocialEvents[i].Data.EventName == EventName)
-				{
-					return (T)SocialEvents[i].ConvertTo(typeof(T));
-				}
-			}
+			Debug.Log($"No unlocked events found. Returning {firstMatch.Data.EventName}");
+			return firstMatch;
+		}
 
-			Debug.LogError($"{EventName} does not exist in the list of events. Returning empty social post event.");
-			return (T)SocialEvents[0].ConvertTo(typeof(T));
-		}
-		else
-		{
-			Debug.LogError($"Type {typeof(T)} does not exist as a type of event that can be retrieved.");
-			return default;
-		}
+		throw new InvalidOperationException($"No events of type {typeof(T).Name} exist in the list.");
 
 	}
 
 	/// <summary>
-	/// Return a random unlocked event of type T. No error checking.
+	/// Mark an event as completed if it is not the first one of its type in the list. (If it is not the default one).
 	/// </summary>
-	/// <returns></returns>
-	public T GetRandomEvent<T, U>() where T : IIsEvent<U>
+	/// <param name="eventName"></param>
+	public void CompleteEvent(string eventName)
 	{
-		if (typeof(T).Equals(typeof(EmailEvent)))
+		var eventToComplete = EventList.FirstOrDefault(e => eventName == null || e.Data.EventName == eventName);
+
+		var firstEventOfType = EventList.FirstOrDefault(e => e.GetType() == eventToComplete.GetType());
+
+		if(eventToComplete != firstEventOfType)
 		{
-			List<EmailEvent> unlocked_Events = new List<EmailEvent>();
-			for (int i = 0; i < EmailEvents.Length; i++)
-			{
-				if (EmailEvents[i].IsUnlocked && !EmailEvents[i].IsCompleted)
-				{
-					unlocked_Events.Add(EmailEvents[i]);
-				}
-			}
-
-			if (unlocked_Events.Count < 1)
-			{
-				notificationBubble.SetActive(false);
-				return (T)EmailEvents[0].ConvertTo(typeof(T));
-			}
-			else if (unlocked_Events.Count > 1)
-			{
-				notificationBubble.SetActive(true);
-			}
-
-			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
-		}
-
-		else if (typeof(T).Equals(typeof(SocialEvent)))
-		{
-			List<SocialEvent> unlocked_Events = new List<SocialEvent>();
-			for (int i = 0; i < SocialEvents.Length; i++)
-			{
-				if (SocialEvents[i].IsUnlocked && !SocialEvents[i].IsCompleted)
-				{
-					unlocked_Events.Add(SocialEvents[i]);
-				}
-			}
-
-
-			if (unlocked_Events.Count < 1)
-			{
-				return (T)SocialEvents[0].ConvertTo(typeof(T));
-			}
-
-			return (T)unlocked_Events[UnityEngine.Random.Range(0, unlocked_Events.Count)].ConvertTo(typeof(T));
+			eventToComplete.IsCompleted = true;
+			Debug.Log($"Set {eventToComplete.Data.EventName} to completed.");
 		}
 		else
 		{
-			Debug.LogError($"Invalid event type {typeof(T)}");
-			if (typeof(T).Equals(typeof(EmailEvent)))
-			{
-				return (T)EmailEvents[0].ConvertTo(typeof(T));
-			}
-			else
-			{
-				return (T)SocialEvents[0].ConvertTo(typeof(T));
-			}
+			Debug.LogWarning($"Event with name '{eventName}' not found or cannot be completed.");
 		}
 	}
-
-	public void CompleteEvent(string EventName) 
+	public void UnlockEvent(string eventName = null)
 	{
-		for (int i = 1; i < EmailEvents.Length; i++)
+		if (EventList == null || EventList.Count == 0)
 		{
-			if (EmailEvents[i].Data.EventName == EventName)
-			{
-				EmailEvents[i].IsCompleted = true;
-				Debug.Log($"Set {EmailEvents[i].Data.EventName} to completed.");
-			}
-		}
-		for (int i = 1; i < SocialEvents.Length; i++)
-		{
-			if (SocialEvents[i].Data.EventName == EventName)
-			{
-				SocialEvents[i].IsCompleted = true;
-				Debug.Log($"Set {SocialEvents[i].Data.EventName} to completed.");
-			}
+			Debug.LogError("EventList is empty! Cannot unlock event.");
+			return;
 		}
 
+		// Find the first event of type T that matches the given name (if provided)
+		var eventToUnlock = EventList
+			.FirstOrDefault(e => eventName == null || e.Data.EventName == eventName);
+
+		if (eventToUnlock == null)
+		{
+			Debug.LogError($"No event with name '{eventName}' found.");
+			return;
+		}
+
+		if (!eventToUnlock.HasBeenUnlockedByEvent)
+		{
+			eventToUnlock.HasBeenUnlockedByEvent = true;
+		}
+		else
+		{
+			Debug.LogError($"Event {eventToUnlock.Data.EventName} has already been unlocked!");
+		}
+
+		
+		
 	}
 }
 
 
-//All of the different types of events and their associated variables.
 
+//All of the different types of events and their associated variables.
 public class IncreaseStatEventArgs : EventArgs
 {
 	public Stats StatToIncrease;

@@ -67,7 +67,7 @@ public struct StatValPair
 [System.Serializable]
 public struct EventTypeNamePair
 {
-	[Tooltip("The type of event that is triggered by this responce.")]
+	[Tooltip("The type of event to trigger.")]
 	public EventType Type;
 	[Tooltip("The EXACT name of the event you want to trigger.")]
 	public string TriggerEventName;

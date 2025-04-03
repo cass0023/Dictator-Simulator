@@ -5,13 +5,5 @@ using UnityEngine;
 
 public class ComputerController : MonoBehaviour
 {
-    public KeyCode exitComputer;
-    void Update(){
-        if(Input.GetKeyDown(exitComputer)){
-            ExitComputer();
-        }
-    }
-    public void ExitComputer(){
-        GameManager.Instance.LoadScene("Office");
-    }
+
 }

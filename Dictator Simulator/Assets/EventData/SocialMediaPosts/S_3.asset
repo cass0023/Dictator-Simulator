@@ -18,7 +18,7 @@ MonoBehaviour:
   - WeekNum: 3
     RequiredStatVal: 0
   LockedByOtherEvent: 1
-  BeforeFirstBlank: 'The story of the anonymos shipment into Caecus is '
+  BeforeFirstBlank: 'The story of the anonymous shipment into Caecus is '
   BlankInserts:
   - Options:
     - OptionName: 'nothing '

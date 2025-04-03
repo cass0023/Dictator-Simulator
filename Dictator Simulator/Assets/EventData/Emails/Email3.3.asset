@@ -31,6 +31,8 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email3.1
+    - Type: 2
+      TriggerEventName: S_3
   - ResponceText: No
     StatsToChange:
     - EffectedStat: 1
@@ -42,3 +44,5 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email3.2
+    - Type: 2
+      TriggerEventName: S_3.1
