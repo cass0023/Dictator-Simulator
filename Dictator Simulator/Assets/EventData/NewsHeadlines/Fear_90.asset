@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bd461ecd5245604e95319855984e2d9, type: 3}
-  m_Name: Default_News
+  m_Name: Fear_90
   m_EditorClassIdentifier: 
-  EventName: Default_News
-  StatLocks: []
+  EventName: Fear_90
+  StatLocks:
+  - lockType: 4
+    StatVal: 0.9
+    RequiredStatVal: 1
   WeekLocks: []
   LockedByOtherEvent: 0
-  NewsHeadline: No new relevent news articles
-  NewsBody: 
-  NewsImage: {fileID: 21300000, guid: f1cf0d184d3824ea282fcc932806c6e4, type: 3}
+  NewsHeadline: EVERYTHING IS FINE
+  NewsBody: THERE IS NOTHING TO WORRY ABOUT AND EVERYTHING IS FINE. THIS PRESIDENT
+    IS THE BEST WE HAVE EVER HAD AND SHOULD BE PRAISED FOR ALL THE GOOD THINGS THEY
+    ARE DOING. PLEASE DISREGARD THE FAKE NEWS ABOUT BODIES IN THE WATER.
+  NewsImage: {fileID: 0}
