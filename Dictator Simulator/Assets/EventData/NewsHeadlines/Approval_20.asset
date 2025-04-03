@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd461ecd5245604e95319855984e2d9, type: 3}
+  m_Name: Approval_20
+  m_EditorClassIdentifier: 
+  EventName: ApprovalRate20
+  StatLocks:
+  - lockType: 2
+    StatVal: 0.2
+    RequiredStatVal: 2
+  WeekLocks: []
+  LockedByOtherEvent: 0
+  NewsHeadline: Caecus President Failing the People!
+  NewsBody: The approval rate for the Caecus president has dropped below 20% amidst
+    contraversy. People have began protesting outside of the capital building and
+    demanding dramatic change. If the President keeps on this path, the people may
+    riot!
+  NewsImage: {fileID: 21300000, guid: 125821b42ca2d6241afdf43e111a6777, type: 3}

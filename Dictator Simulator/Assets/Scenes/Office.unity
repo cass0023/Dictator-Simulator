@@ -4568,9 +4568,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57beadcd4aed76a4eb179370478bd3b0, type: 2}
   - {fileID: 11400000, guid: 5a27f663eb9e06944a7ac7bbddecf189, type: 2}
   - {fileID: 11400000, guid: 8031512f02158ec47afcbc99f9727da4, type: 2}
+  - {fileID: 11400000, guid: b3246eda15c880e479198902e09810e7, type: 2}
   News:
   - {fileID: 11400000, guid: a4f6cdca09d3e964fa9ae8e7645fa2a3, type: 2}
   - {fileID: 11400000, guid: 0ceabdf0c6ba7a24eabd7df33a2aabb6, type: 2}
+  - {fileID: 11400000, guid: a8020207266040d4c9391a4546f15c46, type: 2}
+  - {fileID: 11400000, guid: 8cf720fc6a2e324499ffb37b0a325fd0, type: 2}
   Orders:
   - {fileID: 11400000, guid: c26385a6cb1785f44ab6a8a7702c79f7, type: 2}
 --- !u!1001 &548515819
