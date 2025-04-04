@@ -4569,6 +4569,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a27f663eb9e06944a7ac7bbddecf189, type: 2}
   - {fileID: 11400000, guid: 8031512f02158ec47afcbc99f9727da4, type: 2}
   - {fileID: 11400000, guid: b3246eda15c880e479198902e09810e7, type: 2}
+  - {fileID: 11400000, guid: 32227b78a816a304f8ce7daaf2069b82, type: 2}
+  - {fileID: 11400000, guid: 7951d85a3d3d1f640a0be445b7ac7923, type: 2}
+  - {fileID: 11400000, guid: 4b12421b04062b04e89a2c441b8ff548, type: 2}
   News:
   - {fileID: 11400000, guid: a4f6cdca09d3e964fa9ae8e7645fa2a3, type: 2}
   - {fileID: 11400000, guid: 0ceabdf0c6ba7a24eabd7df33a2aabb6, type: 2}

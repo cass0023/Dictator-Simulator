@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b82c25c83bd744fbb96862acdc2c9e, type: 3}
+  m_Name: S_9
+  m_EditorClassIdentifier: 
+  EventName: S_9
+  StatLocks: []
+  WeekLocks:
+  - WeekNum: 9
+    RequiredStatVal: 0
+  LockedByOtherEvent: 0
+  BeforeFirstBlank: 'Since me and my party took over, our country has become '
+  BlankInserts:
+  - Options:
+    - OptionName: more efficent
+      StatsToChange:
+      - EffectedStat: 2
+        StatVal: 0.05
+    - OptionName: powerful
+      StatsToChange:
+      - EffectedStat: 2
+        StatVal: 0.05
+      - EffectedStat: 4
+        StatVal: 0.05
+    - OptionName: better than everyone else
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.1
+      - EffectedStat: 4
+        StatVal: 0.1
+    TextAfterBlank: 
+  SpecialCombos: []
