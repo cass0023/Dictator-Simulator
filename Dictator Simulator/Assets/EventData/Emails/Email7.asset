@@ -20,12 +20,12 @@ MonoBehaviour:
   LockedByOtherEvent: 0
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: "Yo President,\r\n\r\nThis is Hugo Saville! I own Daintree and have
-    been meaning to\r\nto talk to you for some time now. I LOVE what you've been
-    doing\r\nso far in office and was hoping you'd be able to help me.\r\n\r\nI've
-    been ripped apart with these taxes and was hoping you\r\ncould help me along
-    those lines ;)\r\n\r\nIf you choose to help me, you'll have a powerful friend
-    in not only\r\nDaintree, but myself as well.\r\n\r\n- Hugo Saville\r"
+  EmailContents: "Yo President,\n\r\nThis is Hugo Saville! I own Daintree and have
+    been meaning to talk to you for some time now. I LOVE what you've been doing
+    so far in office and was hoping you'd be able to help me. \n\nI've been ripped
+    apart with these taxes and was hoping you could help me along those lines ;)\n\r\nIf
+    you choose to help me, you'll have a powerful friend in not only\n\r\nDaintree,
+    but myself as well.\n\r\n- Hugo Saville\r\n\r"
   ResponceOptions:
   - ResponceText: Yes, I'll help!
     StatsToChange:

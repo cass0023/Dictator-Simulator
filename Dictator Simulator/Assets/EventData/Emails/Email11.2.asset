@@ -18,8 +18,11 @@ MonoBehaviour:
   LockedByOtherEvent: 1
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "Trust me you're making a mistake. The death penalty works wonders
-    for \nus and would for you as well.\n\n- Anonymous"
+  EmailContents: 'Trust me you''re making a mistake. The death penalty works wonders
+    for us and would for you as well.
+
+
+    - Anonymous'
   ResponceOptions:
   - ResponceText: Ok
     StatsToChange: []

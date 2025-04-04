@@ -21,8 +21,8 @@ MonoBehaviour:
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "President,\n\nWe were talking to our leaders and have come to realize
-    you\nneed to reinstate the Death Penalty. It is too easy for criminals \nin Caecus
-    to commit crimes, and by reinstating that punishment \nit will help your country
+    you need to reinstate the Death Penalty. It is too easy for criminals in Caecus
+    to commit crimes, and by reinstating that punishment it will help your country
     as much as its helped ours.\n\nThis will not only improve crime rates, but also
     the economy in \nCaecus.\n\nWill you sign the order?\n\n- Anonymous"
   ResponceOptions:

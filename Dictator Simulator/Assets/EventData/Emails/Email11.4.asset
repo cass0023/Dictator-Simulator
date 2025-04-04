@@ -18,10 +18,16 @@ MonoBehaviour:
   LockedByOtherEvent: 1
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "All methods work but there are many different ways you can make
-    it \nhappen in Caecus, the most popular now is Leathal Injection. Others \ninclude
-    hanging, electrocution, shooting/firing squad, beheading, etc.\n\nDoes this make
-    you want to reinstate the death penalty.\n\n- Anonymous"
+  EmailContents: 'All methods work but there are many different ways you can make
+    it happen in Caecus, the most popular now is Leathal Injection. Others include
+    hanging, electrocution, shooting/firing squad, beheading, etc.
+
+
+    Does this
+    make you want to reinstate the death penalty.
+
+
+    - Anonymous'
   ResponceOptions:
   - ResponceText: Yes it does.
     StatsToChange:

@@ -20,8 +20,20 @@ MonoBehaviour:
   LockedByOtherEvent: 0
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: "Hey Pres!\n\nI've been losing so much money because my stupid emloyees
-    \nwant to stay home and work. It's hard to control them and \nmonitor their progress.\n\nPlease
-    pass an executive order banning ALL online work.\n\nName your price and I'll
-    pay.\n\n- Hugo Saville"
+  EmailContents: 'Hey Pres!
+
+
+    I''ve been losing so much money because my stupid
+    emloyees want to stay home and work. It''s hard to control them and monitor their
+    progress.
+
+
+    Please pass an executive order banning ALL online work.
+
+
+    Name
+    your price and I''ll pay.
+
+
+    - Hugo Saville'
   ResponceOptions: []

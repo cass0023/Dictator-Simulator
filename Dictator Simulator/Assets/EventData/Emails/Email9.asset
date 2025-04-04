@@ -21,9 +21,9 @@ MonoBehaviour:
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
   EmailContents: "Pres!\n\nIt's me again! I was just chillin and thinking about how
-    you can\nkinda do what ever you want! You could even change the spelling of a
+    you can kinda do what ever you want! You could even change the spelling of a
     word if you want!\n\nWhy don't you send out a post that really tests what you
-    can get\naway with. It will show you how stupid some of your citizens are.\n\n        
+    can get away with. It will show you how stupid some of your citizens are.\n\n        
     P.S - Those are the people you want to cater to ;)\n\n- Hugo Saville"
   ResponceOptions:
   - ResponceText: Ok, I'll try it.

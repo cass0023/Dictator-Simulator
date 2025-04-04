@@ -18,10 +18,16 @@ MonoBehaviour:
   LockedByOtherEvent: 1
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "Our citizens are so much more well behaved with the threat of death
-    \naround the corner. Remember you can use fear to your advantage but \nbe carfull
-    it's a fine line.\n\nDoes this make you want to reinstate the death penalty.\n\n-
-    Anonymous"
+  EmailContents: 'Our citizens are so much more well behaved with the threat of death
+    around the corner. Remember you can use fear to your advantage but be carfull
+    it''s a fine line.
+
+
+    Does this make you want to reinstate the death penalty.
+
+
+    -
+    Anonymous'
   ResponceOptions:
   - ResponceText: Yes it does.
     StatsToChange:

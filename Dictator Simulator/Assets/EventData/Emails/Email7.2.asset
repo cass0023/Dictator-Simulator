@@ -19,8 +19,8 @@ MonoBehaviour:
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
   EmailContents: "What are you talking about, I've worked for all my wealth! This
-    is not a\nbridge you want to burn.\n\nI just want to be your friend. I feel like
-    we'll get along really well so\nI'll message back\nsoon :)\n\n- Hugo\r"
+    is not a bridge you want to burn.\n\nI just want to be your friend. I feel like
+    we'll get along really well so I'll message back\nsoon :)\n\n- Hugo\r"
   ResponceOptions:
   - ResponceText: Ok
     StatsToChange: []

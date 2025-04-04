@@ -18,8 +18,11 @@ MonoBehaviour:
   LockedByOtherEvent: 1
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: "I don't even know maybe one people use a lot like, because or again.
-    \nWhatever it is I'm sure it'll be hilarious!\n\n- Hugo"
+  EmailContents: 'I don''t even know maybe one people use a lot like, because or
+    again. Whatever it is I''m sure it''ll be hilarious!
+
+
+    - Hugo'
   ResponceOptions:
   - ResponceText: Ok, I'll try it.
     StatsToChange:
