@@ -64,6 +64,7 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			InteractionManager.Instance.SwitchCamera("PlayerCam");
+			OrderManager.Instance.DisplayOrder();
 		}
 	}
     void InteractUI(){

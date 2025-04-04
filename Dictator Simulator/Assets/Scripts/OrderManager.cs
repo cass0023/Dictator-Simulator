@@ -13,6 +13,7 @@ public class OrderManager
 
 	private static OrderManager instance = new OrderManager();
 
+	OrderEvent DefaultEvent;
 	OrderEvent CurrentEvent;
 
 	private event EventHandler<IncreaseStatEventArgs> IncreaseStat;
@@ -29,7 +30,6 @@ public class OrderManager
 
 	public void InitializeOrder(OrderEvent orderToLoad)
 	{
-		//was originally newsToLoad, changed for bug fixing
 		if (orderToLoad.Data.EventName == null)
 		{
 			Debug.LogError("Invalid event to intialize.");
@@ -37,6 +37,7 @@ public class OrderManager
 		}
 
 		CurrentEvent = orderToLoad;
+		DefaultEvent = (OrderEvent)EventManager.Instance.GetEvent("Default_Order");
 	}
 
 	public void DisplayOrder()
@@ -75,6 +76,8 @@ public class OrderManager
 
 		EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 		Debug.Log($"Signed Exec Order {CurrentEvent.Data.EventName}");
+		CurrentEvent = DefaultEvent;
+		DisplayOrder();
 	}
 	private void NoOnClick()
 	{
@@ -94,6 +97,8 @@ public class OrderManager
 		}
 		EventManager.Instance.CompleteEvent(CurrentEvent.Data.EventName);
 		Debug.Log($"Declined Exec Order {CurrentEvent.Data.EventName}");
+		CurrentEvent = DefaultEvent;
+		DisplayOrder();
 	}
 
 }

@@ -36,8 +36,8 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email2.1
-    - Type: 1
-      TriggerEventName: Email5
+    - Type: 5
+      TriggerEventName: EO1_Extended_Foreign
   - ResponceText: No.
     StatsToChange:
     - EffectedStat: 1
@@ -49,8 +49,6 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email2.2
-    - Type: 1
-      TriggerEventName: Email6
   - ResponceText: What business do you have in my country?
     StatsToChange: []
     TriggerEventsList:

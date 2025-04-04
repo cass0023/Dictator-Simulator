@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332a2d3100c62a5439dff3f6a3fbfb7c, type: 3}
   m_Name: EO1_Extended_Foreign
   m_EditorClassIdentifier: 
-  EventName: 
+  EventName: EO1_Extended_Foreign
   StatLocks: []
   WeekLocks: []
-  LockedByOtherEvent: 0
-  OrderTitle: 
-  OrderDetails: 
-  StatChangeOnSign: []
-  StatChangeOnDecline: []
+  LockedByOtherEvent: 1
+  OrderTitle: Extended Foreign Vist Executive Order
+  OrderDetails: Allow foreigners to conduct business for one month without a permit.
+    They will still require a passport.
+  StatChangeOnSign:
+  - EffectedStat: 1
+    StatVal: -0.05
+  - EffectedStat: 2
+    StatVal: 0.05
+  - EffectedStat: 3
+    StatVal: 0.05
+  StatChangeOnDecline:
+  - EffectedStat: 1
+    StatVal: 0.05
+  - EffectedStat: 3
+    StatVal: -0.05
+  EventsToTriggerOnSign:
+  - Type: 1
+    TriggerEventName: Email5
+  EventsToTriggerOnDecline:
+  - Type: 1
+    TriggerEventName: Email6
