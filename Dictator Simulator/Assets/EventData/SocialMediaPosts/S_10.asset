@@ -10,32 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24b82c25c83bd744fbb96862acdc2c9e, type: 3}
-  m_Name: S_8
+  m_Name: S_10
   m_EditorClassIdentifier: 
-  EventName: S_8
+  EventName: S_10
   StatLocks: []
   WeekLocks:
-  - WeekNum: 10
+  - WeekNum: 8
     RequiredStatVal: 0
   LockedByOtherEvent: 0
-  BeforeFirstBlank: 'This is a message to all citzens of Caecus:'
+  BeforeFirstBlank: 'Hello citizens of Caecus. I have decided the word:'
   BlankInserts:
   - Options:
-    - OptionName: Leave.
+    - OptionName: '"Because"'
+      StatsToChange: []
+    - OptionName: '"Friend"'
+      StatsToChange: []
+    - OptionName: '"Charisma"'
+      StatsToChange: []
+    TextAfterBlank: 'is outdated and lame. We will refer it as:'
+  - Options:
+    - OptionName: '"Cuz"'
       StatsToChange:
-      - EffectedStat: 4
-        StatVal: 0.15
-    - OptionName: Give me more money!
-      StatsToChange:
-      - EffectedStat: 2
-        StatVal: -0.1
       - EffectedStat: 1
         StatVal: -0.1
-    - OptionName: Listen to my words.
+      - EffectedStat: 0
+        StatVal: 0
+    - OptionName: '"Bestie"'
       StatsToChange:
-      - EffectedStat: 4
-        StatVal: 0.05
-      - EffectedStat: 2
-        StatVal: -0.05
-    TextAfterBlank: This is for our own good. Live long and free!
+      - EffectedStat: 1
+        StatVal: -0.1
+    - OptionName: '"Rizz"'
+      StatsToChange:
+      - EffectedStat: 1
+        StatVal: -0.1
+    TextAfterBlank: .
   SpecialCombos: []
