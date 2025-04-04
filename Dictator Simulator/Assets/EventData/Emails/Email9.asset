@@ -17,7 +17,7 @@ MonoBehaviour:
   WeekLocks:
   - WeekNum: 8
     RequiredStatVal: 0
-  LockedByOtherEvent: 1
+  LockedByOtherEvent: 0
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
   EmailContents: "Pres!\n\nIt's me again! I was just chillin and thinking about how

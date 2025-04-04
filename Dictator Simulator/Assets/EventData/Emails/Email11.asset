@@ -17,7 +17,7 @@ MonoBehaviour:
   WeekLocks:
   - WeekNum: 10
     RequiredStatVal: 0
-  LockedByOtherEvent: 1
+  LockedByOtherEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: "President,\n\nWe were talking to our leaders and have come to realize

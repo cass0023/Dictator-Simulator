@@ -15,7 +15,7 @@ MonoBehaviour:
   EventName: Email10
   StatLocks: []
   WeekLocks: []
-  LockedByOtherEvent: 1
+  LockedByOtherEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: 'Dear President,

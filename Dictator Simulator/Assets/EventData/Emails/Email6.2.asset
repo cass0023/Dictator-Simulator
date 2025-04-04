@@ -15,7 +15,7 @@ MonoBehaviour:
   EventName: Email6.2
   StatLocks: []
   WeekLocks:
-  - WeekNum: 6
+  - WeekNum: 5
     RequiredStatVal: 0
   LockedByOtherEvent: 1
   FromLine: minsterofimmigration@government.com

@@ -17,7 +17,7 @@ MonoBehaviour:
   WeekLocks:
   - WeekNum: 6
     RequiredStatVal: 0
-  LockedByOtherEvent: 1
+  LockedByOtherEvent: 0
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
   EmailContents: "Yo President,\r\n\r\nThis is Hugo Saville! I own Daintree and have

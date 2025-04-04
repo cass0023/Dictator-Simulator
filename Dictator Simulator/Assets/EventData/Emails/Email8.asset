@@ -17,7 +17,7 @@ MonoBehaviour:
   WeekLocks:
   - WeekNum: 7
     RequiredStatVal: 0
-  LockedByOtherEvent: 1
+  LockedByOtherEvent: 0
   FromLine: ministerofeducation@caecus.gov
   ToLine: president@presidentemail.com
   EmailContents: "Dear President,\n\nWe have some very angry parents on the phone
