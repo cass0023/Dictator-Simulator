@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Email9.2
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 8
-    RequiredStatVal: 0
+  WeekLocks: []
   LockedByOtherEvent: 1
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com

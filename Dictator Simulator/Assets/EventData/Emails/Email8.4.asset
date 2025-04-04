@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Email8.4
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 7
-    RequiredStatVal: 0
+  WeekLocks: []
   LockedByOtherEvent: 1
   FromLine: ministerofeducation@caecus.gov
   ToLine: president@presidentemail.com
