@@ -4581,7 +4581,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 450fbc3788e15e948965d7cdfbc5699a, type: 2}
   - {fileID: 11400000, guid: 80d42f2f2e356ae4f987178f4bd67eb1, type: 2}
   - {fileID: 11400000, guid: c506fe5b021f7a24fa3c02813a3accf0, type: 2}
-  - {fileID: 11400000, guid: 60968d0d1aa49b2418bc0d1dadfb6379, type: 2}
   SocialMedia:
   - {fileID: 11400000, guid: 87a32d8ec1af11c4bb3fa2f3966201fb, type: 2}
   - {fileID: 11400000, guid: c83b50a5cb6ddc440bc9f6b4f258d1b8, type: 2}
