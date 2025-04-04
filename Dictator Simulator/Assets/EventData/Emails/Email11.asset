@@ -25,4 +25,38 @@ MonoBehaviour:
     to commit crimes, and by reinstating that punishment \nit will help your country
     as much as its helped ours.\n\nThis will not only improve crime rates, but also
     the economy in \nCaecus.\n\nWill you sign the order?\n\n- Anonymous"
-  ResponceOptions: []
+  ResponceOptions:
+  - ResponceText: I completely agree!
+    StatsToChange:
+    - EffectedStat: 4
+      StatVal: 0.15
+    - EffectedStat: 2
+      StatVal: -0.1
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 1
+      StatVal: -0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email11.1
+  - ResponceText: No, that's an archaic punishment!
+    StatsToChange:
+    - EffectedStat: 3
+      StatVal: 0.1
+    - EffectedStat: 2
+      StatVal: 0.05
+    - EffectedStat: 1
+      StatVal: 0.1
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email11.2
+  - ResponceText: What do you mean it's helped your country?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email11.3
+  - ResponceText: Maybe but it depends on the method.
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email11.4
