@@ -22,11 +22,11 @@ MonoBehaviour:
     force to
   BlankInserts:
   - Options:
-    - OptionName: monitor text messages
+    - OptionName: monitor texts
       StatsToChange:
       - EffectedStat: 4
         StatVal: 0.04
-    - OptionName: raise the fine for littering
+    - OptionName: enforce littering laws
       StatsToChange:
       - EffectedStat: 2
         StatVal: 0.02
