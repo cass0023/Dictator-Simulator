@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email6.2
+  m_Name: Email7.2
   m_EditorClassIdentifier: 
-  EventName: Email6.2
+  EventName: Email7.2
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 5
-    RequiredStatVal: 0
+  WeekLocks: []
   LockedByOtherEvent: 1
-  FromLine: minsterofimmigration@government.com
+  FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: 'No worries. Thank you for your response.
-
-
-    - Minster of Immigration'
+  EmailContents: "What are you talking about, I've worked for all my wealth! This
+    is not a bridge you want to burn.\n\nI just want to be your friend. I feel like
+    we'll get along really well so I'll message back\nsoon :)\n\n- Hugo\r"
   ResponceOptions:
   - ResponceText: Ok
     StatsToChange: []

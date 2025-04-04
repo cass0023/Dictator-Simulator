@@ -10,23 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email11
+  m_Name: Email11.3
   m_EditorClassIdentifier: 
-  EventName: Email11
+  EventName: Email11.3
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 10
-    RequiredStatVal: 0
-  LockedByOtherEvent: 0
+  WeekLocks: []
+  LockedByOtherEvent: 1
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
-  EmailContents: "President,\n\nWe were talking to our leaders and have come to realize
-    you need to reinstate the Death Penalty. It is too easy for criminals in Caecus
-    to commit crimes, and by reinstating that punishment it will help your country
-    as much as its helped ours.\n\nThis will not only improve crime rates, but also
-    the economy in \nCaecus.\n\nWill you sign the order?\n\n- Anonymous"
+  EmailContents: 'Our citizens are so much more well behaved with the threat of death
+    around the corner. Remember you can use fear to your advantage but be carfull
+    it''s a fine line.
+
+
+    Does this make you want to reinstate the death penalty.
+
+
+    -
+    Anonymous'
   ResponceOptions:
-  - ResponceText: I completely agree!
+  - ResponceText: Yes it does.
     StatsToChange:
     - EffectedStat: 4
       StatVal: 0.15
@@ -39,7 +42,7 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email11.1
-  - ResponceText: No, that's an archaic punishment!
+  - ResponceText: No, it's still an archaic punishment!
     StatsToChange:
     - EffectedStat: 3
       StatVal: 0.1
@@ -50,13 +53,3 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email11.2
-  - ResponceText: What do you mean it's helped your country?
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email11.3
-  - ResponceText: Maybe but it depends on the method.
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email11.4

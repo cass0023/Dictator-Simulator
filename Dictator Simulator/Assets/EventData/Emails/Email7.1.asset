@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email12
+  m_Name: Email7.1
   m_EditorClassIdentifier: 
-  EventName: Email12
+  EventName: Email7.1
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 11
-    RequiredStatVal: 0
+  WeekLocks: []
   LockedByOtherEvent: 1
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: "Hey Pres!\n\nI've been losing so much money because my stupid emloyees
-    \nwant to stay home and work. It's hard to control them and \nmonitor their progress.\n\nPlease
-    pass an executive order banning ALL online work.\n\nName your price and I'll
-    pay.\n\n- Hugo Saville"
-  ResponceOptions: []
+  EmailContents: "Awesome!! Thanks Pres I owe you one!\n\n- Hugo\r"
+  ResponceOptions:
+  - ResponceText: Ok
+    StatsToChange: []
+    TriggerEventsList: []

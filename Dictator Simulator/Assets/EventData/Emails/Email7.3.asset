@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email7
+  m_Name: Email7.3
   m_EditorClassIdentifier: 
-  EventName: Email7
+  EventName: Email7.3
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 6
-    RequiredStatVal: 0
-  LockedByOtherEvent: 0
+  WeekLocks: []
+  LockedByOtherEvent: 1
   FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: "Yo President,\n\r\nThis is Hugo Saville! I own Daintree and have
-    been meaning to talk to you for some time now. I LOVE what you've been doing
-    so far in office and was hoping you'd be able to help me. \n\nI've been ripped
-    apart with these taxes and was hoping you could help me along those lines ;)\n\r\nIf
-    you choose to help me, you'll have a powerful friend in not only\n\r\nDaintree,
-    but myself as well.\n\r\n- Hugo Saville\r\n\r"
+  EmailContents: 'Oh you know... taxes have been kicking my ass and I would love
+    a few extra bucks in my pocket and a few in yours ;)
+
+
+    Are you gonna help
+    me?
+
+
+    - Hugo'
   ResponceOptions:
   - ResponceText: Yes, I'll help!
     StatsToChange:
@@ -45,8 +46,3 @@ MonoBehaviour:
     TriggerEventsList:
     - Type: 1
       TriggerEventName: Email7.2
-  - ResponceText: What do you mean "along those lines?"
-    StatsToChange: []
-    TriggerEventsList:
-    - Type: 1
-      TriggerEventName: Email7.3

@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventName: Email10
   StatLocks: []
-  WeekLocks: []
-  LockedByOtherEvent: 1
+  WeekLocks:
+  - WeekNum: 9
+    RequiredStatVal: 0
+  LockedByOtherEvent: 0
   FromLine: unknown@unknownemail.com
   ToLine: president@presidentemail.com
   EmailContents: 'Dear President,
@@ -30,4 +32,24 @@ MonoBehaviour:
 
 
     - Anonymous'
-  ResponceOptions: []
+  ResponceOptions:
+  - ResponceText: Yeah, I can.
+    StatsToChange:
+    - EffectedStat: 4
+      StatVal: 0.05
+    - EffectedStat: 2
+      StatVal: -0.05
+    - EffectedStat: 3
+      StatVal: -0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email10.1
+  - ResponceText: No,I'm taking the side of our military.
+    StatsToChange:
+    - EffectedStat: 2
+      StatVal: 0.1
+    - EffectedStat: 3
+      StatVal: 0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email10.2

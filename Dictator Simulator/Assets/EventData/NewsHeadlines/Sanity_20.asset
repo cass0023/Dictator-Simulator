@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd461ecd5245604e95319855984e2d9, type: 3}
   m_Name: Sanity_20
   m_EditorClassIdentifier: 
-  EventName: 
-  StatLocks: []
+  EventName: Sanity_90
+  StatLocks:
+  - lockType: 1
+    StatVal: 0.2
+    RequiredStatVal: 2
   WeekLocks: []
   LockedByOtherEvent: 0
-  NewsHeadline: 
-  NewsBody: 
-  NewsImage: {fileID: 0}
+  NewsHeadline: Caecus President Acting Eratic
+  NewsBody: 'Social media posts and decisions from the President have made less and
+    less sense. Both sides of the aisle are now considering impeachment as a possibility
+    due to the potential cognitive decline of the President. The people are losing
+    faith in their leader. '
+  NewsImage: {fileID: 21300000, guid: 115f22da577f80241935c52799811087, type: 3}

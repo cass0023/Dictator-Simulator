@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602ef92a764f85940a4f862c33aa18cd, type: 3}
-  m_Name: Email6.2
+  m_Name: Email9.1
   m_EditorClassIdentifier: 
-  EventName: Email6.2
+  EventName: Email9.1
   StatLocks: []
-  WeekLocks:
-  - WeekNum: 5
-    RequiredStatVal: 0
+  WeekLocks: []
   LockedByOtherEvent: 1
-  FromLine: minsterofimmigration@government.com
+  FromLine: iambetterthanyou@billionaire.com
   ToLine: president@presidentemail.com
-  EmailContents: 'No worries. Thank you for your response.
+  EmailContents: 'This is gonna be hilarious!! I can''t wait to see what word you
+    choose! We''re legalizing comedy!!!
 
 
-    - Minster of Immigration'
+    - UR BOY HUGO'
   ResponceOptions:
   - ResponceText: Ok
     StatsToChange: []

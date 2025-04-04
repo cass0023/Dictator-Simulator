@@ -17,11 +17,11 @@ MonoBehaviour:
   WeekLocks:
   - WeekNum: 7
     RequiredStatVal: 0
-  LockedByOtherEvent: 1
+  LockedByOtherEvent: 0
   FromLine: ministerofeducation@caecus.gov
   ToLine: president@presidentemail.com
   EmailContents: "Dear President,\n\nWe have some very angry parents on the phone
-    talking about\nbooks they deemed \"inappropriate,\" and shouldn't be in schools.
+    talking about books they deemed \"inappropriate,\" and shouldn't be in schools.
     I went through the list and some feel like they shoudn't be banned but it's your
     call.\n\nHere are some examples:\n               - 1984 by George Orwell\n              
     - Animal Farm by George Orwell\n               - Fahrenheit 451 by Ray Bradbury\n              
@@ -29,4 +29,38 @@ MonoBehaviour:
     Suzanne Collins\n               - The Perks of being a Wallflower by Stephen
     Chbosky\n\nPick up the phone and let them know your decision.\n\n- Minister of
     Education"
-  ResponceOptions: []
+  ResponceOptions:
+  - ResponceText: Alright, I'll pick up.
+    StatsToChange:
+    - EffectedStat: 4
+      StatVal: -0.1
+    - EffectedStat: 3
+      StatVal: -0.05
+    - EffectedStat: 2
+      StatVal: -0.05
+    - EffectedStat: 1
+      StatVal: -0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email8.1
+  - ResponceText: I'm not answering I don't even read.
+    StatsToChange:
+    - EffectedStat: 1
+      StatVal: -0.1
+    - EffectedStat: 4
+      StatVal: 0.05
+    - EffectedStat: 2
+      StatVal: -0.05
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email8.2
+  - ResponceText: Can we replace them with other books?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email8.3
+  - ResponceText: What will happen to the students caught with them?
+    StatsToChange: []
+    TriggerEventsList:
+    - Type: 1
+      TriggerEventName: Email8.4
